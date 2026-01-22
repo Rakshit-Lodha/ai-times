@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 api_key = os.environ.get("PARALLEL_API_KEY")
 client = Parallel(api_key=api_key)
+from httpx import Response
 
 app = Flask(__name__)
 
@@ -46,7 +47,8 @@ def receive_webhook():
 
         try:
             group = client.get(
-                f"/v1alpha/monitors/{monitor_group_id}/event_groups/{event_group_id}"
+                f"/v1alpha/monitors/{monitor_group_id}/event_groups/{event_group_id}",
+                cast_to = Response
             ).json()
 
             print(group['events'])
@@ -66,7 +68,7 @@ def receive_webhook():
 
         except Exception as e:
             print("Error in finding the data")
-               
+
     return jsonify({"status":"received"}),200
 
 @app.route('/view-webhooks',methods = ['GET'])
