@@ -2,3 +2,4 @@ flask
 python-dotenv
 parallel-web
 httpx
+gunicorn

@@ -5,7 +5,7 @@ from parallel import Parallel
 load_dotenv()
 api_key = os.environ.get("PARALLEL_API_KEY")
 client = Parallel(api_key=api_key)
-webhook_url = "https://interkinetic-optimistically-ola.ngrok-free.dev/parallel-webhooks"
+webhook_url = "https://ai-times-6utx.onrender.com"
 
 res = client.post(
     "/v1alpha/monitors",
