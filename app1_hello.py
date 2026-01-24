@@ -3,9 +3,14 @@ import json
 import os
 from parallel import Parallel
 from dotenv import load_dotenv
+from supabase  import create_client, Client
 load_dotenv()
 api_key = os.environ.get("PARALLEL_API_KEY")
 client = Parallel(api_key=api_key)
+
+supabase_url = os.environ.get("SUPABASE_URL")
+supabase_api_key = os.environ.get("SUPBASE_KEY")
+supabase: Client = create_client(supabase_url, supabase_api_key)
 from httpx import Response
 
 app = Flask(__name__)
@@ -13,20 +18,12 @@ app = Flask(__name__)
 data_file = '/Users/Rakshit.Lodha/Desktop/ai-times/webhook_data.json'
 
 def save_webhook(data):
-    if os.path.exists(data_file):
-        with open(data_file,'r') as f:
-            all_data = json.load(f)
-    
-    else:
-        all_data = []
-    
-    all_data.append(data)
-
-    with open(data_file, 'w') as f:
-        json.dump(all_data,f, indent=2)
-    
-    return len(all_data)
-
+    try:
+        result = supabase.table('webhooks').insert(data).execute()
+        return result.data[0]
+    except Exception as e:
+        print(f"Error in Supabase: {e}")
+        return None
 
 @app.route('/')
 def home():
@@ -56,11 +53,12 @@ def receive_webhook():
             for event in group.get('events',[]):
                 news_data = {
                     "timestamp": webhook_data.get('timestamp'),
+                    "event_type": webhook_data.get('type'),
                     "event_group_id": event_group_id,
                     "monitor_id": monitor_group_id,
                     "news_output": event.get('output'),
-                    "new_date": event.get('event_date'),
-                    "source_url": event.get('source_urls',[]),
+                    "news_date": event.get('event_date'),
+                    "source_urls": event.get('source_urls',[]),
                     "full_data": webhook_data
                 }
 
@@ -73,14 +71,17 @@ def receive_webhook():
 
 @app.route('/view-webhooks',methods = ['GET'])
 def view_webhooks():
-    if os.path.exists(data_file):
-        with open(data_file,'r') as f:
-            all_data = json.load(f)
+    try:
+        result = supabase.table('webhooks')\
+            .select("*")\
+                .order('created_at', desc = True)\
+                    .execute()
         return jsonify({
-            "total": len(all_data),
-            "webhooks": all_data
-        })
-    else:
+            "total": len(result.data),
+            "webhooks": result.data
+        }),200
+
+    except Exception as e:
         return jsonify({
             "total": 0,
             "webhooks": []
