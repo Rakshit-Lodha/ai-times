@@ -4,3 +4,4 @@ parallel-web
 httpx
 gunicorn
 supabase
+streamlit

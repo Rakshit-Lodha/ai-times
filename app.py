@@ -131,13 +131,16 @@ else:
         if 'claude' in articles_by_model:
             display_headline = articles_by_model['claude']['headline']
             source_model = "Claude"
+            st.metric("Published", article['created_at'][:10])
         elif 'openai' in articles_by_model:
             display_headline = articles_by_model['openai']['headline']
             source_model = "OpenAI"
+            st.metric("Published", article['created_at'][:10])
         else:
             # Fallback to first available
             display_headline = event_articles[0]['headline']
             source_model = event_articles[0]['model'].upper()
+            st.metric("Published", article['created_at'][:10])
         
         # Create clickable card
         col1, col2 = st.columns([10, 1])
