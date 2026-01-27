@@ -4,6 +4,7 @@ from collections import defaultdict
 from supabase import create_client
 import json
 import os
+from datetime import datetime
 
 load_dotenv()
 
@@ -13,6 +14,43 @@ supabase = create_client(supabase_url, supabase_api_key)
 
 
 st.set_page_config(page_title="Krux", layout="wide")
+
+
+
+def format_date(date_string):
+    try:
+        date_obj = datetime.strptime(date_string[:10], '%Y-%m-%d')
+        day = date_obj.day
+        
+        # Add suffix (1st, 2nd, 3rd, 4th, etc.)
+        if 10 <= day % 100 <= 20:
+            suffix = 'th'
+        else:
+            suffix = {1: 'st', 2: 'nd', 3: 'rd'}.get(day % 10, 'th')
+        
+        return date_obj.strftime(f'{day}{suffix} %B %Y')
+    except:
+        return date_string[:10]
+
+# Helper function to create excerpt
+def create_excerpt(content, max_length=200):
+    """Create a short excerpt from content"""
+    # Remove markdown asterisks
+    clean_content = content.replace('*', '').strip()
+    
+    # Get first paragraph or first max_length characters
+    paragraphs = clean_content.split('\n\n')
+    first_para = paragraphs[0] if paragraphs else clean_content
+    
+    if len(first_para) <= max_length:
+        return first_para + "......"
+    else:
+        # Cut at last space before max_length
+        excerpt = first_para[:max_length]
+        last_space = excerpt.rfind(' ')
+        if last_space > 0:
+            excerpt = excerpt[:last_space]
+        return excerpt + "......"
 
 
 # Get query parameters
@@ -106,37 +144,35 @@ else:
     st.caption(f"📰 {len(events)} News Stories | 📝 {len(articles)} Total Articles")
     st.divider()
     
-    # Display each event
+    # Display each event as a card
     for event_id, event_articles in events.items():
         
         # Get Claude headline (or fallback to OpenAI)
         articles_by_model = {a['model'].lower(): a for a in event_articles}
         
         if 'claude' in articles_by_model:
-            display_headline = articles_by_model['claude']['headline']
-            source_model = "Claude"
-            st.metric("Published", article['created_at'][:10])
+            display_article = articles_by_model['claude']
         elif 'openai' in articles_by_model:
-            display_headline = articles_by_model['openai']['headline']
-            source_model = "OpenAI"
-            st.metric("Published", article['created_at'][:10])
+            display_article = articles_by_model['openai']
         else:
-            # Fallback to first available
-            display_headline = event_articles[0]['headline']
-            source_model = event_articles[0]['model'].upper()
-            st.metric("Published", article['created_at'][:10])
+            display_article = event_articles[0]
         
         # Create clickable card
-        col1, col2 = st.columns([10, 1])
-        
-        with col1:
-            # Clickable headline
-            if st.button(
-                display_headline,
-                key=f"btn_{event_id}",
-                use_container_width=True,
-                type="secondary"
-            ):
+        # Create article card
+        with st.container():
+            # Headline
+            st.markdown(f"### {display_article['headline']}")
+            
+            # Date
+            formatted_date = format_date(display_article['created_at'])
+            st.caption(f"Published On: {formatted_date}")
+            
+            # Excerpt
+            excerpt = create_excerpt(display_article['content'], max_length=200)
+            st.write(excerpt)
+            
+            # Read More button
+            if st.button("Read More", key=f"btn_{event_id}", type="secondary"):
                 st.query_params["event_id"] = event_id
                 st.rerun()
         
