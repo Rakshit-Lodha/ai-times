@@ -12,31 +12,15 @@ supabase_api_key = os.environ.get("SUPBASE_KEY")
 supabase = create_client(supabase_url, supabase_api_key)
 
 
-st.set_page_config(page_title="The AI Times", layout="wide")
+st.set_page_config(page_title="Krux", layout="wide")
 
-st.markdown("""
-<style>
-    /* Fix text breaking */
-    .stMarkdown {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        word-break: break-word;
-    }
-    
-    /* Ensure proper spacing */
-    p {
-        word-spacing: normal;
-        white-space: normal;
-    }
-</style>
-""", unsafe_allow_html=True)
 
 # Get query parameters
 query_params = st.query_params
 event_id = query_params.get("event_id", None)
 
 # Get all articles
-@st.cache_data(ttl=300)
+# @st.cache_data(ttl=300)
 def get_all_articles():
     return supabase.table('articles').select("*").order('created_at', desc=True).execute().data
 
@@ -100,7 +84,7 @@ if event_id:
     st.divider()
     
     # Content
-    st.write(article['content'])
+    st.text(article['content'])
     
     # Sources
     if article.get('sources'):
@@ -115,8 +99,8 @@ if event_id:
             st.text(article['sources'])
 
 else:
-    st.title("The AI Times")
-    st.caption("*World's first AI Newspaper. Researched & Written by AI*")
+    st.title("Krux")
+    st.caption("*The world's first autonomous AI newsroom. Get to the Krux NOW.*")
     st.divider()
     
     st.caption(f"📰 {len(events)} News Stories | 📝 {len(articles)} Total Articles")
@@ -159,5 +143,4 @@ else:
         st.divider()
     
     # Footer
-    st.divider()
     st.caption("Made by Rakshit Lodha with ❤️")
