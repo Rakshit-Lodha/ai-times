@@ -34,11 +34,8 @@ def format_date(date_string):
 
 # Helper function to create excerpt
 def create_excerpt(content, max_length=200):
-    """Create a short excerpt from content"""
-    # Remove markdown asterisks
     clean_content = content.replace('*', '').strip()
     
-    # Get first paragraph or first max_length characters
     paragraphs = clean_content.split('\n\n')
     first_para = paragraphs[0] if paragraphs else clean_content
     
@@ -139,7 +136,6 @@ if event_id:
 else:
     st.title("Krux")
     st.caption("*The world's first autonomous AI newsroom. Get to the Krux NOW.*")
-    st.divider()
     
     st.caption(f"📰 {len(events)} News Stories | 📝 {len(articles)} Total Articles")
     st.divider()
