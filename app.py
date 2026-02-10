@@ -12,167 +12,197 @@ supabase_url = os.environ.get("SUPABASE_URL")
 supabase_api_key = os.environ.get("SUPBASE_KEY")
 supabase = create_client(supabase_url, supabase_api_key)
 
+st.set_page_config(page_title="Krux", layout="centered")
 
-st.set_page_config(page_title="Krux", layout="wide")
+# ── Custom CSS for card styling ──
+st.markdown("""
+<style>
+    /* Clean background */
+    .stApp {
+        background-color: #fafafa;
+    }
 
+    /* Card container */
+    .card {
+        background: #ffffff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 28px 28px 16px 28px;
+        margin-bottom: 24px;
+        transition: box-shadow 0.2s;
+    }
+    .card:hover {
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    /* Headline */
+    .card-headline {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin: 0 0 4px 0;
+        line-height: 1.35;
+    }
+
+    /* Date */
+    .card-date {
+        font-size: 0.82rem;
+        color: #888888;
+        margin: 0 0 18px 0;
+    }
+
+    /* Body text */
+    .card-body {
+        font-size: 1.05rem;
+        color: #333333;
+        line-height: 1.65;
+        margin: 0 0 8px 0;
+    }
+
+    /* Header area */
+    .site-header {
+        text-align: center;
+        padding: 24px 0 8px 0;
+    }
+    .site-header h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0;
+        letter-spacing: -0.5px;
+    }
+    .site-header p {
+        color: #888;
+        font-size: 0.95rem;
+        margin: 4px 0 0 0;
+    }
+
+    /* Hide default streamlit padding on expander */
+    .streamlit-expanderHeader {
+        font-size: 0.9rem !important;
+        font-weight: 500 !important;
+        color: #555 !important;
+    }
+
+    /* Source links */
+    .source-link {
+        font-size: 0.88rem;
+        color: #555;
+        text-decoration: none;
+        display: block;
+        padding: 4px 0;
+    }
+    .source-link:hover {
+        color: #1a73e8;
+    }
+
+    /* Story count badge */
+    .story-count {
+        text-align: center;
+        color: #aaa;
+        font-size: 0.85rem;
+        margin-bottom: 20px;
+    }
+</style>
+""", unsafe_allow_html=True)
 
 
 def format_date(date_string):
     try:
         date_obj = datetime.strptime(date_string[:10], '%Y-%m-%d')
         day = date_obj.day
-        
-        # Add suffix (1st, 2nd, 3rd, 4th, etc.)
         if 10 <= day % 100 <= 20:
             suffix = 'th'
         else:
             suffix = {1: 'st', 2: 'nd', 3: 'rd'}.get(day % 10, 'th')
-        
         return date_obj.strftime(f'{day}{suffix} %B %Y')
     except:
         return date_string[:10]
 
-# Helper function to create excerpt
-def create_excerpt(content, max_length=200):
-    clean_content = content.replace('*', '').strip()
-    
-    paragraphs = clean_content.split('\n\n')
-    first_para = paragraphs[0] if paragraphs else clean_content
-    
-    if len(first_para) <= max_length:
-        return first_para + "......"
-    else:
-        # Cut at last space before max_length
-        excerpt = first_para[:max_length]
-        last_space = excerpt.rfind(' ')
-        if last_space > 0:
-            excerpt = excerpt[:last_space]
-        return excerpt + "......"
+
+def parse_sources(raw_sources):
+    """Parse sources from various formats into list of dicts with name/url."""
+    if not raw_sources:
+        return []
+    try:
+        sources = json.loads(raw_sources) if isinstance(raw_sources, str) else raw_sources
+    except:
+        return [{"name": str(raw_sources), "url": ""}]
+
+    parsed = []
+    for s in sources:
+        if isinstance(s, dict):
+            parsed.append({"name": s.get("name", ""), "url": s.get("url", "")})
+        elif isinstance(s, str) and s.strip():
+            parsed.append({"name": s.strip(), "url": ""})
+    return parsed
 
 
-# Get query parameters
-query_params = st.query_params
-event_id = query_params.get("event_id", None)
-
-# Get all articles
-# @st.cache_data(ttl=300)
+# ── Fetch data ──
+@st.cache_data(ttl=300)
 def get_all_articles():
-    return supabase.table('articles').select("*").order('created_at', desc=True).execute().data
+    return supabase.table('hundred_word_articles').select("*").order('news_date', desc=True).execute().data
 
 articles = get_all_articles()
 
-# Group by event
+# Group by event_id, pick Claude version if available
 events = defaultdict(list)
 for article in articles:
     events[article['event_id']].append(article)
 
+# For each event, pick the best article (prefer Claude)
+display_articles = []
+for eid, event_articles in events.items():
+    articles_by_model = {a['model_provider'].lower(): a for a in event_articles}
+    if 'claude' in articles_by_model:
+        display_articles.append(articles_by_model['claude'])
+    elif 'openai' in articles_by_model:
+        display_articles.append(articles_by_model['openai'])
+    else:
+        display_articles.append(event_articles[0])
 
-if event_id:
-    # Get articles for this event
-    event_articles = events.get(event_id, [])
-    
-    if not event_articles:
-        st.error("Article not found")
-        if st.button("← Back to Home"):
-            st.query_params.clear()
-            st.rerun()
-        st.stop()
-    
-    articles_by_model = {a['model'].lower(): a for a in event_articles}
-    
-    # Back button
-    if st.button("← Back to All Stories"):
-        st.query_params.clear()
-        st.rerun()
-    
-    st.divider()
-    
-    # Model toggle (only show available models)
-    available_models = list(articles_by_model.keys())
-    model_labels = [m.upper() for m in available_models]
-    
-    selected_model = st.radio(
-        "Select Perspective:",
-        available_models,
-        format_func=lambda x: x.upper(),
-        horizontal=True,
-        key="model_toggle"
-    )
-    
-    st.divider()
-    
-    # Get selected article
-    article = articles_by_model[selected_model]
-    
-    # Display article
-    st.markdown(f"# {article['headline']}")
-    
-    # Metadata
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        st.metric("Model", article['model'].upper())
-    with col2:
-        st.metric("Words", article.get('word_count', 'N/A'))
-    with col3:
-        st.metric("Published", article['created_at'][:10])
-    
-    st.divider()
-    
-    # Content
-    st.text(article['content'])
-    
-    # Sources
-    if article.get('sources'):
-        st.divider()
-        st.markdown("### 📚 Sources")
-        try:
-            sources = json.loads(article['sources']) if isinstance(article['sources'], str) else article['sources']
-            for i, s in enumerate(sources, 1):
-                if s.strip():
-                    st.markdown(f"{i}. {s}")
-        except:
-            st.text(article['sources'])
+# Sort by news_date descending
+display_articles.sort(key=lambda x: x.get('news_date', ''), reverse=True)
 
-else:
-    st.title("Krux")
-    st.caption("*The world's first autonomous AI newsroom. Get to the Krux NOW.*")
-    
-    st.caption(f"📰 {len(events)} News Stories | 📝 {len(articles)} Total Articles")
-    st.divider()
-    
-    # Display each event as a card
-    for event_id, event_articles in events.items():
-        
-        # Get Claude headline (or fallback to OpenAI)
-        articles_by_model = {a['model'].lower(): a for a in event_articles}
-        
-        if 'claude' in articles_by_model:
-            display_article = articles_by_model['claude']
-        elif 'openai' in articles_by_model:
-            display_article = articles_by_model['openai']
-        else:
-            display_article = event_articles[0]
-        
-        # Create clickable card
-        # Create article card
-        with st.container():
-            # Headline
-            st.markdown(f"### {display_article['headline']}")
-            
-            # Date
-            formatted_date = format_date(display_article['created_at'])
-            st.caption(f"Published On: {formatted_date}")
-            
-            # Excerpt
-            excerpt = create_excerpt(display_article['content'], max_length=200)
-            st.write(excerpt)
-            
-            # Read More button
-            if st.button("Read More", key=f"btn_{event_id}", type="secondary"):
-                st.query_params["event_id"] = event_id
-                st.rerun()
-        
-        st.divider()
-    
-    # Footer
-    st.caption("Made by Rakshit Lodha with ❤️")
+# ── Header ──
+st.markdown("""
+<div class="site-header">
+    <h1>Krux</h1>
+    <p>Everything about AI — in 100 words</p>
+</div>
+""", unsafe_allow_html=True)
+
+st.markdown(f'<div class="story-count">📰 {len(display_articles)} stories</div>', unsafe_allow_html=True)
+
+# ── Render cards ──
+for article in display_articles:
+    headline = article.get('headline', 'Untitled')
+    news_date = format_date(article.get('news_date', article.get('created_at', '')))
+    content = article.get('output', article.get('content', ''))
+
+    # Card top (headline + date + body) via HTML
+    st.markdown(f"""
+    <div class="card">
+        <p class="card-headline">{headline}</p>
+        <p class="card-date">{news_date}</p>
+        <p class="card-body">{content}</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Sources expander (Streamlit native, sits right below card)
+    sources = parse_sources(article.get('sources'))
+    if sources:
+        with st.expander("Sources", expanded=False):
+            for s in sources:
+                if s["url"]:
+                    st.markdown(f"[{s['name']}]({s['url']})")
+                else:
+                    st.write(s["name"])
+
+# ── Footer ──
+st.markdown("---")
+st.markdown(
+    '<div style="text-align:center; color:#bbb; font-size:0.85rem; padding:8px 0 24px 0;">'
+    'Made by Rakshit Lodha with ❤️'
+    '</div>',
+    unsafe_allow_html=True
+)
