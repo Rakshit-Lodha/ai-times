@@ -61,7 +61,7 @@ export default function StoryCard({ article }: { article: Article }) {
   return (
     <article className="overflow-hidden rounded-3xl border border-white/10 bg-[#0c0c0c] shadow-[0_14px_42px_rgba(0,0,0,0.5)]">
       {article.image_url && (
-        <div className="relative aspect-[4/3] w-full">
+        <div className="relative aspect-[16/10] w-full">
           <Image
             src={article.image_url}
             alt={article.headline}
@@ -77,13 +77,13 @@ export default function StoryCard({ article }: { article: Article }) {
       <div className="px-5 pb-5 pt-4">
         <p className="text-[11px] font-mono uppercase tracking-[0.24em] text-orange-400">{formatDate(article.news_date)}</p>
 
-        <h2 className="mt-2 text-[1.9rem] font-bold leading-[1.1] text-white">{article.headline}</h2>
+        <h2 className="mt-2 text-[1.52rem] font-bold leading-[1.14] text-white sm:text-[1.7rem]">{article.headline}</h2>
 
-        <p className="mt-4 text-[1.06rem] leading-8 text-white/70">{body}</p>
+        <p className="mt-3 text-[0.93rem] leading-[1.9] text-white/70">{body}</p>
 
-        {closer && <p className="mt-4 text-[1.05rem] italic leading-8 text-orange-300">{closer}</p>}
+        {closer && <p className="mt-3 text-[0.93rem] italic leading-[1.9] text-orange-300">{closer}</p>}
 
-        <div className="mt-5 flex items-center justify-between border-t border-white/10 pt-3">
+        <div className="mt-4 flex items-center justify-between border-t border-white/10 pt-3">
           <span className="text-xs font-mono uppercase tracking-[0.2em] text-white/35">{article.news_date}</span>
 
           {sources.length > 0 && (

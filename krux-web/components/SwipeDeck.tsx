@@ -1,32 +1,187 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import StoryCard, { type Article } from "@/components/StoryCard";
 
+type DeckItem =
+  | { kind: "intro"; id: string }
+  | { kind: "article"; id: number; article: Article };
+
+type SwipeReaction = "like" | "skip" | null;
+
 const SWIPE_THRESHOLD = 110;
-const ANIMATION_MS = 220;
+const ANIMATION_MS = 190;
+
+function IntroCard({ onStart, isStarting }: { onStart: () => void; isStarting: boolean }) {
+  const [phase, setPhase] = useState(0);
+
+  useEffect(() => {
+    const timers = [
+      window.setTimeout(() => setPhase(1), 180),
+      window.setTimeout(() => setPhase(2), 1500),
+      window.setTimeout(() => setPhase(3), 2600),
+      window.setTimeout(() => setPhase(4), 4300),
+      window.setTimeout(() => setPhase(5), 6000),
+    ];
+
+    return () => timers.forEach((timer) => window.clearTimeout(timer));
+  }, []);
+
+  const demoTransform =
+    phase === 3
+      ? "translateX(78px) rotate(10deg)"
+      : phase === 4
+        ? "translateX(-78px) rotate(-10deg)"
+        : "translateX(0px) rotate(0deg)";
+
+  const guideText =
+    phase === 3
+      ? "Swipe right if you like the article"
+      : phase === 4
+        ? "Swipe left if you don't like the article"
+        : phase >= 5
+          ? "Ready? Start swiping."
+          : "";
+
+  return (
+    <article className="relative flex min-h-[72vh] flex-col overflow-hidden rounded-3xl border border-white/12 bg-[radial-gradient(circle_at_50%_20%,#13254f_0%,#0a1021_36%,#050506_100%)] p-6 shadow-[0_18px_50px_rgba(0,0,0,0.58)] md:min-h-[720px] md:p-8">
+      <div className="pointer-events-none absolute -left-10 top-1/3 h-44 w-44 rounded-full bg-orange-500/10 blur-3xl" />
+      <div className="pointer-events-none absolute -right-14 top-12 h-52 w-52 rounded-full bg-blue-500/10 blur-3xl" />
+
+      <div className="flex flex-1 flex-col items-center justify-center text-center">
+        <p
+          className={`text-2xl font-semibold text-white transition-all duration-500 ${
+            phase >= 1 ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
+          }`}
+        >
+          Introducing
+        </p>
+
+        <h2
+          className={`mt-6 text-6xl font-black tracking-tight text-white transition-all duration-500 md:text-7xl ${
+            phase >= 1 ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+          }`}
+        >
+          KRUX<span className="text-orange-500">.</span>
+        </h2>
+
+        <p
+          className={`mt-3 text-[1.05rem] text-white/85 transition-all duration-500 md:text-[1.12rem] ${
+            phase >= 1 ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+          }`}
+        >
+          Everything about AI in 100 words
+        </p>
+
+        <div
+          className={`mt-12 w-full max-w-[340px] transition-all duration-500 ${
+            phase >= 2 ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
+          }`}
+        >
+          <div
+            className="overflow-hidden rounded-2xl border border-white/15 bg-[#070b13]/95 shadow-[0_14px_30px_rgba(0,0,0,0.52)]"
+            style={{
+              transform: demoTransform,
+              transition: "transform 620ms cubic-bezier(0.22, 1, 0.36, 1)",
+            }}
+          >
+            <div className="relative h-28 w-full overflow-hidden bg-[radial-gradient(circle_at_70%_35%,#f97316_0%,#f97316_20%,#1d4ed8_55%,#0b1020_100%)]">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
+              <div className="absolute left-3 top-3 rounded-md border border-white/20 bg-black/35 px-2 py-1 text-[10px] font-mono uppercase tracking-[0.22em] text-orange-300">
+                Demo story
+              </div>
+            </div>
+
+            <div className="p-3 text-left">
+              <h3 className="text-[1rem] font-bold leading-5 text-white">OpenAI Launches Live Voice Agents for Teams</h3>
+              <p className="mt-1.5 text-[0.83rem] leading-5 text-white/72">
+                ChatGPT now runs autonomous task flows for meetings, docs, and follow-ups across enterprise tools.
+              </p>
+              <p className="mt-1.5 text-[0.82rem] italic leading-5 text-orange-300">
+                This could make AI copilots feel like real digital teammates.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p
+          className={`mt-5 min-h-[28px] text-[0.98rem] font-semibold transition-all duration-300 ${
+            phase >= 3 ? "opacity-100" : "opacity-0"
+          } ${phase === 3 ? "text-emerald-300" : ""} ${phase === 4 ? "text-red-300" : ""}`}
+        >
+          {guideText}
+        </p>
+      </div>
+
+      <div className="mt-5">
+        {phase >= 5 ? (
+          <button
+            onClick={onStart}
+            disabled={isStarting}
+            className="group relative mx-auto block w-[78%] overflow-hidden rounded-2xl border border-amber-200/55 px-6 py-3.5 text-center text-[0.96rem] font-black uppercase tracking-[0.24em] text-[#120900] shadow-[0_14px_30px_rgba(245,158,11,0.38)] transition hover:scale-[1.03] disabled:cursor-not-allowed disabled:opacity-80"
+            style={{
+              background:
+                "linear-gradient(115deg, #ff7a00 0%, #ff9f1a 24%, #ffe033 50%, #ff9f1a 76%, #ff7a00 100%)",
+              backgroundSize: "220% 100%",
+              animation: "kruxCtaGradient 2.8s linear infinite",
+            }}
+          >
+            <span className="absolute -inset-[1px] rounded-2xl bg-white/20 blur-[1px] opacity-80" />
+            <span className="absolute inset-y-0 -left-16 w-14 bg-white/35 blur-md transition group-hover:left-full group-hover:duration-700" />
+            <span className="relative flex items-center justify-center gap-2">
+              <span>{isStarting ? "Loading feed..." : "Start swiping"}</span>
+              {!isStarting && <span className="text-[1.05rem]">→</span>}
+            </span>
+          </button>
+        ) : (
+          <div className="h-[62px]" />
+        )}
+      </div>
+    </article>
+  );
+}
 
 export default function SwipeDeck({ articles }: { articles: Article[] }) {
+  const deck = useMemo<DeckItem[]>(() => {
+    const storyCards = articles.map((article) => ({ kind: "article" as const, id: article.id, article }));
+    return [{ kind: "intro", id: "intro" }, ...storyCards];
+  }, [articles]);
+
   const [index, setIndex] = useState(0);
   const [dragX, setDragX] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
+  const [reaction, setReaction] = useState<SwipeReaction>(null);
+  const [isStartingIntro, setIsStartingIntro] = useState(false);
   const pointerStart = useRef<number | null>(null);
 
-  const active = articles[index];
-  const upcoming = articles[index + 1];
+  const active = deck[index];
+  const upcoming = deck[index + 1];
+  const isIntroActive = active?.kind === "intro";
 
-  const commitSwipe = (direction: -1 | 1) => {
-    if (!active || isExiting) return;
+  const commitSwipe = useCallback(
+    (direction: -1 | 1) => {
+      if (!active || isExiting) return;
 
-    setIsExiting(true);
-    setDragX(direction * 520);
+      setReaction(direction > 0 ? "like" : "skip");
+      setIsExiting(true);
+      setDragX(direction * 520);
 
-    window.setTimeout(() => {
-      setIndex((prev) => prev + 1);
-      setDragX(0);
-      setIsExiting(false);
-    }, ANIMATION_MS);
+      window.setTimeout(() => {
+        setIndex((prev) => prev + 1);
+        setDragX(0);
+        setReaction(null);
+        setIsExiting(false);
+        setIsStartingIntro(false);
+      }, ANIMATION_MS);
+    },
+    [active, isExiting],
+  );
+
+  const startFromIntro = () => {
+    if (!isIntroActive || isStartingIntro) return;
+    setIsStartingIntro(true);
+    window.setTimeout(() => commitSwipe(1), 140);
   };
 
   useEffect(() => {
@@ -37,7 +192,7 @@ export default function SwipeDeck({ articles }: { articles: Article[] }) {
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  });
+  }, [commitSwipe]);
 
   const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
     if (isExiting) return;
@@ -59,31 +214,43 @@ export default function SwipeDeck({ articles }: { articles: Article[] }) {
       return;
     }
 
+    setReaction(null);
     setDragX(0);
     pointerStart.current = null;
   };
 
-  if (!articles.length) {
+  if (!deck.length) {
     return (
-      <main className="min-h-screen bg-[#050505] text-white flex items-center justify-center px-6">
-        <p className="text-sm text-white/60 font-mono">No stories yet.</p>
+      <main className="flex min-h-screen items-center justify-center bg-[#050505] px-6 text-white">
+        <p className="font-mono text-sm text-white/60">No stories yet.</p>
       </main>
     );
   }
 
+  const liveReaction: SwipeReaction = dragX > 20 ? "like" : dragX < -20 ? "skip" : reaction;
+  const reactionOpacity = Math.min(Math.abs(dragX) / 140, 1);
+
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top,_#1f2f57_0%,_#0a0a0a_40%,_#030303_100%)] text-white">
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#060606]/80 backdrop-blur-md">
-        <div className="mx-auto flex w-full max-w-[980px] items-center justify-between px-5 py-4">
-          <h1 className="text-4xl font-black tracking-tight leading-none">KRUX<span className="text-orange-500">.</span></h1>
-          <p className="text-xs uppercase tracking-[0.2em] text-white/40">AI & Tech in 100 words</p>
+    <main className="min-h-screen bg-[radial-gradient(circle_at_top,_#1d2f5f_0%,_#0a0a0a_40%,_#020202_100%)] text-white">
+      <style>{`
+        @keyframes kruxCtaGradient {
+          0% { background-position: 0% 50%; }
+          100% { background-position: 100% 50%; }
+        }
+      `}</style>
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#060606]/82 backdrop-blur-md">
+        <div className="mx-auto flex w-full max-w-[560px] items-center justify-between px-4 py-3">
+          <h1 className="text-[3rem] font-black leading-none tracking-tight">
+            KRUX<span className="text-orange-500">.</span>
+          </h1>
+          <p className="text-[10px] uppercase tracking-[0.32em] text-white/45">AI & TECH IN 100 WORDS</p>
         </div>
       </header>
 
-      <section className="mx-auto grid w-full max-w-[980px] gap-8 px-4 pb-14 pt-7 md:grid-cols-[minmax(0,560px)_minmax(0,1fr)]">
-        <div className="relative mx-auto w-full max-w-[560px]">
+      <section className="mx-auto flex w-full justify-center px-3 pb-12 pt-5">
+        <div className="relative w-full max-w-[560px]">
           {upcoming && (
-            <div className="pointer-events-none absolute inset-0 translate-y-3 scale-[0.98] rounded-3xl border border-white/10 bg-[#0f0f0f]/80" />
+            <div className="pointer-events-none absolute inset-0 translate-y-3 scale-[0.985] rounded-3xl border border-white/10 bg-[#0f0f0f]/70" />
           )}
 
           {active && (
@@ -94,55 +261,80 @@ export default function SwipeDeck({ articles }: { articles: Article[] }) {
               onPointerUp={onPointerUp}
               onPointerCancel={onPointerUp}
               style={{
-                transform: `translateX(${dragX}px) rotate(${dragX / 24}deg)`,
-                transition: isDragging ? "none" : `transform ${ANIMATION_MS}ms ease-out`,
+                transform: `translateX(${dragX}px) rotate(${dragX / 23}deg)`,
+                transition: isDragging ? "none" : `transform ${ANIMATION_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`,
                 touchAction: "pan-y",
               }}
             >
-              <StoryCard article={active} />
+              {active.kind === "intro" ? (
+                <IntroCard onStart={startFromIntro} isStarting={isStartingIntro} />
+              ) : (
+                <StoryCard article={active.article} />
+              )}
 
               <div
-                className="pointer-events-none absolute left-5 top-5 rounded-md border border-emerald-400/70 bg-emerald-400/10 px-3 py-1 text-xs font-black tracking-[0.2em] text-emerald-300"
-                style={{ opacity: dragX > 20 ? Math.min(dragX / 120, 1) : 0 }}
+                className="pointer-events-none absolute left-4 top-4 rounded-md border border-emerald-400/80 bg-emerald-400/15 px-2.5 py-1 text-[11px] font-black uppercase tracking-[0.22em] text-emerald-300"
+                style={{ opacity: dragX > 20 ? Math.min(dragX / 90, 1) : 0 }}
               >
                 LIKE
               </div>
 
               <div
-                className="pointer-events-none absolute right-5 top-5 rounded-md border border-red-400/70 bg-red-400/10 px-3 py-1 text-xs font-black tracking-[0.2em] text-red-300"
-                style={{ opacity: dragX < -20 ? Math.min(Math.abs(dragX) / 120, 1) : 0 }}
+                className="pointer-events-none absolute right-4 top-4 rounded-md border border-red-400/80 bg-red-400/15 px-2.5 py-1 text-[11px] font-black uppercase tracking-[0.22em] text-red-300"
+                style={{ opacity: dragX < -20 ? Math.min(Math.abs(dragX) / 90, 1) : 0 }}
               >
                 SKIP
               </div>
             </div>
           )}
 
-          <div className="mt-5 flex items-center justify-center gap-4">
-            <button
-              onClick={() => commitSwipe(-1)}
-              className="rounded-full border border-white/20 bg-white/5 px-5 py-2 text-xs font-mono uppercase tracking-[0.22em] text-white/75 transition hover:border-red-400/60 hover:text-red-300"
-            >
-              Skip
-            </button>
-            <button
-              onClick={() => commitSwipe(1)}
-              className="rounded-full border border-white/20 bg-white/5 px-5 py-2 text-xs font-mono uppercase tracking-[0.22em] text-white/75 transition hover:border-emerald-400/60 hover:text-emerald-300"
-            >
-              Like
-            </button>
+          <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center">
+            {liveReaction === "like" && (
+              <div
+                className="select-none text-8xl transition-all duration-100"
+                style={{ opacity: Math.max(reactionOpacity, reaction ? 0.9 : 0), transform: `scale(${1 + reactionOpacity * 0.15})` }}
+              >
+                ❤️
+              </div>
+            )}
+            {liveReaction === "skip" && (
+              <div
+                className="select-none text-8xl transition-all duration-100"
+                style={{ opacity: Math.max(reactionOpacity, reaction ? 0.9 : 0), transform: `scale(${1 + reactionOpacity * 0.15})` }}
+              >
+                💔
+              </div>
+            )}
           </div>
-        </div>
 
-        <aside className="hidden rounded-3xl border border-white/10 bg-black/30 p-6 md:block">
-          <p className="text-[11px] font-mono uppercase tracking-[0.24em] text-orange-400">How to use</p>
-          <h2 className="mt-2 text-xl font-semibold">Swipe-first news feed</h2>
-          <p className="mt-3 text-sm leading-relaxed text-white/65">
-            Drag cards right to like and left to skip. You can also use keyboard arrows on desktop.
-          </p>
-          <div className="mt-6 text-xs font-mono uppercase tracking-[0.2em] text-white/40">
-            Story {Math.min(index + 1, articles.length)} / {articles.length}
-          </div>
-        </aside>
+          {!isIntroActive && (
+            <>
+              <div className="mt-4 flex items-center justify-between rounded-2xl border border-white/10 bg-black/30 px-4 py-2.5">
+                <span className="text-[11px] font-mono uppercase tracking-[0.22em] text-white/45">
+                  {liveReaction === "like" ? "LIKING" : liveReaction === "skip" ? "SKIPPING" : "SWIPE A CARD"}
+                </span>
+                <span className="text-[11px] font-mono uppercase tracking-[0.22em] text-white/45">
+                  Card {Math.min(index + 1, deck.length)} / {deck.length}
+                </span>
+              </div>
+
+              <div className="mt-3 flex items-center justify-center gap-3">
+                <button
+                  onClick={() => commitSwipe(-1)}
+                  className="rounded-full border border-white/20 bg-white/5 px-5 py-2 text-xs font-mono uppercase tracking-[0.22em] text-white/75 transition hover:border-red-400/70 hover:text-red-300"
+                >
+                  Skip
+                </button>
+                <button
+                  onClick={() => commitSwipe(1)}
+                  className="rounded-full border border-white/20 bg-white/5 px-5 py-2 text-xs font-mono uppercase tracking-[0.22em] text-white/75 transition hover:border-emerald-400/70 hover:text-emerald-300"
+                >
+                  Like
+                </button>
+              </div>
+            </>
+          )}
+        </div>
       </section>
     </main>
   );
