@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -7,10 +7,28 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: "cover",
+  themeColor: "#0a0f1a",
+};
+
 export const metadata: Metadata = {
   title: "KRUX - Everything about AI in 100 words",
   description: "Swipe through AI news. Multi-source synthesis in 100 words.",
   metadataBase: new URL("https://krux.news"),
+  applicationName: "KRUX",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "KRUX",
+  },
+  formatDetection: {
+    telephone: false,
+  },
   openGraph: {
     title: "KRUX",
     description: "Everything about AI in 100 words. Swipe through AI news.",
