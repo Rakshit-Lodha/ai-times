@@ -74,9 +74,10 @@ function IntroCard({ onStart, isStarting }: { onStart: () => void; isStarting: b
         </p>
 
         <div
-          className={`mt-12 w-full max-w-[340px] transition-all duration-500 ${
+          className={`w-full transition-all duration-500 ${
             phase >= 2 ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
           }`}
+          style={{ marginTop: "72px", maxWidth: "380px" }}
         >
           <div
             className="overflow-hidden rounded-2xl border border-white/15 bg-[#070b13]/95 shadow-[0_14px_30px_rgba(0,0,0,0.52)]"
@@ -113,7 +114,7 @@ function IntroCard({ onStart, isStarting }: { onStart: () => void; isStarting: b
         </p>
       </div>
 
-      <div className="mt-5 flex justify-center">
+      <div style={{ marginTop: "24px", marginBottom: "28px", display: "flex", justifyContent: "center" }}>
       {phase >= 5 ? (
           <button
           onClick={onStart}
