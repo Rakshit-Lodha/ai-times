@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import StoryCard, { type Article } from "@/components/StoryCard";
 
 type DeckItem =
@@ -271,7 +272,7 @@ export default function SwipeDeck({ articles }: { articles: Article[] }) {
               {active.kind === "intro" ? (
                 <IntroCard onStart={startFromIntro} isStarting={isStartingIntro} />
               ) : (
-                <StoryCard article={active.article} />
+                <StoryCard article={active.article} isPriority={index <= 1} />
               )}
 
               <div
@@ -309,9 +310,27 @@ export default function SwipeDeck({ articles }: { articles: Article[] }) {
             )}
           </div>
 
-          {!isIntroActive && null}
         </div>
       </section>
+
+      {/* Preload next 3 images */}
+      <div className="hidden">
+        {deck.slice(index + 1, index + 4).map((item) => {
+          if (item.kind === "article" && item.article.image_url) {
+            return (
+              <Image
+                key={`preload-${item.id}`}
+                src={item.article.image_url}
+                alt=""
+                width={560}
+                height={350}
+                priority
+              />
+            );
+          }
+          return null;
+        })}
+      </div>
     </main>
   );
 }
