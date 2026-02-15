@@ -293,6 +293,18 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
     (direction: -1 | 1) => {
       if (!active || isExiting) return;
 
+      // Track swipe (fire-and-forget, non-blocking)
+      if (active.kind === "article") {
+        fetch("/api/track", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            articleId: active.article.id,
+            reaction: direction > 0 ? "like" : "skip",
+          }),
+        }).catch(() => {}); // Silently ignore errors
+      }
+
       setReaction(direction > 0 ? "like" : "skip");
       setIsExiting(true);
       setDragX(direction * 520);
