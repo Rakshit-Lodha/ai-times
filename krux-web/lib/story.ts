@@ -71,7 +71,7 @@ export function splitStorySections(value: string): {
   whyItMatters: string;
 } {
   const text = normalizeText(value);
-  const summary100 = getFirstWords(text, 100);
+  const summary100 = getFirstWords(text, 110);
 
   const paragraphs = (value || "")
     .split(/\n+/)
