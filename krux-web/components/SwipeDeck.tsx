@@ -113,26 +113,28 @@ function IntroCard({ onStart, isStarting }: { onStart: () => void; isStarting: b
         </p>
       </div>
 
-      <div className="mt-5">
-        {phase >= 5 ? (
+      <div className="mt-5 flex justify-center">
+      {phase >= 5 ? (
           <button
-            onClick={onStart}
-            disabled={isStarting}
-            className="group relative mx-auto block w-[78%] overflow-hidden rounded-2xl border border-amber-200/55 px-6 py-3.5 text-center text-[0.96rem] font-black uppercase tracking-[0.24em] text-[#120900] shadow-[0_14px_30px_rgba(245,158,11,0.38)] transition hover:scale-[1.03] disabled:cursor-not-allowed disabled:opacity-80"
-            style={{
-              background:
-                "linear-gradient(115deg, #ff7a00 0%, #ff9f1a 24%, #ffe033 50%, #ff9f1a 76%, #ff7a00 100%)",
-              backgroundSize: "220% 100%",
-              animation: "kruxCtaGradient 2.8s linear infinite",
-            }}
-          >
-            <span className="absolute -inset-[1px] rounded-2xl bg-white/20 blur-[1px] opacity-80" />
-            <span className="absolute inset-y-0 -left-16 w-14 bg-white/35 blur-md transition group-hover:left-full group-hover:duration-700" />
-            <span className="relative flex items-center justify-center gap-2">
-              <span>{isStarting ? "Loading feed..." : "Start swiping"}</span>
-              {!isStarting && <span className="text-[1.05rem]">→</span>}
-            </span>
-          </button>
+          onClick={onStart}
+          disabled={isStarting}
+          className="group relative mx-auto block w-[70%] h-[56px] overflow-hidden border px-8 text-center text-[1.05rem] font-bold text-[#1a0f00] transition hover:scale-[1.03] disabled:cursor-not-allowed disabled:opacity-80 flex items-center justify-center"
+          style={{
+            borderRadius: "32px",
+            borderColor: "#444444",
+            background:
+              "linear-gradient(180deg, #ffd966 0%, #f5b731 40%, #e89a1a 70%, #d4860f 100%)",
+            backgroundSize: "220% 100%",
+            animation: "kruxCtaGradient 2.8s linear infinite",
+            boxShadow: "inset 0 1px 2px rgba(255,255,255,0.35), 0 4px 12px rgba(245,158,11,0.25)",
+          }}
+        >
+          <span className="absolute inset-x-0 top-0 h-[40%] rounded-full bg-gradient-to-b from-white/25 to-transparent" />
+          <span className="absolute inset-y-0 -left-16 w-14 bg-white/25 blur-md transition group-hover:left-full group-hover:duration-700" />
+          <span className="relative flex items-center justify-center gap-2">
+            <span>{isStarting ? "Loading..." : "Start Swiping"}</span>
+          </span>
+        </button>
         ) : (
           <div className="h-[62px]" />
         )}
