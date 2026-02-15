@@ -202,15 +202,15 @@ export default function StoryCard({ article, isPriority = false }: StoryCardProp
 
   return (
     <>
-      <article className="overflow-hidden rounded-[20px] bg-[#0a0a0a]">
-        {/* Image section with overlays */}
+      <article className="min-h-screen w-full bg-[#080808]">
+        {/* Image section - full width, edge-to-edge */}
         <div className="relative aspect-[16/10] w-full overflow-hidden">
           {article.image_url ? (
             <Image
               src={article.image_url}
               alt={article.headline}
               fill
-              sizes="(max-width: 768px) 100vw, 560px"
+              sizes="100vw"
               className="object-cover"
               priority={isPriority}
               placeholder="blur"
@@ -221,15 +221,15 @@ export default function StoryCard({ article, isPriority = false }: StoryCardProp
           )}
 
           {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/20 to-transparent" />
 
           {/* Share button - top right */}
           <button
             onClick={openNativeOrFallbackShare}
-            className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-black/40 backdrop-blur-md transition-all hover:bg-black/60 active:scale-90"
+            className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-black/40 backdrop-blur-md transition-all hover:bg-black/60 active:scale-90"
             aria-label="Share"
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
               <polyline points="16 6 12 2 8 6"/>
               <line x1="12" y1="2" x2="12" y2="15"/>
@@ -237,46 +237,64 @@ export default function StoryCard({ article, isPriority = false }: StoryCardProp
           </button>
 
           {/* Bottom bar - sources and date */}
-          <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+          <div className="absolute bottom-4 left-5 right-5 flex items-center justify-between">
             {/* Source pill */}
             <button
               onClick={() => setIsSourcesSheetOpen(true)}
-              className="flex items-center gap-1.5 rounded-lg bg-black/50 px-2.5 py-1.5 backdrop-blur-md transition-all hover:bg-black/70 active:scale-95"
+              className="flex items-center gap-2 rounded-full bg-black/50 px-3 py-2 backdrop-blur-md transition-all hover:bg-black/70 active:scale-95"
             >
-              <div className="flex h-4 w-4 items-center justify-center rounded bg-orange-500">
-                <span className="text-[9px] font-bold text-white">K</span>
+              <div className="flex h-5 w-5 items-center justify-center rounded-full bg-orange-500">
+                <span className="text-[10px] font-bold text-white">K</span>
               </div>
-              <span className="text-[11px] font-medium text-white/90">
+              <span className="text-[12px] font-medium text-white/90">
                 {sources.length > 1 ? `${sources.length} sources` : primarySourceName}
               </span>
             </button>
 
             {/* Date pill */}
-            <div className="rounded-lg bg-black/50 px-2.5 py-1.5 backdrop-blur-md">
-              <span className="text-[11px] font-medium text-white/70">{formatDate(article.news_date)}</span>
+            <div className="rounded-full bg-black/50 px-3 py-2 backdrop-blur-md">
+              <span className="text-[12px] font-medium text-white/70">{formatDate(article.news_date)}</span>
             </div>
           </div>
         </div>
 
-        {/* Content section */}
-        <div className="px-5 pb-6 pt-4">
-          <h2 className="text-[1.3rem] font-semibold leading-[1.3] tracking-[-0.02em] text-white sm:text-[1.45rem]">
+        {/* Content section - generous left/right padding for readability */}
+        <div style={{ paddingLeft: '20px', paddingRight: '20px', paddingTop: '20px', paddingBottom: '40px' }}>
+          <h2 className="text-[1.4rem] font-semibold leading-[1.35] tracking-[-0.02em] text-white sm:text-[1.6rem]">
             <Link href={storyPath} className="transition hover:text-white/80">
               {article.headline}
             </Link>
           </h2>
 
-          <p className="mt-4 text-[0.95rem] leading-[1.8] text-white/60">{displayOutput}</p>
+          <p className="mt-5 text-[1rem] leading-[1.9] text-white/65 sm:text-[1.05rem]">{displayOutput}</p>
         </div>
       </article>
 
       {isSourcesSheetOpen && (
         <BottomSheet onClose={() => setIsSourcesSheetOpen(false)}>
-          <div className="mb-4">
-            <p className="text-[0.7rem] font-medium uppercase tracking-wider text-white/30">Researched from</p>
-            <h3 className="mt-1 text-[1.1rem] font-semibold text-white">{sources.length} Sources</h3>
+          {/* Header */}
+          <div className="mb-5 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white/60">
+                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                <polyline points="14 2 14 8 20 8"/>
+              </svg>
+              <span className="text-[1rem] font-semibold text-white">Sources</span>
+            </div>
+            <button
+              onClick={() => setIsSourcesSheetOpen(false)}
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-white/20"
+              aria-label="Close"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-white/70">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
           </div>
-          <div className="max-h-[55vh] space-y-2 overflow-y-auto pb-2">
+
+          {/* Sources list */}
+          <div className="max-h-[60vh] space-y-3 overflow-y-auto pb-2">
             {sources.map((source, idx) => {
               const domain = source.url ? new URL(source.url).hostname.replace("www.", "") : "";
               const displayName = source.name || domain || `Source ${idx + 1}`;
@@ -287,39 +305,29 @@ export default function StoryCard({ article, isPriority = false }: StoryCardProp
                   href={source.url || "#"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 rounded-2xl bg-white/[0.04] p-3 transition-all hover:bg-white/[0.08] active:scale-[0.98]"
+                  className="flex items-start gap-3 rounded-xl p-2 transition-all hover:bg-white/[0.05] active:scale-[0.99]"
                 >
-                  {/* Favicon */}
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/[0.08]">
-                    {source.url ? (
-                      <img
-                        src={`https://www.google.com/s2/favicons?domain=${domain}&sz=32`}
-                        alt=""
-                        width={20}
-                        height={20}
-                        className="rounded"
-                      />
-                    ) : (
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white/40">
-                        <circle cx="12" cy="12" r="10"/>
-                        <line x1="2" y1="12" x2="22" y2="12"/>
-                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                      </svg>
-                    )}
-                  </div>
+                  {/* Number */}
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-white/10 text-[11px] font-semibold text-white/60">
+                    {idx + 1}
+                  </span>
 
-                  {/* Source info */}
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate text-[0.9rem] font-medium text-white/90">{displayName}</p>
-                    {domain && domain !== displayName && (
-                      <p className="truncate text-[0.75rem] text-white/40">{domain}</p>
-                    )}
+                  {/* Content */}
+                  <div className="min-w-0 flex-1 pt-0.5">
+                    <p className="text-[0.9rem] font-medium leading-snug text-white/90">{displayName}</p>
+                    <div className="mt-1.5 flex items-center gap-1.5">
+                      {source.url && (
+                        <img
+                          src={`https://www.google.com/s2/favicons?domain=${domain}&sz=16`}
+                          alt=""
+                          width={12}
+                          height={12}
+                          className="rounded-sm opacity-60"
+                        />
+                      )}
+                      <span className="text-[0.75rem] text-white/40">{domain}</span>
+                    </div>
                   </div>
-
-                  {/* Arrow */}
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="shrink-0 text-white/20">
-                    <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                  </svg>
                 </a>
               );
             })}

@@ -13,7 +13,15 @@ type SwipeReaction = "like" | "skip" | null;
 const SWIPE_THRESHOLD = 110;
 const ANIMATION_MS = 190;
 
-function IntroCard({ onStart, isStarting }: { onStart: () => void; isStarting: boolean }) {
+function IntroCard({
+  onStart,
+  isStarting,
+  firstArticle
+}: {
+  onStart: () => void;
+  isStarting: boolean;
+  firstArticle?: Article;
+}) {
   const [phase, setPhase] = useState(0);
 
   useEffect(() => {
@@ -28,12 +36,21 @@ function IntroCard({ onStart, isStarting }: { onStart: () => void; isStarting: b
     return () => timers.forEach((timer) => window.clearTimeout(timer));
   }, []);
 
+  // More bouncy swipe animation
   const demoTransform =
     phase === 3
-      ? "translateX(78px) rotate(10deg)"
+      ? "translateX(85px) rotate(12deg) scale(1.02)"
       : phase === 4
-        ? "translateX(-78px) rotate(-10deg)"
-        : "translateX(0px) rotate(0deg)";
+        ? "translateX(-85px) rotate(-12deg) scale(1.02)"
+        : "translateX(0px) rotate(0deg) scale(1)";
+
+  // Glow color based on swipe direction
+  const glowColor =
+    phase === 3
+      ? "0 0 60px rgba(34, 197, 94, 0.4), 0 0 100px rgba(34, 197, 94, 0.2)"
+      : phase === 4
+        ? "0 0 60px rgba(239, 68, 68, 0.4), 0 0 100px rgba(239, 68, 68, 0.2)"
+        : "0 14px 30px rgba(0,0,0,0.52)";
 
   const guideText =
     phase === 3
@@ -44,101 +61,200 @@ function IntroCard({ onStart, isStarting }: { onStart: () => void; isStarting: b
           ? "Ready? Start swiping."
           : "";
 
+  // Show emoji during demo swipe
+  const showLikeEmoji = phase === 3;
+  const showSkipEmoji = phase === 4;
+
   return (
-    <article className="relative flex min-h-[72vh] flex-col overflow-hidden rounded-3xl border border-white/12 bg-[radial-gradient(circle_at_50%_20%,#13254f_0%,#0a1021_36%,#050506_100%)] p-6 shadow-[0_18px_50px_rgba(0,0,0,0.58)] md:min-h-[720px] md:p-8">
-      <div className="pointer-events-none absolute -left-10 top-1/3 h-44 w-44 rounded-full bg-orange-500/10 blur-3xl" />
-      <div className="pointer-events-none absolute -right-14 top-12 h-52 w-52 rounded-full bg-blue-500/10 blur-3xl" />
+    <article
+      className="relative flex min-h-[72vh] flex-col overflow-hidden rounded-3xl border border-white/10 p-6 shadow-[0_18px_50px_rgba(0,0,0,0.58)] md:min-h-[720px] md:p-8"
+      style={{
+        background: "linear-gradient(135deg, #0f1729 0%, #0a0f1a 50%, #050508 100%)",
+      }}
+    >
+      {/* Animated breathing gradient orbs */}
+      <div
+        className="pointer-events-none absolute -left-20 top-1/4 h-64 w-64 rounded-full bg-orange-500/15 blur-3xl"
+        style={{
+          animation: "breathe 4s ease-in-out infinite",
+        }}
+      />
+      <div
+        className="pointer-events-none absolute -right-20 top-1/3 h-72 w-72 rounded-full bg-blue-500/15 blur-3xl"
+        style={{
+          animation: "breathe 4s ease-in-out infinite 1s",
+        }}
+      />
+      <div
+        className="pointer-events-none absolute bottom-20 left-1/3 h-48 w-48 rounded-full bg-purple-500/10 blur-3xl"
+        style={{
+          animation: "breathe 4s ease-in-out infinite 2s",
+        }}
+      />
 
       <div className="flex flex-1 flex-col items-center justify-center text-center">
         <p
-          className={`text-2xl font-semibold text-white transition-all duration-500 ${
+          className={`text-xl font-medium text-white/70 transition-all duration-500 ${
             phase >= 1 ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
           }`}
         >
           Introducing
         </p>
 
+        {/* KRUX Logo with shimmer effect */}
         <h2
-          className={`mt-6 text-6xl font-black tracking-tight text-white transition-all duration-500 md:text-7xl ${
+          className={`relative mt-4 text-6xl font-black tracking-tight transition-all duration-500 md:text-7xl ${
             phase >= 1 ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
           }`}
+          style={{
+            background: "linear-gradient(90deg, #ffffff 0%, #ffffff 40%, #fbbf24 50%, #ffffff 60%, #ffffff 100%)",
+            backgroundSize: "200% 100%",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            animation: phase >= 1 ? "shimmer 3s ease-in-out infinite" : "none",
+          }}
         >
-          KRUX<span className="text-orange-500">.</span>
+          KRUX<span style={{ WebkitTextFillColor: "#f97316" }}>.</span>
         </h2>
 
         <p
-          className={`mt-3 text-[1.05rem] text-white/85 transition-all duration-500 md:text-[1.12rem] ${
+          className={`mt-3 text-[1.05rem] text-white/60 transition-all duration-500 md:text-[1.12rem] ${
             phase >= 1 ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
           }`}
         >
           Everything about AI in 100 words
         </p>
 
+        {/* Demo Card Container */}
         <div
-          className={`w-full transition-all duration-500 ${
+          className={`relative w-full transition-all duration-500 ${
             phase >= 2 ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
           }`}
-          style={{ marginTop: "72px", maxWidth: "380px" }}
+          style={{ marginTop: "56px", maxWidth: "340px" }}
         >
+          {/* Emoji reactions during demo */}
           <div
-            className="overflow-hidden rounded-2xl border border-white/15 bg-[#070b13]/95 shadow-[0_14px_30px_rgba(0,0,0,0.52)]"
+            className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center"
             style={{
-              transform: demoTransform,
-              transition: "transform 620ms cubic-bezier(0.22, 1, 0.36, 1)",
+              opacity: showLikeEmoji ? 1 : 0,
+              transform: showLikeEmoji ? "scale(1)" : "scale(0.5)",
+              transition: "all 400ms cubic-bezier(0.34, 1.56, 0.64, 1)",
             }}
           >
-            <div className="relative h-28 w-full overflow-hidden bg-[radial-gradient(circle_at_70%_35%,#f97316_0%,#f97316_20%,#1d4ed8_55%,#0b1020_100%)]">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
-              <div className="absolute left-3 top-3 rounded-md border border-white/20 bg-black/35 px-2 py-1 text-[10px] font-mono uppercase tracking-[0.22em] text-orange-300">
-                Demo story
+            <span className="text-6xl">❤️</span>
+          </div>
+          <div
+            className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center"
+            style={{
+              opacity: showSkipEmoji ? 1 : 0,
+              transform: showSkipEmoji ? "scale(1)" : "scale(0.5)",
+              transition: "all 400ms cubic-bezier(0.34, 1.56, 0.64, 1)",
+            }}
+          >
+            <span className="text-6xl">💔</span>
+          </div>
+
+          {/* Demo Card */}
+          <div
+            className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0c0c0c]"
+            style={{
+              transform: demoTransform,
+              transition: "all 700ms cubic-bezier(0.34, 1.56, 0.64, 1)",
+              boxShadow: glowColor,
+            }}
+          >
+            {/* Image area */}
+            <div className="relative h-32 w-full overflow-hidden">
+              {firstArticle?.image_url ? (
+                <>
+                  <Image
+                    src={firstArticle.image_url}
+                    alt=""
+                    fill
+                    className="object-cover"
+                    style={{ filter: "blur(2px) brightness(0.8)" }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0c] via-transparent to-transparent" />
+                </>
+              ) : (
+                <>
+                  <div className="h-full w-full bg-gradient-to-br from-orange-500/30 to-blue-500/30" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0c] via-transparent to-transparent" />
+                </>
+              )}
+
+              {/* LIKE/SKIP badges */}
+              <div
+                className="absolute left-3 top-3 rounded-lg bg-emerald-500/90 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-white"
+                style={{
+                  opacity: phase === 3 ? 1 : 0,
+                  transition: "opacity 300ms ease",
+                }}
+              >
+                LIKE
+              </div>
+              <div
+                className="absolute right-3 top-3 rounded-lg bg-red-500/90 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-white"
+                style={{
+                  opacity: phase === 4 ? 1 : 0,
+                  transition: "opacity 300ms ease",
+                }}
+              >
+                SKIP
               </div>
             </div>
 
-            <div className="p-3 text-left">
-              <h3 className="text-[1rem] font-bold leading-5 text-white">OpenAI Launches Live Voice Agents for Teams</h3>
-              <p className="mt-1.5 text-[0.83rem] leading-5 text-white/72">
-                ChatGPT now runs autonomous task flows for meetings, docs, and follow-ups across enterprise tools.
-              </p>
-              <p className="mt-1.5 text-[0.82rem] italic leading-5 text-orange-300">
-                This could make AI copilots feel like real digital teammates.
+            {/* Content */}
+            <div style={{ padding: "12px 14px 16px" }}>
+              <h3 className="text-[0.95rem] font-semibold leading-snug text-white">
+                {firstArticle?.headline || "OpenAI Launches Live Voice Agents for Teams"}
+              </h3>
+              <p className="mt-2 text-[0.8rem] leading-relaxed text-white/50">
+                {firstArticle
+                  ? firstArticle.output?.split(" ").slice(0, 15).join(" ") + "..."
+                  : "ChatGPT now runs autonomous task flows for meetings, docs, and follow-ups..."}
               </p>
             </div>
           </div>
         </div>
 
+        {/* Guide text */}
         <p
-          className={`mt-5 min-h-[28px] text-[0.98rem] font-semibold transition-all duration-300 ${
+          className={`mt-6 min-h-[28px] text-[1rem] font-semibold transition-all duration-300 ${
             phase >= 3 ? "opacity-100" : "opacity-0"
-          } ${phase === 3 ? "text-emerald-300" : ""} ${phase === 4 ? "text-red-300" : ""}`}
+          } ${phase === 3 ? "text-emerald-400" : ""} ${phase === 4 ? "text-red-400" : ""} ${phase >= 5 ? "text-white/80" : ""}`}
         >
           {guideText}
         </p>
       </div>
 
-      <div style={{ marginTop: "24px", marginBottom: "28px", display: "flex", justifyContent: "center" }}>
-      {phase >= 5 ? (
+      {/* CTA Button */}
+      <div style={{ marginTop: "20px", marginBottom: "24px", display: "flex", justifyContent: "center" }}>
+        {phase >= 5 ? (
           <button
-          onClick={onStart}
-          disabled={isStarting}
-          className="group relative mx-auto block w-[70%] h-[56px] overflow-hidden border px-8 text-center text-[1.05rem] font-bold text-[#1a0f00] transition hover:scale-[1.03] disabled:cursor-not-allowed disabled:opacity-80 flex items-center justify-center"
-          style={{
-            borderRadius: "32px",
-            borderColor: "#444444",
-            background:
-              "linear-gradient(180deg, #ffd966 0%, #f5b731 40%, #e89a1a 70%, #d4860f 100%)",
-            backgroundSize: "220% 100%",
-            animation: "kruxCtaGradient 2.8s linear infinite",
-            boxShadow: "inset 0 1px 2px rgba(255,255,255,0.35), 0 4px 12px rgba(245,158,11,0.25)",
-          }}
-        >
-          <span className="absolute inset-x-0 top-0 h-[40%] rounded-full bg-gradient-to-b from-white/25 to-transparent" />
-          <span className="absolute inset-y-0 -left-16 w-14 bg-white/25 blur-md transition group-hover:left-full group-hover:duration-700" />
-          <span className="relative flex items-center justify-center gap-2">
-            <span>{isStarting ? "Loading..." : "Start Swiping"}</span>
-          </span>
-        </button>
+            onClick={onStart}
+            disabled={isStarting}
+            className="group relative mx-auto flex h-[52px] w-[75%] items-center justify-center overflow-hidden rounded-full border border-orange-400/30 text-[1rem] font-bold text-white transition-all hover:scale-[1.02] hover:border-orange-400/50 disabled:cursor-not-allowed disabled:opacity-80"
+            style={{
+              background: "linear-gradient(135deg, rgba(249,115,22,0.2) 0%, rgba(234,88,12,0.1) 100%)",
+              boxShadow: "0 0 30px rgba(249,115,22,0.2)",
+              animation: "pulse-glow 2s ease-in-out infinite",
+            }}
+          >
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+              style={{
+                animation: "shine 2s ease-in-out infinite",
+              }}
+            />
+            <span className="relative flex items-center gap-2">
+              {isStarting ? "Loading..." : "Start Swiping"}
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </span>
+          </button>
         ) : (
-          <div className="h-[62px]" />
+          <div className="h-[52px]" />
         )}
       </div>
     </article>
@@ -160,7 +276,6 @@ export default function SwipeDeck({ articles }: { articles: Article[] }) {
   const pointerStart = useRef<number | null>(null);
 
   const active = deck[index];
-  const upcoming = deck[index + 1];
   const isIntroActive = active?.kind === "intro";
 
   const commitSwipe = useCallback(
@@ -235,81 +350,89 @@ export default function SwipeDeck({ articles }: { articles: Article[] }) {
   const reactionOpacity = Math.min(Math.abs(dragX) / 140, 1);
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top,_#1d2f5f_0%,_#0a0a0a_40%,_#020202_100%)] text-white">
+    <main className="min-h-screen bg-[#080808] text-white">
       <style>{`
         @keyframes kruxCtaGradient {
           0% { background-position: 0% 50%; }
           100% { background-position: 100% 50%; }
         }
+        @keyframes breathe {
+          0%, 100% { opacity: 0.3; transform: scale(1); }
+          50% { opacity: 0.6; transform: scale(1.1); }
+        }
+        @keyframes shimmer {
+          0% { background-position: 200% 50%; }
+          100% { background-position: -200% 50%; }
+        }
+        @keyframes pulse-glow {
+          0%, 100% { box-shadow: 0 0 20px rgba(249,115,22,0.2); }
+          50% { box-shadow: 0 0 40px rgba(249,115,22,0.4), 0 0 60px rgba(249,115,22,0.2); }
+        }
+        @keyframes shine {
+          0% { transform: translateX(-100%); }
+          50%, 100% { transform: translateX(100%); }
+        }
       `}</style>
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#060606]/82 backdrop-blur-md">
-        <div className="mx-auto flex w-full max-w-[560px] items-center justify-between px-4 py-3">
-          <h1 className="text-[3rem] font-black leading-none tracking-tight">
-            KRUX<span className="text-orange-500">.</span>
-          </h1>
-        </div>
-      </header>
 
-      <section className="mx-auto flex w-full justify-center px-3 pb-12 pt-5">
-        <div className="relative w-full max-w-[560px]">
-          {upcoming && (
-            <div className="pointer-events-none absolute inset-0 translate-y-3 scale-[0.985] rounded-3xl border border-white/10 bg-[#0f0f0f]/70" />
-          )}
+      {/* Full-screen swipe area */}
+      <section className="relative min-h-screen w-full">
+        {active && (
+          <div
+            className="relative z-10 min-h-screen w-full"
+            onPointerDown={onPointerDown}
+            onPointerMove={onPointerMove}
+            onPointerUp={onPointerUp}
+            onPointerCancel={onPointerUp}
+            style={{
+              transform: `translateX(${dragX}px) rotate(${dragX / 30}deg)`,
+              transition: isDragging ? "none" : `transform ${ANIMATION_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`,
+              touchAction: "pan-y",
+            }}
+          >
+            {active.kind === "intro" ? (
+              <div className="flex min-h-screen items-center justify-center px-4">
+                <IntroCard onStart={startFromIntro} isStarting={isStartingIntro} firstArticle={articles[0]} />
+              </div>
+            ) : (
+              <StoryCard article={active.article} isPriority={index <= 1} />
+            )}
 
-          {active && (
+            {/* LIKE badge */}
             <div
-              className="relative z-10"
-              onPointerDown={onPointerDown}
-              onPointerMove={onPointerMove}
-              onPointerUp={onPointerUp}
-              onPointerCancel={onPointerUp}
-              style={{
-                transform: `translateX(${dragX}px) rotate(${dragX / 23}deg)`,
-                transition: isDragging ? "none" : `transform ${ANIMATION_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`,
-                touchAction: "pan-y",
-              }}
+              className="pointer-events-none absolute left-4 top-4 z-30 rounded-lg bg-emerald-500/90 px-3 py-1.5 text-[12px] font-bold uppercase tracking-wide text-white shadow-lg"
+              style={{ opacity: dragX > 20 ? Math.min(dragX / 90, 1) : 0 }}
             >
-              {active.kind === "intro" ? (
-                <IntroCard onStart={startFromIntro} isStarting={isStartingIntro} />
-              ) : (
-                <StoryCard article={active.article} isPriority={index <= 1} />
-              )}
+              LIKE
+            </div>
 
-              <div
-                className="pointer-events-none absolute left-4 top-4 rounded-md border border-emerald-400/80 bg-emerald-400/15 px-2.5 py-1 text-[11px] font-black uppercase tracking-[0.22em] text-emerald-300"
-                style={{ opacity: dragX > 20 ? Math.min(dragX / 90, 1) : 0 }}
-              >
-                LIKE
-              </div>
+            {/* SKIP badge */}
+            <div
+              className="pointer-events-none absolute right-4 top-4 z-30 rounded-lg bg-red-500/90 px-3 py-1.5 text-[12px] font-bold uppercase tracking-wide text-white shadow-lg"
+              style={{ opacity: dragX < -20 ? Math.min(Math.abs(dragX) / 90, 1) : 0 }}
+            >
+              SKIP
+            </div>
+          </div>
+        )}
 
-              <div
-                className="pointer-events-none absolute right-4 top-4 rounded-md border border-red-400/80 bg-red-400/15 px-2.5 py-1 text-[11px] font-black uppercase tracking-[0.22em] text-red-300"
-                style={{ opacity: dragX < -20 ? Math.min(Math.abs(dragX) / 90, 1) : 0 }}
-              >
-                SKIP
-              </div>
+        {/* Reaction emoji overlay */}
+        <div className="pointer-events-none fixed inset-0 z-20 flex items-center justify-center">
+          {liveReaction === "like" && (
+            <div
+              className="select-none text-8xl transition-all duration-100"
+              style={{ opacity: Math.max(reactionOpacity, reaction ? 0.9 : 0), transform: `scale(${1 + reactionOpacity * 0.15})` }}
+            >
+              ❤️
             </div>
           )}
-
-          <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center">
-            {liveReaction === "like" && (
-              <div
-                className="select-none text-8xl transition-all duration-100"
-                style={{ opacity: Math.max(reactionOpacity, reaction ? 0.9 : 0), transform: `scale(${1 + reactionOpacity * 0.15})` }}
-              >
-                ❤️
-              </div>
-            )}
-            {liveReaction === "skip" && (
-              <div
-                className="select-none text-8xl transition-all duration-100"
-                style={{ opacity: Math.max(reactionOpacity, reaction ? 0.9 : 0), transform: `scale(${1 + reactionOpacity * 0.15})` }}
-              >
-                💔
-              </div>
-            )}
-          </div>
-
+          {liveReaction === "skip" && (
+            <div
+              className="select-none text-8xl transition-all duration-100"
+              style={{ opacity: Math.max(reactionOpacity, reaction ? 0.9 : 0), transform: `scale(${1 + reactionOpacity * 0.15})` }}
+            >
+              💔
+            </div>
+          )}
         </div>
       </section>
 
