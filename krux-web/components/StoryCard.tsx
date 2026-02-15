@@ -154,8 +154,8 @@ export default function StoryCard({ article, isPriority = false }: StoryCardProp
   const summary20 = getFirstWords(normalizedOutput, 20);
 
   const getShareUrl = () => {
-    if (typeof window === "undefined") return storyPath;
-    return `${window.location.origin}${storyPath}`;
+    if (typeof window === "undefined") return `/?start=${article.id}`;
+    return `${window.location.origin}/?start=${article.id}`;
   };
 
   const openNativeOrFallbackShare = async () => {
@@ -190,7 +190,7 @@ export default function StoryCard({ article, isPriority = false }: StoryCardProp
     window.setTimeout(() => setCopyStatus("idle"), 1600);
   };
 
-  const shareUrl = typeof window !== "undefined" ? getShareUrl() : `https://krux.news${storyPath}`;
+  const shareUrl = typeof window !== "undefined" ? getShareUrl() : `https://krux.news/?start=${article.id}`;
   const xShare = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${article.headline}\n\n${summary20}\n\n${shareUrl}`)}`;
   const whatsappShare = `https://api.whatsapp.com/send?text=${encodeURIComponent(`${article.headline}\n${summary20}\n${shareUrl}`)}`;
   const linkedinShare = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
@@ -230,9 +230,11 @@ export default function StoryCard({ article, isPriority = false }: StoryCardProp
             aria-label="Share"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-              <polyline points="16 6 12 2 8 6"/>
-              <line x1="12" y1="2" x2="12" y2="15"/>
+              <circle cx="18" cy="5" r="3"/>
+              <circle cx="6" cy="12" r="3"/>
+              <circle cx="18" cy="19" r="3"/>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
             </svg>
           </button>
 

@@ -261,19 +261,30 @@ function IntroCard({
   );
 }
 
-export default function SwipeDeck({ articles }: { articles: Article[] }) {
+export default function SwipeDeck({ articles, startIndex }: { articles: Article[]; startIndex?: number }) {
   const deck = useMemo<DeckItem[]>(() => {
     const storyCards = articles.map((article) => ({ kind: "article" as const, id: article.id, article }));
     return [{ kind: "intro", id: "intro" }, ...storyCards];
   }, [articles]);
 
-  const [index, setIndex] = useState(0);
+  // If coming from a shared link, start at that card (skip intro)
+  const [index, setIndex] = useState(startIndex ?? 0);
   const [dragX, setDragX] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
+  const [isResetting, setIsResetting] = useState(false);
   const [reaction, setReaction] = useState<SwipeReaction>(null);
   const [isStartingIntro, setIsStartingIntro] = useState(false);
+  const [showSwipeHint, setShowSwipeHint] = useState(!!startIndex);
   const pointerStart = useRef<number | null>(null);
+
+  // Hide swipe hint after first interaction or after 4 seconds
+  useEffect(() => {
+    if (showSwipeHint) {
+      const timer = setTimeout(() => setShowSwipeHint(false), 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [showSwipeHint]);
 
   const active = deck[index];
   const isIntroActive = active?.kind === "intro";
@@ -287,11 +298,20 @@ export default function SwipeDeck({ articles }: { articles: Article[] }) {
       setDragX(direction * 520);
 
       window.setTimeout(() => {
+        // Disable transition before resetting
+        setIsResetting(true);
         setIndex((prev) => prev + 1);
         setDragX(0);
         setReaction(null);
         setIsExiting(false);
         setIsStartingIntro(false);
+
+        // Re-enable transition after a brief moment
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            setIsResetting(false);
+          });
+        });
       }, ANIMATION_MS);
     },
     [active, isExiting],
@@ -317,6 +337,7 @@ export default function SwipeDeck({ articles }: { articles: Article[] }) {
     if (isExiting) return;
     pointerStart.current = event.clientX;
     setIsDragging(true);
+    setShowSwipeHint(false); // Hide hint on first interaction
     event.currentTarget.setPointerCapture(event.pointerId);
   };
 
@@ -372,6 +393,18 @@ export default function SwipeDeck({ articles }: { articles: Article[] }) {
           0% { transform: translateX(-100%); }
           50%, 100% { transform: translateX(100%); }
         }
+        @keyframes swipe-hint-left {
+          0%, 100% { transform: translateX(0); opacity: 0.6; }
+          50% { transform: translateX(-12px); opacity: 1; }
+        }
+        @keyframes swipe-hint-right {
+          0%, 100% { transform: translateX(0); opacity: 0.6; }
+          50% { transform: translateX(12px); opacity: 1; }
+        }
+        @keyframes fade-in-up {
+          0% { opacity: 0; transform: translateY(10px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
       `}</style>
 
       {/* Full-screen swipe area */}
@@ -385,7 +418,7 @@ export default function SwipeDeck({ articles }: { articles: Article[] }) {
             onPointerCancel={onPointerUp}
             style={{
               transform: `translateX(${dragX}px) rotate(${dragX / 30}deg)`,
-              transition: isDragging ? "none" : `transform ${ANIMATION_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`,
+              transition: (isDragging || isResetting) ? "none" : `transform ${ANIMATION_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`,
               touchAction: "pan-y",
             }}
           >
@@ -434,6 +467,44 @@ export default function SwipeDeck({ articles }: { articles: Article[] }) {
             </div>
           )}
         </div>
+
+        {/* Swipe hint overlay for shared links */}
+        {showSwipeHint && (
+          <div
+            className="pointer-events-none fixed inset-x-0 bottom-24 z-30 flex flex-col items-center justify-center gap-3"
+            style={{ animation: "fade-in-up 400ms ease-out" }}
+            onClick={() => setShowSwipeHint(false)}
+          >
+            <div className="flex items-center gap-8">
+              {/* Left arrow */}
+              <div
+                className="flex items-center gap-1 text-white/70"
+                style={{ animation: "swipe-hint-left 1.2s ease-in-out infinite" }}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span className="text-sm font-medium">Skip</span>
+              </div>
+
+              {/* Swipe indicator pill */}
+              <div className="rounded-full bg-white/10 px-4 py-2 backdrop-blur-sm">
+                <span className="text-sm font-medium text-white/80">Swipe to navigate</span>
+              </div>
+
+              {/* Right arrow */}
+              <div
+                className="flex items-center gap-1 text-white/70"
+                style={{ animation: "swipe-hint-right 1.2s ease-in-out infinite" }}
+              >
+                <span className="text-sm font-medium">Like</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Preload next 3 images */}

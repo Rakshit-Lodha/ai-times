@@ -4,7 +4,13 @@ import { type Article } from "@/components/StoryCard";
 
 export const revalidate = 300;
 
-export default async function Home() {
+type Props = {
+  searchParams: Promise<{ start?: string }>;
+};
+
+export default async function Home({ searchParams }: Props) {
+  const { start } = await searchParams;
+
   const { data } = await supabase
     .from("hundred_word_articles")
     .select("id, headline, output, news_date, image_url, sources")
@@ -20,5 +26,16 @@ export default async function Home() {
     sources: article.sources,
   }));
 
-  return <SwipeDeck articles={articles} />;
+  // Find the starting index if coming from a shared link
+  let startIndex: number | undefined;
+  if (start) {
+    const articleId = parseInt(start, 10);
+    const foundIndex = articles.findIndex((a) => a.id === articleId);
+    if (foundIndex !== -1) {
+      // +1 because index 0 is the intro card
+      startIndex = foundIndex + 1;
+    }
+  }
+
+  return <SwipeDeck articles={articles} startIndex={startIndex} />;
 }

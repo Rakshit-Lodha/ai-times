@@ -8,21 +8,21 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Krux",
-  description:
-    "Everything about AI in 100 words.",
+  title: "KRUX - Everything about AI in 100 words",
+  description: "Swipe through AI news. Multi-source synthesis in 100 words.",
+  metadataBase: new URL("https://krux.news"),
   openGraph: {
-    title: "Krux",
-    description:
-      "Everything about AI in 100 words.",
+    title: "KRUX",
+    description: "Everything about AI in 100 words. Swipe through AI news.",
     siteName: "KRUX",
     type: "website",
+    url: "https://krux.news",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Krux",
-    description:
-      "Everything about AI in 100 words.",
+    title: "KRUX",
+    description: "Everything about AI in 100 words. Swipe through AI news.",
+    creator: "@kraboratory",
   },
 };
 
