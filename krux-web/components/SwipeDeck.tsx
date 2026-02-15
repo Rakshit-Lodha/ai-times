@@ -36,9 +36,9 @@ function IntroCard({ onStart, isStarting }: { onStart: () => void; isStarting: b
 
   const guideText =
     phase === 3
-      ? "Swipe right if you like the article"
+      ? "Swipe right if you like it"
       : phase === 4
-        ? "Swipe left if you don't like the article"
+        ? "Swipe left if you don't"
         : phase >= 5
           ? "Ready? Start swiping."
           : "";
