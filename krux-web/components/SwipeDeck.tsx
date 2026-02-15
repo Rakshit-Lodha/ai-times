@@ -246,7 +246,6 @@ export default function SwipeDeck({ articles }: { articles: Article[] }) {
           <h1 className="text-[3rem] font-black leading-none tracking-tight">
             KRUX<span className="text-orange-500">.</span>
           </h1>
-          <p className="text-[10px] uppercase tracking-[0.32em] text-white/45">AI & TECH IN 100 WORDS</p>
         </div>
       </header>
 
@@ -310,33 +309,7 @@ export default function SwipeDeck({ articles }: { articles: Article[] }) {
             )}
           </div>
 
-          {!isIntroActive && (
-            <>
-              <div className="mt-4 flex items-center justify-between rounded-2xl border border-white/10 bg-black/30 px-4 py-2.5">
-                <span className="text-[11px] font-mono uppercase tracking-[0.22em] text-white/45">
-                  {liveReaction === "like" ? "LIKING" : liveReaction === "skip" ? "SKIPPING" : "SWIPE A CARD"}
-                </span>
-                <span className="text-[11px] font-mono uppercase tracking-[0.22em] text-white/45">
-                  Card {Math.min(index + 1, deck.length)} / {deck.length}
-                </span>
-              </div>
-
-              <div className="mt-3 flex items-center justify-center gap-3">
-                <button
-                  onClick={() => commitSwipe(-1)}
-                  className="rounded-full border border-white/20 bg-white/5 px-5 py-2 text-xs font-mono uppercase tracking-[0.22em] text-white/75 transition hover:border-red-400/70 hover:text-red-300"
-                >
-                  Skip
-                </button>
-                <button
-                  onClick={() => commitSwipe(1)}
-                  className="rounded-full border border-white/20 bg-white/5 px-5 py-2 text-xs font-mono uppercase tracking-[0.22em] text-white/75 transition hover:border-emerald-400/70 hover:text-emerald-300"
-                >
-                  Like
-                </button>
-              </div>
-            </>
-          )}
+          {!isIntroActive && null}
         </div>
       </section>
     </main>
