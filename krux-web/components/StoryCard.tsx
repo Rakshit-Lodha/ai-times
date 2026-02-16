@@ -23,6 +23,8 @@ export type Article = {
 export type StoryCardProps = {
   article: Article;
   isPriority?: boolean;
+  onUndo?: () => void;
+  canUndo?: boolean;
 };
 
 const WORD_LIMIT = 120;
@@ -137,10 +139,12 @@ function formatDate(newsDate: string): string {
   });
 }
 
-export default function StoryCard({ article, isPriority = false }: StoryCardProps) {
+export default function StoryCard({ article, isPriority = false, onUndo, canUndo = false }: StoryCardProps) {
   const [isSourcesSheetOpen, setIsSourcesSheetOpen] = useState(false);
   const [isShareSheetOpen, setIsShareSheetOpen] = useState(false);
+  const [isDeepDiveSheetOpen, setIsDeepDiveSheetOpen] = useState(false);
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
+  const [deepDiveToast, setDeepDiveToast] = useState<string | null>(null);
 
   const sources = useMemo(() => parseSources(article.sources), [article.sources]);
 
@@ -223,22 +227,29 @@ export default function StoryCard({ article, isPriority = false }: StoryCardProp
           {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/20 to-transparent" />
 
-          {/* Share button - top right */}
-          <button
-            onClick={openNativeOrFallbackShare}
-            className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-black/40 backdrop-blur-md transition-all hover:bg-black/60 active:scale-90"
-            aria-label="Share"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="18" cy="5" r="3"/>
-              <circle cx="6" cy="12" r="3"/>
-              <circle cx="18" cy="19" r="3"/>
-              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
-              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
-            </svg>
-          </button>
+          {/* Top bar - date and share */}
+          <div className="absolute right-4 top-4 flex items-center gap-2">
+            {/* Date pill */}
+            <div className="rounded-full bg-black/40 px-3 py-2 backdrop-blur-md">
+              <span className="text-[12px] font-medium text-white/70">{formatDate(article.news_date)}</span>
+            </div>
+            {/* Share button */}
+            <button
+              onClick={openNativeOrFallbackShare}
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-black/40 backdrop-blur-md transition-all hover:bg-black/60 active:scale-90"
+              aria-label="Share"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="18" cy="5" r="3"/>
+                <circle cx="6" cy="12" r="3"/>
+                <circle cx="18" cy="19" r="3"/>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+              </svg>
+            </button>
+          </div>
 
-          {/* Bottom bar - sources and date */}
+          {/* Bottom bar - sources and undo */}
           <div className="absolute bottom-4 left-5 right-5 flex items-center justify-between">
             {/* Source pill */}
             <button
@@ -253,10 +264,20 @@ export default function StoryCard({ article, isPriority = false }: StoryCardProp
               </span>
             </button>
 
-            {/* Date pill */}
-            <div className="rounded-full bg-black/50 px-3 py-2 backdrop-blur-md">
-              <span className="text-[12px] font-medium text-white/70">{formatDate(article.news_date)}</span>
-            </div>
+            {/* Undo button */}
+            {canUndo && onUndo && (
+              <button
+                onClick={onUndo}
+                className="flex items-center gap-1.5 rounded-full bg-black/50 px-3 py-2 backdrop-blur-md transition-all hover:bg-black/70 active:scale-95"
+                aria-label="Go back to previous article"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 7v6h6"/>
+                  <path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/>
+                </svg>
+                <span className="text-[12px] font-medium text-white/90">Undo</span>
+              </button>
+            )}
           </div>
         </div>
 
@@ -269,8 +290,40 @@ export default function StoryCard({ article, isPriority = false }: StoryCardProp
           </h2>
 
           <p className="mt-5 text-[1rem] leading-[1.9] text-white/65 sm:text-[1.05rem]">{displayOutput}</p>
+
+          {/* Go Deeper button */}
+          <button
+            onClick={() => setIsDeepDiveSheetOpen(true)}
+            className="mt-6 flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2.5 transition-all hover:bg-white/10 active:scale-95"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/70">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.3-4.3"/>
+              <path d="M11 8v6"/>
+              <path d="M8 11h6"/>
+            </svg>
+            <span className="text-[0.9rem] font-medium text-white/80">Go Deeper</span>
+          </button>
         </div>
       </article>
+
+      {/* Toast notification for deep dive */}
+      {deepDiveToast && (
+        <div
+          className="fixed bottom-8 left-1/2 z-[300] -translate-x-1/2 rounded-full bg-white/10 px-4 py-2.5 backdrop-blur-md"
+          style={{
+            animation: "toast-fade-in 300ms ease-out forwards",
+          }}
+        >
+          <style>{`
+            @keyframes toast-fade-in {
+              from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+              to { opacity: 1; transform: translateX(-50%) translateY(0); }
+            }
+          `}</style>
+          <span className="text-[0.85rem] font-medium text-white">{deepDiveToast}</span>
+        </div>
+      )}
 
       {isSourcesSheetOpen && (
         <BottomSheet onClose={() => setIsSourcesSheetOpen(false)}>
@@ -401,6 +454,104 @@ export default function StoryCard({ article, isPriority = false }: StoryCardProp
               <span className="text-[0.7rem] text-white/60">
                 {copyStatus === "copied" ? "Copied!" : "Copy"}
               </span>
+            </button>
+          </div>
+        </BottomSheet>
+      )}
+
+      {isDeepDiveSheetOpen && (
+        <BottomSheet onClose={() => setIsDeepDiveSheetOpen(false)}>
+          <div className="mb-4">
+            <h3 className="text-[0.9rem] font-semibold text-white/90">Go Deeper</h3>
+            <p className="mt-1 text-[0.75rem] text-white/50">Research this topic with AI</p>
+          </div>
+          <div className="flex justify-around">
+            {/* Perplexity - direct URL works */}
+            <button
+              onClick={() => {
+                const sourcesText = sources.map(s => s.name || s.url || "").filter(Boolean).join(", ");
+                const prompt = `I just read this AI news article and want to learn more:\n\nHeadline: ${article.headline}\n\nSummary: ${normalizedOutput}\n\nSources: ${sourcesText}\n\nHelp me understand this topic in more depth. What are the key implications and broader context?`;
+                const encodedPrompt = encodeURIComponent(prompt);
+                window.open(`https://www.perplexity.ai/search/?q=${encodedPrompt}`, "_blank");
+                setIsDeepDiveSheetOpen(false);
+              }}
+              className="flex flex-col items-center gap-2 rounded-2xl p-3 transition-all hover:bg-white/[0.05] active:scale-95"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#20808D]">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <span className="text-[0.7rem] text-white/60">Perplexity</span>
+            </button>
+
+            {/* ChatGPT - copy + redirect */}
+            <button
+              onClick={async () => {
+                const sourcesText = sources.map(s => s.name || s.url || "").filter(Boolean).join(", ");
+                const prompt = `I just read this AI news article and want to learn more:\n\nHeadline: ${article.headline}\n\nSummary: ${normalizedOutput}\n\nSources: ${sourcesText}\n\nHelp me understand this topic in more depth. What are the key implications and broader context?`;
+                await navigator.clipboard.writeText(prompt);
+                setIsDeepDiveSheetOpen(false);
+                setDeepDiveToast("Prompt copied! Opening ChatGPT...");
+                setTimeout(() => {
+                  window.open("https://chat.openai.com/", "_blank");
+                  setDeepDiveToast(null);
+                }, 1500);
+              }}
+              className="flex flex-col items-center gap-2 rounded-2xl p-3 transition-all hover:bg-white/[0.05] active:scale-95"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#10A37F]">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+                  <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.5963 3.8558L13.1038 8.364l2.0201-1.1685a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.4048-.6813zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6099-1.4997z"/>
+                </svg>
+              </div>
+              <span className="text-[0.7rem] text-white/60">ChatGPT</span>
+            </button>
+
+            {/* Claude - copy + redirect */}
+            <button
+              onClick={async () => {
+                const sourcesText = sources.map(s => s.name || s.url || "").filter(Boolean).join(", ");
+                const prompt = `I just read this AI news article and want to learn more:\n\nHeadline: ${article.headline}\n\nSummary: ${normalizedOutput}\n\nSources: ${sourcesText}\n\nHelp me understand this topic in more depth. What are the key implications and broader context?`;
+                await navigator.clipboard.writeText(prompt);
+                setIsDeepDiveSheetOpen(false);
+                setDeepDiveToast("Prompt copied! Opening Claude...");
+                setTimeout(() => {
+                  window.open("https://claude.ai/new", "_blank");
+                  setDeepDiveToast(null);
+                }, 1500);
+              }}
+              className="flex flex-col items-center gap-2 rounded-2xl p-3 transition-all hover:bg-white/[0.05] active:scale-95"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#D97757]">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                  <path d="M4.709 15.955l4.72-2.647.08-.054a.79.79 0 00.263-.293l.054-.08 2.646-4.72a.25.25 0 01.436 0l2.646 4.72.054.08a.79.79 0 00.264.293l.08.054 4.719 2.647a.25.25 0 010 .436l-4.72 2.646-.08.054a.79.79 0 00-.263.293l-.054.08-2.646 4.72a.25.25 0 01-.436 0l-2.646-4.72-.054-.08a.79.79 0 00-.264-.293l-.08-.054-4.719-2.646a.25.25 0 010-.436zM16.19 2.391l1.688-.947.028-.02a.28.28 0 00.094-.104l.02-.029.946-1.687a.089.089 0 01.156 0l.946 1.687.02.029a.28.28 0 00.094.105l.028.019 1.688.947a.089.089 0 010 .156l-1.688.946-.028.02a.28.28 0 00-.094.104l-.02.029-.946 1.687a.089.089 0 01-.156 0l-.946-1.687-.02-.029a.28.28 0 00-.094-.105l-.028-.019-1.688-.946a.089.089 0 010-.156z"/>
+                </svg>
+              </div>
+              <span className="text-[0.7rem] text-white/60">Claude</span>
+            </button>
+
+            {/* Gemini - copy + redirect */}
+            <button
+              onClick={async () => {
+                const sourcesText = sources.map(s => s.name || s.url || "").filter(Boolean).join(", ");
+                const prompt = `I just read this AI news article and want to learn more:\n\nHeadline: ${article.headline}\n\nSummary: ${normalizedOutput}\n\nSources: ${sourcesText}\n\nHelp me understand this topic in more depth. What are the key implications and broader context?`;
+                await navigator.clipboard.writeText(prompt);
+                setIsDeepDiveSheetOpen(false);
+                setDeepDiveToast("Prompt copied! Opening Gemini...");
+                setTimeout(() => {
+                  window.open("https://gemini.google.com/app", "_blank");
+                  setDeepDiveToast(null);
+                }, 1500);
+              }}
+              className="flex flex-col items-center gap-2 rounded-2xl p-3 transition-all hover:bg-white/[0.05] active:scale-95"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                  <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm0 3.6c2.34 0 4.5.78 6.24 2.1L12 12V3.6zm0 16.8c-2.34 0-4.5-.78-6.24-2.1L12 12v8.4zm8.4-8.4c0 2.34-.78 4.5-2.1 6.24L12 12h8.4zM12 12L5.76 5.76A8.31 8.31 0 013.6 12H12z"/>
+                </svg>
+              </div>
+              <span className="text-[0.7rem] text-white/60">Gemini</span>
             </button>
           </div>
         </BottomSheet>

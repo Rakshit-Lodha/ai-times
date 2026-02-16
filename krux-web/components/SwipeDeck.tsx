@@ -335,15 +335,23 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
     window.setTimeout(() => commitSwipe(1), 140);
   };
 
+  const goBack = useCallback(() => {
+    if (index <= 1 || isExiting) return; // Can't go back to intro or before
+    setIndex((prev) => prev - 1);
+  }, [index, isExiting]);
+
+  const canGoBack = index > 1;
+
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowLeft") commitSwipe(-1);
       if (event.key === "ArrowRight") commitSwipe(1);
+      if (event.key === "ArrowUp") goBack();
     };
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [commitSwipe]);
+  }, [commitSwipe, goBack]);
 
   const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
     if (isExiting) return;
@@ -439,7 +447,7 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
                 <IntroCard onStart={startFromIntro} isStarting={isStartingIntro} firstArticle={articles[0]} />
               </div>
             ) : (
-              <StoryCard article={active.article} isPriority={index <= 1} />
+              <StoryCard article={active.article} isPriority={index <= 1} onUndo={goBack} canUndo={canGoBack} />
             )}
 
             {/* LIKE badge */}
