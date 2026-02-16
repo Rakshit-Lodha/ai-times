@@ -519,19 +519,20 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
         )}
       </section>
 
-      {/* Preload next 3 images */}
-      <div className="hidden">
+      {/* Preload next 3 images - must match StoryCard's image config */}
+      <div className="pointer-events-none fixed left-0 top-0 -z-50 h-0 w-full overflow-hidden opacity-0">
         {deck.slice(index + 1, index + 4).map((item) => {
           if (item.kind === "article" && item.article.image_url) {
             return (
-              <Image
-                key={`preload-${item.id}`}
-                src={item.article.image_url}
-                alt=""
-                width={560}
-                height={350}
-                priority
-              />
+              <div key={`preload-${item.id}`} className="relative aspect-[16/10] w-full">
+                <Image
+                  src={item.article.image_url}
+                  alt=""
+                  fill
+                  sizes="100vw"
+                  priority
+                />
+              </div>
             );
           }
           return null;
