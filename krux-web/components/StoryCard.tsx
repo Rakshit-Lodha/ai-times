@@ -207,8 +207,8 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
   return (
     <>
       <article className="min-h-screen w-full bg-[#080808]">
-        {/* Image section - full width, edge-to-edge */}
-        <div className="relative aspect-[16/10] w-full overflow-hidden">
+        {/* Image section - full width, 3:2 aspect ratio */}
+        <div className="relative aspect-[3/2] w-full overflow-hidden">
           {article.image_url ? (
             <Image
               src={article.image_url}
@@ -281,15 +281,20 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
           </div>
         </div>
 
-        {/* Content section - generous left/right padding for readability */}
-        <div style={{ paddingLeft: '20px', paddingRight: '20px', paddingTop: '20px', paddingBottom: '40px' }}>
+        {/* Content section - optimized for readability */}
+        <div className="mx-auto max-w-[540px] px-7 pb-10 pt-5 sm:px-8">
           <h2 className="text-[1.4rem] font-semibold leading-[1.35] tracking-[-0.02em] text-white sm:text-[1.6rem]">
             <Link href={storyPath} className="transition hover:text-white/80">
               {article.headline}
             </Link>
           </h2>
 
-          <p className="mt-5 text-[1rem] leading-[1.9] text-white/65 sm:text-[1.05rem]">{displayOutput}</p>
+          <p
+            className="mt-6 text-[1.05rem] leading-[1.8] text-white/80 sm:text-[1.1rem]"
+            style={{ fontFamily: 'var(--font-lora), Georgia, serif' }}
+          >
+            {displayOutput}
+          </p>
 
           {/* Go Deeper button */}
           <button

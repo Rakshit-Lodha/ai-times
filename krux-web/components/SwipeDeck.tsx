@@ -532,7 +532,7 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
         {deck.slice(index + 1, index + 4).map((item) => {
           if (item.kind === "article" && item.article.image_url) {
             return (
-              <div key={`preload-${item.id}`} className="relative aspect-[16/10] w-full">
+              <div key={`preload-${item.id}`} className="relative aspect-[3/2] w-full">
                 <Image
                   src={item.article.image_url}
                   alt=""
