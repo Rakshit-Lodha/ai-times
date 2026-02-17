@@ -392,6 +392,13 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
 
   const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
     if (isExiting) return;
+
+    // Don't start swipe if clicking on interactive elements (buttons, links, etc.)
+    const target = event.target as HTMLElement;
+    if (target.closest("button, a, [role='button']")) {
+      return;
+    }
+
     pointerStart.current = event.clientX;
     setIsDragging(true);
     setShowSwipeHint(false); // Hide hint on first interaction
@@ -428,7 +435,7 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
   const reactionOpacity = Math.min(Math.abs(dragX) / 140, 1);
 
   return (
-    <main className="min-h-screen bg-[#080808] text-white">
+    <main className="min-h-screen bg-[#080808] text-white md:flex md:items-center md:justify-center">
       <style>{`
         @keyframes kruxCtaGradient {
           0% { background-position: 0% 50%; }
@@ -464,11 +471,13 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
         }
       `}</style>
 
-      {/* Full-screen swipe area */}
-      <section className="relative min-h-screen w-full">
+      {/* Mobile-like container for desktop */}
+      <div className="w-full md:max-w-[480px] md:my-4 md:rounded-3xl md:border md:border-white/10 md:shadow-2xl md:overflow-hidden">
+        {/* Full-screen swipe area */}
+        <section className="relative min-h-screen w-full md:min-h-[85vh]">
         {active && (
           <div
-            className="relative z-10 min-h-screen w-full"
+            className="relative z-10 min-h-screen w-full md:min-h-[85vh]"
             onPointerDown={onPointerDown}
             onPointerMove={onPointerMove}
             onPointerUp={onPointerUp}
@@ -480,7 +489,7 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
             }}
           >
             {active.kind === "intro" ? (
-              <div className="flex min-h-screen items-center justify-center px-4">
+              <div className="flex min-h-screen items-center justify-center px-4 md:min-h-[85vh]">
                 <IntroCard onStart={startFromIntro} isStarting={isStartingIntro} firstArticle={loadedArticles[0]} />
               </div>
             ) : (
@@ -563,6 +572,7 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
           </div>
         )}
       </section>
+      </div>
 
       {/* Preload next 3 images - must match StoryCard's image config */}
       <div className="pointer-events-none fixed left-0 top-0 -z-50 h-0 w-full overflow-hidden opacity-0">

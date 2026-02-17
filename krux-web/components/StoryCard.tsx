@@ -206,7 +206,7 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
 
   return (
     <>
-      <article className="min-h-screen w-full bg-[#080808]">
+      <article className="min-h-screen w-full bg-[#080808] md:min-h-0">
         {/* Image section - full width, 3:2 aspect ratio */}
         <div className="relative aspect-[3/2] w-full overflow-hidden">
           {article.image_url ? (
