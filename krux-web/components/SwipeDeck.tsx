@@ -262,10 +262,16 @@ function IntroCard({
 }
 
 export default function SwipeDeck({ articles, startIndex }: { articles: Article[]; startIndex?: number }) {
+  // Infinite scroll state
+  const [loadedArticles, setLoadedArticles] = useState<Article[]>(articles);
+  const [hasMore, setHasMore] = useState(true);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const loadingRef = useRef(false);
+
   const deck = useMemo<DeckItem[]>(() => {
-    const storyCards = articles.map((article) => ({ kind: "article" as const, id: article.id, article }));
+    const storyCards = loadedArticles.map((article) => ({ kind: "article" as const, id: article.id, article }));
     return [{ kind: "intro", id: "intro" }, ...storyCards];
-  }, [articles]);
+  }, [loadedArticles]);
 
   // If coming from a shared link, start at that card (skip intro)
   const [index, setIndex] = useState(startIndex ?? 0);
@@ -277,6 +283,37 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
   const [isStartingIntro, setIsStartingIntro] = useState(false);
   const [showSwipeHint, setShowSwipeHint] = useState(!!startIndex);
   const pointerStart = useRef<number | null>(null);
+
+  // Fetch more articles when approaching the end
+  useEffect(() => {
+    const remainingCards = deck.length - index - 1;
+
+    if (remainingCards <= 5 && hasMore && !loadingRef.current) {
+      loadingRef.current = true;
+      setIsLoadingMore(true);
+
+      fetch(`/api/articles?offset=${loadedArticles.length}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.articles?.length > 0) {
+            // Deduplicate by article ID
+            setLoadedArticles((prev) => {
+              const existingIds = new Set(prev.map((a) => a.id));
+              const newArticles = data.articles.filter(
+                (a: Article) => !existingIds.has(a.id)
+              );
+              return [...prev, ...newArticles];
+            });
+          }
+          setHasMore(data.hasMore ?? false);
+        })
+        .catch(() => {})
+        .finally(() => {
+          setIsLoadingMore(false);
+          loadingRef.current = false;
+        });
+    }
+  }, [index, deck.length, hasMore, loadedArticles.length]);
 
   // Hide swipe hint after first interaction or after 4 seconds
   useEffect(() => {
@@ -444,7 +481,7 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
           >
             {active.kind === "intro" ? (
               <div className="flex min-h-screen items-center justify-center px-4">
-                <IntroCard onStart={startFromIntro} isStarting={isStartingIntro} firstArticle={articles[0]} />
+                <IntroCard onStart={startFromIntro} isStarting={isStartingIntro} firstArticle={loadedArticles[0]} />
               </div>
             ) : (
               <StoryCard article={active.article} isPriority={index <= 1} onUndo={goBack} canUndo={canGoBack} />
@@ -529,10 +566,10 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
 
       {/* Preload next 3 images - must match StoryCard's image config */}
       <div className="pointer-events-none fixed left-0 top-0 -z-50 h-0 w-full overflow-hidden opacity-0">
-        {deck.slice(index + 1, index + 4).map((item) => {
+        {deck.slice(index + 1, index + 4).map((item, idx) => {
           if (item.kind === "article" && item.article.image_url) {
             return (
-              <div key={`preload-${item.id}`} className="relative aspect-[3/2] w-full">
+              <div key={`preload-${index}-${idx}-${item.id}`} className="relative aspect-[3/2] w-full">
                 <Image
                   src={item.article.image_url}
                   alt=""

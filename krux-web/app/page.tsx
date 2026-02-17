@@ -15,7 +15,7 @@ export default async function Home({ searchParams }: Props) {
     .from("hundred_word_articles")
     .select("id, headline, output, news_date, image_url, sources")
     .order("news_date", { ascending: false })
-    .limit(40);
+    .limit(30);
 
   const articles: Article[] = (data ?? []).map((article) => ({
     id: article.id,
