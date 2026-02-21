@@ -16,7 +16,7 @@ from httpx import Response
 app = Flask(__name__)
 
 data_file = '/Users/Rakshit.Lodha/Desktop/ai-times/webhook_data.json'
-monitor_map_path = '/Users/Rakshit.Lodha/Desktop/ai-times/monitor_map.json'
+monitor_map_path = os.path.join(os.path.dirname(__file__), "monitor_map.json")
 
 
 def load_monitor_type_map():
@@ -53,8 +53,9 @@ def receive_webhook():
     if webhook_data.get('type') == 'monitor.event.detected':
         event_group_id = webhook_data['data']['event']['event_group_id']
         monitor_group_id = webhook_data['data']['monitor_id']
-        monitor_type = MONITOR_TYPE_MAP.get(monitor_group_id, "general")
-        if monitor_group_id not in MONITOR_TYPE_MAP:
+        payload_monitor_type = (webhook_data.get('data') or {}).get('metadata', {}).get('monitor_type')
+        monitor_type = payload_monitor_type or MONITOR_TYPE_MAP.get(monitor_group_id, "general")
+        if not payload_monitor_type and monitor_group_id not in MONITOR_TYPE_MAP:
             print(f"Unknown monitor_id {monitor_group_id}, defaulting monitor_type to general")
 
         print(event_group_id)
