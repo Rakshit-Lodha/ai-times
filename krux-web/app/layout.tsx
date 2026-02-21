@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   description: "Swipe through AI news. Multi-source synthesis in 100 words.",
   metadataBase: new URL("https://krux.news"),
   applicationName: "KRUX",
-  appleWebApp: {
+    appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
     title: "KRUX",

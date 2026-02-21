@@ -10,6 +10,16 @@ export const size = {
 export const contentType = "image/png";
 
 export default async function Image() {
+  // Load Inter Black font
+  const interBlack = await fetch(
+    new URL("https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYMZ1rib2Bg-4.ttf")
+  ).then((res) => res.arrayBuffer());
+
+  // Load Inter Medium for tagline
+  const interMedium = await fetch(
+    new URL("https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fMZ1rib2Bg-4.ttf")
+  ).then((res) => res.arrayBuffer());
+
   return new ImageResponse(
     (
       <div
@@ -20,31 +30,44 @@ export default async function Image() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          background: "linear-gradient(135deg, #0a0f1a 0%, #050508 100%)",
+          background: "linear-gradient(135deg, #0f1729 0%, #0a0f1a 50%, #050508 100%)",
           position: "relative",
         }}
       >
-        {/* Gradient orbs */}
+        {/* Orange orb - top left */}
+        <div
+          style={{
+            position: "absolute",
+            top: "15%",
+            left: "5%",
+            width: "500px",
+            height: "500px",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(249,115,22,0.2) 0%, transparent 70%)",
+          }}
+        />
+        {/* Blue orb - top right */}
         <div
           style={{
             position: "absolute",
             top: "10%",
-            left: "10%",
-            width: "400px",
-            height: "400px",
+            right: "5%",
+            width: "550px",
+            height: "550px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(249,115,22,0.15) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 70%)",
           }}
         />
+        {/* Purple orb - bottom center */}
         <div
           style={{
             position: "absolute",
-            bottom: "10%",
-            right: "10%",
-            width: "500px",
-            height: "500px",
+            bottom: "5%",
+            left: "30%",
+            width: "400px",
+            height: "400px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(168,85,247,0.12) 0%, transparent 70%)",
           }}
         />
 
@@ -58,14 +81,28 @@ export default async function Image() {
             padding: "40px",
           }}
         >
+          {/* "Introducing" text */}
+          <div
+            style={{
+              fontSize: "28px",
+              fontFamily: "Inter",
+              fontWeight: 500,
+              color: "rgba(255,255,255,0.7)",
+              marginBottom: "16px",
+            }}
+          >
+            Introducing
+          </div>
+
           {/* Logo */}
           <div
             style={{
               display: "flex",
               alignItems: "baseline",
-              fontSize: "140px",
+              fontFamily: "Inter",
+              fontSize: "160px",
               fontWeight: 900,
-              letterSpacing: "-4px",
+              letterSpacing: "-6px",
             }}
           >
             <span style={{ color: "#ffffff" }}>KRUX</span>
@@ -75,41 +112,45 @@ export default async function Image() {
           {/* Tagline */}
           <div
             style={{
-              marginTop: "24px",
-              fontSize: "36px",
-              color: "rgba(255,255,255,0.7)",
+              marginTop: "20px",
+              fontSize: "32px",
+              fontFamily: "Inter",
+              color: "rgba(255,255,255,0.6)",
               fontWeight: 500,
             }}
           >
             Everything about AI in 100 words
           </div>
 
-          {/* Divider */}
+          {/* Subtle divider line */}
           <div
             style={{
-              marginTop: "48px",
-              width: "200px",
-              height: "4px",
+              marginTop: "40px",
+              width: "120px",
+              height: "3px",
               borderRadius: "2px",
-              background: "linear-gradient(90deg, #f97316 0%, #facc15 100%)",
+              background: "linear-gradient(90deg, #f97316 0%, #fbbf24 100%)",
             }}
           />
-
-          {/* Subtitle */}
-          <div
-            style={{
-              marginTop: "32px",
-              fontSize: "24px",
-              color: "rgba(255,255,255,0.5)",
-            }}
-          >
-            Swipe through AI news
-          </div>
         </div>
       </div>
     ),
     {
       ...size,
+      fonts: [
+        {
+          name: "Inter",
+          data: interBlack,
+          style: "normal",
+          weight: 900,
+        },
+        {
+          name: "Inter",
+          data: interMedium,
+          style: "normal",
+          weight: 500,
+        },
+      ],
     }
   );
 }

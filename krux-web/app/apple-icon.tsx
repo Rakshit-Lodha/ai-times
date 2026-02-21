@@ -16,7 +16,7 @@ export default function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #0a0f1a 0%, #050508 100%)",
+          background: "linear-gradient(135deg, #0f1729 0%, #050508 100%)",
           borderRadius: "40px",
         }}
       >
@@ -30,7 +30,15 @@ export default function AppleIcon() {
           }}
         >
           <span style={{ color: "#ffffff" }}>K</span>
-          <span style={{ color: "#f97316", fontSize: "130px", marginLeft: "-8px" }}>.</span>
+          <span
+            style={{
+              color: "#f97316",
+              fontSize: "130px",
+              marginLeft: "-8px",
+            }}
+          >
+            .
+          </span>
         </div>
       </div>
     ),

@@ -16,6 +16,21 @@ from httpx import Response
 app = Flask(__name__)
 
 data_file = '/Users/Rakshit.Lodha/Desktop/ai-times/webhook_data.json'
+monitor_map_path = '/Users/Rakshit.Lodha/Desktop/ai-times/monitor_map.json'
+
+
+def load_monitor_type_map():
+    try:
+        with open(monitor_map_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if isinstance(data, dict):
+            return data
+    except Exception as e:
+        print(f"Could not load monitor map: {e}")
+    return {}
+
+
+MONITOR_TYPE_MAP = load_monitor_type_map()
 
 def save_webhook(data):
     try:
@@ -38,9 +53,13 @@ def receive_webhook():
     if webhook_data.get('type') == 'monitor.event.detected':
         event_group_id = webhook_data['data']['event']['event_group_id']
         monitor_group_id = webhook_data['data']['monitor_id']
+        monitor_type = MONITOR_TYPE_MAP.get(monitor_group_id, "general")
+        if monitor_group_id not in MONITOR_TYPE_MAP:
+            print(f"Unknown monitor_id {monitor_group_id}, defaulting monitor_type to general")
 
         print(event_group_id)
         print(monitor_group_id)
+        print(monitor_type)
 
         try:
             group = client.get(
@@ -56,6 +75,7 @@ def receive_webhook():
                     "event_type": webhook_data.get('type'),
                     "event_group_id": event_group_id,
                     "monitor_id": monitor_group_id,
+                    "monitor_type": monitor_type,
                     "news_output": event.get('output'),
                     "news_date": event.get('event_date'),
                     "source_urls": event.get('source_urls',[]),

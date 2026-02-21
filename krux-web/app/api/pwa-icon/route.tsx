@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #0a0f1a 0%, #050508 100%)",
+          background: "linear-gradient(135deg, #0f1729 0%, #050508 100%)",
           borderRadius: `${borderRadius}px`,
         }}
       >

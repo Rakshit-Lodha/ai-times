@@ -16,7 +16,7 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #0a0f1a 0%, #050508 100%)",
+          background: "linear-gradient(135deg, #0f1729 0%, #050508 100%)",
           borderRadius: "6px",
         }}
       >
@@ -30,7 +30,15 @@ export default function Icon() {
           }}
         >
           <span style={{ color: "#ffffff" }}>K</span>
-          <span style={{ color: "#f97316", fontSize: "24px", marginLeft: "-2px" }}>.</span>
+          <span
+            style={{
+              color: "#f97316",
+              fontSize: "24px",
+              marginLeft: "-2px",
+            }}
+          >
+            .
+          </span>
         </div>
       </div>
     ),
