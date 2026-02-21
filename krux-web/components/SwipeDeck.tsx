@@ -331,8 +331,12 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
   const handleDragEnd = async (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     const offset = info.offset.x;
     const velocity = info.velocity.x;
+    const isDesktop = window.innerWidth >= 768; // Adjust threshold based on md breakpoint
 
-    if (Math.abs(offset) > SWIPE_THRESHOLD || Math.abs(velocity) > 800) {
+    // Ignore small accidental mouse drags on Desktop 
+    const dragThreshold = isDesktop ? 150 : SWIPE_THRESHOLD;
+
+    if (Math.abs(offset) > dragThreshold || Math.abs(velocity) > 800) {
       setDraggedAway(true);
       const isRight = offset > 0 || velocity > 800;
 
@@ -467,8 +471,19 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
           100% { opacity: 1; transform: translateY(0); }
         }
       `}</style>
+      {/* Desktop Left Button */}
+      <button
+        onClick={() => manualSwipe(-1)}
+        className="hidden md:flex absolute left-[calc(50%-320px)] top-1/2 -translate-y-1/2 h-16 w-16 items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/50 backdrop-blur-md transition-all hover:bg-red-500/20 hover:text-red-500 hover:scale-110 active:scale-95 z-40 shadow-2xl"
+        aria-label="Skip Article"
+      >
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
+      </button>
 
-      <div className="w-full md:max-w-[480px] md:my-4 md:rounded-3xl md:border md:border-white/10 md:shadow-2xl md:overflow-hidden relative min-h-screen md:min-h-[85vh]">
+      {/* Main Deck Container */}
+      <div className="w-full md:max-w-[400px] lg:max-w-[480px] md:my-4 md:rounded-3xl md:border md:border-white/10 md:shadow-2xl md:overflow-hidden relative h-[100dvh] md:h-[85vh]">
 
         {/* Render Cards (Next and Active) */}
         {[next, active].map((item) => {
@@ -478,7 +493,7 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
           return (
             <motion.div
               key={item.id}
-              className={`absolute inset-0 min-h-screen w-full md:min-h-[85vh] origin-bottom touch-pan-y ${isTop ? "z-10" : "z-0 select-none shadow-2xl"
+              className={`absolute inset-0 h-full w-full origin-bottom touch-pan-y ${isTop ? "z-10" : "z-0 select-none shadow-2xl"
                 }`}
               drag={isTop && !draggedAway ? "x" : false}
               dragConstraints={isTop ? { left: 0, right: 0 } : undefined}
@@ -559,6 +574,17 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
           </div>
         )}
       </div>
+
+      {/* Desktop Right Button */}
+      <button
+        onClick={() => manualSwipe(1)}
+        className="hidden md:flex absolute right-[calc(50%-320px)] top-1/2 -translate-y-1/2 h-16 w-16 items-center justify-center rounded-full bg-white/5 border border-white/10 text-white/50 backdrop-blur-md transition-all hover:bg-emerald-500/20 hover:text-emerald-500 hover:scale-110 active:scale-95 z-40 shadow-2xl"
+        aria-label="Like Article"
+      >
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M20 6L9 17l-5-5" />
+        </svg>
+      </button>
 
       <div className="pointer-events-none fixed left-0 top-0 -z-50 h-0 w-full overflow-hidden opacity-0">
         {deck.slice(index + 1, index + 4).map((item, idx) => {

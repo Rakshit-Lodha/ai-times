@@ -206,7 +206,7 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
 
   return (
     <>
-      <article className="min-h-screen w-full bg-[#080808] md:min-h-0">
+      <article className="h-full min-h-[100dvh] w-full overflow-y-auto overflow-x-hidden bg-[#080808] no-scrollbar md:min-h-0 md:h-full">
         {/* Image section - full width, 3:2 aspect ratio */}
         <div className="relative aspect-[3/2] w-full overflow-hidden">
           {article.image_url ? (
@@ -240,11 +240,11 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
               aria-label="Share"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="18" cy="5" r="3"/>
-                <circle cx="6" cy="12" r="3"/>
-                <circle cx="18" cy="19" r="3"/>
-                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
-                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                <circle cx="18" cy="5" r="3" />
+                <circle cx="6" cy="12" r="3" />
+                <circle cx="18" cy="19" r="3" />
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
               </svg>
             </button>
           </div>
@@ -272,8 +272,8 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
                 aria-label="Go back to previous article"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M3 7v6h6"/>
-                  <path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/>
+                  <path d="M3 7v6h6" />
+                  <path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13" />
                 </svg>
                 <span className="text-[12px] font-medium text-white/90">Undo</span>
               </button>
@@ -302,10 +302,10 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
             className="mt-6 flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2.5 transition-all hover:bg-white/10 active:scale-95"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/70">
-              <circle cx="11" cy="11" r="8"/>
-              <path d="m21 21-4.3-4.3"/>
-              <path d="M11 8v6"/>
-              <path d="M8 11h6"/>
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <path d="M11 8v6" />
+              <path d="M8 11h6" />
             </svg>
             <span className="text-[0.9rem] font-medium text-white/80">Go Deeper</span>
           </button>
@@ -336,8 +336,8 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
           <div className="mb-5 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white/60">
-                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
-                <polyline points="14 2 14 8 20 8"/>
+                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                <polyline points="14 2 14 8 20 8" />
               </svg>
               <span className="text-[1rem] font-semibold text-white">Sources</span>
             </div>
@@ -347,8 +347,8 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
               aria-label="Close"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-white/70">
-                <line x1="18" y1="6" x2="6" y2="18"/>
-                <line x1="6" y1="6" x2="18" y2="18"/>
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             </button>
           </div>
@@ -409,7 +409,7 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
               </div>
               <span className="text-[0.7rem] text-white/60">X</span>
@@ -422,7 +422,7 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366]">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                 </svg>
               </div>
               <span className="text-[0.7rem] text-white/60">WhatsApp</span>
@@ -435,7 +435,7 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#0A66C2]">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                 </svg>
               </div>
               <span className="text-[0.7rem] text-white/60">LinkedIn</span>
@@ -447,12 +447,12 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10">
                 {copyStatus === "copied" ? (
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12"/>
+                    <polyline points="20 6 9 17 4 12" />
                   </svg>
                 ) : (
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
                   </svg>
                 )}
               </div>
@@ -484,7 +484,7 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#20808D]">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                 </svg>
               </div>
               <span className="text-[0.7rem] text-white/60">Perplexity</span>
@@ -507,7 +507,7 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#10A37F]">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
-                  <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.5963 3.8558L13.1038 8.364l2.0201-1.1685a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.4048-.6813zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6099-1.4997z"/>
+                  <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.5963 3.8558L13.1038 8.364l2.0201-1.1685a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.4048-.6813zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6099-1.4997z" />
                 </svg>
               </div>
               <span className="text-[0.7rem] text-white/60">ChatGPT</span>
@@ -530,7 +530,7 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#D97757]">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-                  <path d="M4.709 15.955l4.72-2.647.08-.054a.79.79 0 00.263-.293l.054-.08 2.646-4.72a.25.25 0 01.436 0l2.646 4.72.054.08a.79.79 0 00.264.293l.08.054 4.719 2.647a.25.25 0 010 .436l-4.72 2.646-.08.054a.79.79 0 00-.263.293l-.054.08-2.646 4.72a.25.25 0 01-.436 0l-2.646-4.72-.054-.08a.79.79 0 00-.264-.293l-.08-.054-4.719-2.646a.25.25 0 010-.436zM16.19 2.391l1.688-.947.028-.02a.28.28 0 00.094-.104l.02-.029.946-1.687a.089.089 0 01.156 0l.946 1.687.02.029a.28.28 0 00.094.105l.028.019 1.688.947a.089.089 0 010 .156l-1.688.946-.028.02a.28.28 0 00-.094.104l-.02.029-.946 1.687a.089.089 0 01-.156 0l-.946-1.687-.02-.029a.28.28 0 00-.094-.105l-.028-.019-1.688-.946a.089.089 0 010-.156z"/>
+                  <path d="M4.709 15.955l4.72-2.647.08-.054a.79.79 0 00.263-.293l.054-.08 2.646-4.72a.25.25 0 01.436 0l2.646 4.72.054.08a.79.79 0 00.264.293l.08.054 4.719 2.647a.25.25 0 010 .436l-4.72 2.646-.08.054a.79.79 0 00-.263.293l-.054.08-2.646 4.72a.25.25 0 01-.436 0l-2.646-4.72-.054-.08a.79.79 0 00-.264-.293l-.08-.054-4.719-2.646a.25.25 0 010-.436zM16.19 2.391l1.688-.947.028-.02a.28.28 0 00.094-.104l.02-.029.946-1.687a.089.089 0 01.156 0l.946 1.687.02.029a.28.28 0 00.094.105l.028.019 1.688.947a.089.089 0 010 .156l-1.688.946-.028.02a.28.28 0 00-.094.104l-.02.029-.946 1.687a.089.089 0 01-.156 0l-.946-1.687-.02-.029a.28.28 0 00-.094-.105l-.028-.019-1.688-.946a.089.089 0 010-.156z" />
                 </svg>
               </div>
               <span className="text-[0.7rem] text-white/60">Claude</span>
@@ -553,7 +553,7 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-                  <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm0 3.6c2.34 0 4.5.78 6.24 2.1L12 12V3.6zm0 16.8c-2.34 0-4.5-.78-6.24-2.1L12 12v8.4zm8.4-8.4c0 2.34-.78 4.5-2.1 6.24L12 12h8.4zM12 12L5.76 5.76A8.31 8.31 0 013.6 12H12z"/>
+                  <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm0 3.6c2.34 0 4.5.78 6.24 2.1L12 12V3.6zm0 16.8c-2.34 0-4.5-.78-6.24-2.1L12 12v8.4zm8.4-8.4c0 2.34-.78 4.5-2.1 6.24L12 12h8.4zM12 12L5.76 5.76A8.31 8.31 0 013.6 12H12z" />
                 </svg>
               </div>
               <span className="text-[0.7rem] text-white/60">Gemini</span>
