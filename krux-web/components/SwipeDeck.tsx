@@ -333,8 +333,8 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
     const velocity = info.velocity.x;
     const isDesktop = window.innerWidth >= 768; // Adjust threshold based on md breakpoint
 
-    // Ignore small accidental mouse drags on Desktop 
-    const dragThreshold = isDesktop ? 150 : SWIPE_THRESHOLD;
+    // Ignore small accidental mouse drags on Desktop
+    const dragThreshold = isDesktop ? 60 : SWIPE_THRESHOLD;
 
     if (Math.abs(offset) > dragThreshold || Math.abs(velocity) > 800) {
       setDraggedAway(true);
@@ -436,7 +436,7 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
   };
 
   return (
-    <main className="min-h-screen bg-[#080808] text-white md:flex md:items-center md:justify-center">
+    <main className="fixed inset-0 w-full h-[100dvh] overflow-hidden overscroll-none bg-[#080808] text-white md:static md:min-h-screen md:flex md:items-center md:justify-center">
       <style>{`
         @keyframes kruxCtaGradient {
           0% { background-position: 0% 50%; }
@@ -493,11 +493,10 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
           return (
             <motion.div
               key={item.id}
-              className={`absolute inset-0 h-full w-full origin-bottom touch-pan-y ${isTop ? "z-10" : "z-0 select-none shadow-2xl"
+              className={`absolute inset-0 h-full w-full origin-bottom ${isTop ? "z-10" : "z-0 select-none shadow-2xl"
                 }`}
               drag={isTop && !draggedAway ? "x" : false}
-              dragConstraints={isTop ? { left: 0, right: 0 } : undefined}
-              dragElastic={isTop ? 1 : undefined}
+              dragElastic={0.7}
               style={
                 isTop
                   ? { x, rotate: rotation }
