@@ -4,6 +4,7 @@ import { useMemo, useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { buildStoryPath, getFirstWords, normalizeText, parseSources } from "@/lib/story";
+import { detectGestureDirection } from "@/lib/gesture";
 
 export type Source = {
   name?: string;
@@ -146,6 +147,59 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
   const [deepDiveToast, setDeepDiveToast] = useState<string | null>(null);
 
+  // --- Swipe vs. Scroll direction lock ---
+  const articleRef = useRef<HTMLElement>(null);
+  const touchState = useRef({ startX: 0, startY: 0, decided: false, isHorizontal: false });
+
+  useEffect(() => {
+    const el = articleRef.current;
+    if (!el) return;
+
+    const onTouchStart = (e: TouchEvent) => {
+      const t = e.touches[0];
+      touchState.current = { startX: t.clientX, startY: t.clientY, decided: false, isHorizontal: false };
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      const state = touchState.current;
+      if (state.decided) {
+        if (state.isHorizontal) e.preventDefault();
+        return;
+      }
+      const t = e.touches[0];
+      const dx = t.clientX - state.startX;
+      const dy = t.clientY - state.startY;
+      const direction = detectGestureDirection(dx, dy);
+      if (direction === "undecided") return;
+
+      state.decided = true;
+      state.isHorizontal = direction === "horizontal";
+      if (state.isHorizontal) {
+        e.preventDefault();
+        el.style.overflowY = "hidden"; // temporarily kill scroll so drag wins
+      }
+    };
+
+    const onTouchEnd = () => {
+      if (touchState.current.isHorizontal) {
+        el.style.overflowY = "auto";
+      }
+      touchState.current = { startX: 0, startY: 0, decided: false, isHorizontal: false };
+    };
+
+    el.addEventListener("touchstart", onTouchStart, { passive: true });
+    el.addEventListener("touchmove", onTouchMove, { passive: false }); // non-passive so preventDefault works
+    el.addEventListener("touchend", onTouchEnd, { passive: true });
+    el.addEventListener("touchcancel", onTouchEnd, { passive: true });
+
+    return () => {
+      el.removeEventListener("touchstart", onTouchStart);
+      el.removeEventListener("touchmove", onTouchMove);
+      el.removeEventListener("touchend", onTouchEnd);
+      el.removeEventListener("touchcancel", onTouchEnd);
+    };
+  }, []);
+
   const sources = useMemo(() => parseSources(article.sources), [article.sources]);
 
   const normalizedOutput = normalizeText(article.output || "");
@@ -206,7 +260,7 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
 
   return (
     <>
-      <article className="h-full min-h-[100dvh] w-full overflow-y-auto overflow-x-hidden bg-[#080808] no-scrollbar md:min-h-0 md:h-full">
+      <article ref={articleRef} className="h-full min-h-[100dvh] w-full overflow-y-auto overflow-x-hidden bg-[#080808] no-scrollbar md:min-h-0 md:h-full">
         {/* Image section - full width, 3:2 aspect ratio */}
         <div className="relative aspect-[3/2] w-full overflow-hidden">
           {article.image_url ? (

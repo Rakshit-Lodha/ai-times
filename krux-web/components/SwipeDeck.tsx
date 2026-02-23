@@ -499,7 +499,7 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
               dragElastic={0.7}
               style={
                 isTop
-                  ? { x, rotate: rotation }
+                  ? { x, rotate: rotation, touchAction: "pan-y" }
                   : { scale: nextCardScale, y: nextCardY, filter: nextCardFilter }
               }
               onDragEnd={isTop && !draggedAway ? handleDragEnd : undefined}
