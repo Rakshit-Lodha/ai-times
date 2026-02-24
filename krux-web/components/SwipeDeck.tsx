@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
-import { motion, useMotionValue, useTransform, animate, PanInfo } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useTransform, animate, PanInfo } from "framer-motion";
 import StoryCard, { type Article } from "@/components/StoryCard";
 
 type DeckItem =
@@ -10,6 +10,15 @@ type DeckItem =
   | { kind: "article"; id: number; article: Article };
 
 type SwipeReaction = "like" | "skip" | null;
+
+type TopicFilter = "all" | "for-work" | "funding" | "reports";
+
+const TOPICS = [
+  { id: "all" as const, label: "My Feed" },
+  { id: "for-work" as const, label: "For Work" },
+  { id: "funding" as const, label: "Funding" },
+  { id: "reports" as const, label: "Reports" },
+];
 
 const SWIPE_THRESHOLD = 90;
 
@@ -257,6 +266,10 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
   const [isStartingIntro, setIsStartingIntro] = useState(false);
   const [showSwipeHint, setShowSwipeHint] = useState(!!startIndex);
   const [draggedAway, setDraggedAway] = useState(false);
+  const [selectedTopic, setSelectedTopic] = useState<TopicFilter>("all");
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [deckOpacity, setDeckOpacity] = useState(1);
+  const [deckScale, setDeckScale] = useState(1);
 
   // Framer Motion shared gesture values
   const x = useMotionValue(0);
@@ -292,12 +305,40 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
     });
   }, [x]);
 
+  const pastIntro = index > 0;
+
+  const handleTopicChange = useCallback(async (newTopic: TopicFilter) => {
+    if (newTopic === selectedTopic || isTransitioning) return;
+    setIsTransitioning(true);
+    setDeckOpacity(0);
+    setDeckScale(0.96);
+
+    const topicParam = newTopic !== "all" ? `&topic=${newTopic}` : "";
+
+    const [data] = await Promise.all([
+      fetch(`/api/articles?offset=0${topicParam}`).then((r) => r.json()),
+      new Promise<void>((r) => setTimeout(r, 220)),
+    ]);
+
+    setSelectedTopic(newTopic);
+    setLoadedArticles(data.articles ?? []);
+    setHasMore(data.hasMore ?? false);
+    setIndex(1);
+    x.set(0);
+    loadingRef.current = false;
+
+    setDeckOpacity(1);
+    setDeckScale(1);
+    setIsTransitioning(false);
+  }, [selectedTopic, isTransitioning, x]);
+
   useEffect(() => {
     const remainingCards = deck.length - index - 1;
     if (remainingCards <= 5 && hasMore && !loadingRef.current) {
       loadingRef.current = true;
 
-      fetch(`/api/articles?offset=${loadedArticles.length}`)
+      const topicParam = selectedTopic !== "all" ? `&topic=${selectedTopic}` : "";
+      fetch(`/api/articles?offset=${loadedArticles.length}${topicParam}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.articles?.length > 0) {
@@ -316,7 +357,7 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
           loadingRef.current = false;
         });
     }
-  }, [index, deck.length, hasMore, loadedArticles.length]);
+  }, [index, deck.length, hasMore, loadedArticles.length, selectedTopic]);
 
   useEffect(() => {
     if (showSwipeHint) {
@@ -436,7 +477,7 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
   };
 
   return (
-    <main className="fixed inset-0 w-full h-[100dvh] overflow-hidden overscroll-none bg-[#080808] text-white md:static md:min-h-screen md:flex md:items-center md:justify-center">
+    <main className={`fixed inset-0 w-full h-[100dvh] overflow-hidden overscroll-none bg-[#080808] text-white md:static md:min-h-screen md:flex md:items-center md:justify-center ${pastIntro ? "md:pt-[52px]" : ""}`}>
       <style>{`
         @keyframes kruxCtaGradient {
           0% { background-position: 0% 50%; }
@@ -471,6 +512,40 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
           100% { opacity: 1; transform: translateY(0); }
         }
       `}</style>
+      {/* Category Filter Pills */}
+      <AnimatePresence>
+        {pastIntro && (
+          <motion.div
+            initial={{ opacity: 0, y: -44 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -44 }}
+            transition={{ type: "spring", stiffness: 400, damping: 35 }}
+            className="fixed top-0 left-0 right-0 z-50 flex h-[52px] items-center gap-2 overflow-x-auto px-4 no-scrollbar"
+            style={{
+              background: "linear-gradient(to bottom, rgba(8,8,8,0.97), rgba(8,8,8,0.88))",
+              backdropFilter: "blur(16px)",
+              WebkitBackdropFilter: "blur(16px)",
+              borderBottom: "1px solid rgba(255,255,255,0.06)",
+            }}
+          >
+            {TOPICS.map((t) => (
+              <button
+                key={t.id}
+                onClick={() => void handleTopicChange(t.id)}
+                disabled={isTransitioning}
+                className={`shrink-0 rounded-full border px-4 py-1.5 text-[0.8rem] font-semibold transition-colors duration-200 active:scale-95 disabled:opacity-60 ${
+                  selectedTopic === t.id
+                    ? "border-orange-500/50 bg-orange-500/15 text-orange-400"
+                    : "border-white/10 bg-white/[0.06] text-white/55 hover:text-white/80"
+                }`}
+              >
+                {t.label}
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Desktop Left Button */}
       <button
         onClick={() => manualSwipe(-1)}
@@ -483,7 +558,27 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
       </button>
 
       {/* Main Deck Container */}
-      <div className="w-full md:max-w-[400px] lg:max-w-[480px] md:my-4 md:rounded-3xl md:border md:border-white/10 md:shadow-2xl md:overflow-hidden relative h-[100dvh] md:h-[85vh]">
+      <div
+        className={`w-full md:max-w-[400px] lg:max-w-[480px] md:my-4 md:rounded-3xl md:border md:border-white/10 md:shadow-2xl md:overflow-hidden relative md:h-[85vh] ${
+          pastIntro ? "mt-[52px] h-[calc(100dvh-52px)]" : "h-[100dvh]"
+        }`}
+        style={{
+          opacity: deckOpacity,
+          transform: `scale(${deckScale})`,
+          transition: "opacity 220ms ease, transform 220ms ease, height 300ms cubic-bezier(0.4,0,0.2,1), margin-top 300ms cubic-bezier(0.4,0,0.2,1)",
+        }}
+      >
+
+        {/* Empty state when a category has no articles */}
+        {pastIntro && loadedArticles.length === 0 && (
+          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 px-8 text-center">
+            <span className="text-4xl">📭</span>
+            <p className="text-[1rem] font-semibold text-white/70">No stories here yet</p>
+            <p className="text-[0.85rem] text-white/40">
+              Try switching to <button onClick={() => void handleTopicChange("all")} className="text-orange-400 underline underline-offset-2">My Feed</button> for all stories
+            </p>
+          </div>
+        )}
 
         {/* Render Cards (Next and Active) */}
         {[next, active].map((item) => {
@@ -495,7 +590,7 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
               key={item.id}
               className={`absolute inset-0 h-full w-full origin-bottom ${isTop ? "z-10" : "z-0 select-none shadow-2xl"
                 }`}
-              drag={isTop && !draggedAway ? "x" : false}
+              drag={isTop && !draggedAway && !isTransitioning ? "x" : false}
               dragElastic={0.7}
               style={
                 isTop

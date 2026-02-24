@@ -19,6 +19,7 @@ export type Article = {
   created_at?: string | null;
   image_url: string | null;
   sources: Source[] | string | null;
+  topic?: string | null;
 };
 
 export type StoryCardProps = {
@@ -260,7 +261,7 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
 
   return (
     <>
-      <article ref={articleRef} className="h-full min-h-[100dvh] w-full overflow-y-auto overflow-x-hidden bg-[#080808] no-scrollbar md:min-h-0 md:h-full">
+      <article ref={articleRef} className="h-full min-h-full w-full overflow-y-auto overflow-x-hidden bg-[#080808] no-scrollbar md:min-h-0 md:h-full">
         {/* Image section - full width, 3:2 aspect ratio */}
         <div className="relative aspect-[3/2] w-full overflow-hidden">
           {article.image_url ? (

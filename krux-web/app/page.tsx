@@ -13,7 +13,7 @@ export default async function Home({ searchParams }: Props) {
 
   const { data } = await supabase
     .from("hundred_word_articles")
-    .select("id, headline, output, news_date, image_url, sources")
+    .select("id, headline, output, news_date, image_url, sources, topic")
     .order("news_date", { ascending: false })
     .limit(30);
 
@@ -24,6 +24,7 @@ export default async function Home({ searchParams }: Props) {
     news_date: article.news_date,
     image_url: article.image_url,
     sources: article.sources,
+    topic: article.topic,
   }));
 
   // Find the starting index if coming from a shared link
