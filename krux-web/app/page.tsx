@@ -13,8 +13,8 @@ export default async function Home({ searchParams }: Props) {
 
   const { data } = await supabase
     .from("hundred_word_articles")
-    .select("id, headline, output, news_date, image_url, sources, topic")
-    .order("news_date", { ascending: false })
+    .select("id, headline, output, news_date, created_at, image_url, sources, topic")
+    .order("created_at", { ascending: false })
     .limit(30);
 
   const articles: Article[] = (data ?? []).map((article) => ({

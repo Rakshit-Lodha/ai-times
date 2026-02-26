@@ -17,8 +17,8 @@ export async function GET(request: NextRequest) {
 
   let query = supabase
     .from("hundred_word_articles")
-    .select("id, headline, output, news_date, image_url, sources, topic")
-    .order("news_date", { ascending: false });
+    .select("id, headline, output, news_date, created_at, image_url, sources, topic")
+    .order("created_at", { ascending: false });
 
   if (topicSlug && TOPIC_MAP[topicSlug]) {
     query = query.eq("topic", TOPIC_MAP[topicSlug]);
