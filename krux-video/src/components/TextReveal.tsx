@@ -1,6 +1,5 @@
 import React from "react";
 import { interpolate, useCurrentFrame } from "remotion";
-import { WORD_REVEAL_SPEED } from "../lib/animations";
 
 type Props = {
   text: string;
@@ -23,7 +22,7 @@ export const TextReveal: React.FC<Props> = ({
   fontFamily = "Inter, sans-serif",
   textAlign = "center",
   maxWidth = 800,
-  speed = WORD_REVEAL_SPEED,
+  speed = 4, // Default to 4 frames per word reveal
 }) => {
   const frame = useCurrentFrame();
   const words = text.split(" ");

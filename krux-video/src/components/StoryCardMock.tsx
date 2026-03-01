@@ -1,137 +1,145 @@
 import React from "react";
+import { staticFile } from "remotion";
 import { tokens } from "../lib/tokens";
 
 type Props = {
   headline: string;
   topic?: string;
   date?: string;
-  showImage?: boolean;
-  imageColor?: string;
+  summary?: string;
+  imageId?: string;
 };
 
 export const StoryCardMock: React.FC<Props> = ({
   headline,
   topic = "AI News",
   date = "Today",
-  showImage = true,
-  imageColor = "linear-gradient(135deg, #1a1a2e, #16213e, #0f3460)",
+  summary,
+  imageId,
 }) => {
+  const imageUrl = imageId ? staticFile(`images/articles/${imageId}.png`) : undefined;
+
   return (
     <div
       style={{
         width: "100%",
         height: "100%",
-        background: tokens.bgCard,
+        backgroundColor: "#080808", // Exact background from your web app
         display: "flex",
         flexDirection: "column",
-        borderRadius: 16,
-        overflow: "hidden",
-        border: `1px solid ${tokens.border}`,
+        position: "relative",
+        fontFamily: tokens.fontSans,
       }}
     >
-      {/* Image area */}
-      {showImage && (
+      {/* Image Area - 3:2 Aspect Ratio approximation */}
+      <div
+        style={{
+          width: "100%",
+          height: "45%",
+          backgroundColor: "#111",
+          backgroundImage: imageUrl ? `url(${imageUrl})` : undefined,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          position: "relative",
+        }}
+      >
+        {/* Gradient overlay exactly like web app */}
         <div
           style={{
-            width: "100%",
-            height: "45%",
-            background: imageColor,
-            position: "relative",
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(to top, #080808 0%, rgba(8,8,8,0.2) 50%, transparent 100%)",
+          }}
+        />
+
+        {/* Top right Date Pill */}
+        <div
+          style={{
+            position: "absolute",
+            right: 16,
+            top: 16,
+            backgroundColor: "rgba(0,0,0,0.4)",
+            backdropFilter: "blur(8px)",
+            padding: "6px 12px",
+            borderRadius: 9999,
           }}
         >
-          {/* Topic badge */}
-          <div
-            style={{
-              position: "absolute",
-              top: 10,
-              left: 10,
-              padding: "4px 10px",
-              borderRadius: 12,
-              background: "rgba(0,0,0,0.5)",
-              backdropFilter: "blur(8px)",
-              fontSize: 10,
-              fontWeight: 600,
-              color: tokens.accent,
-              fontFamily: tokens.fontSans,
-            }}
-          >
-            {topic}
-          </div>
-          {/* Date pill */}
-          <div
-            style={{
-              position: "absolute",
-              top: 10,
-              right: 10,
-              padding: "4px 10px",
-              borderRadius: 12,
-              background: "rgba(0,0,0,0.5)",
-              fontSize: 10,
-              color: tokens.textSecondary,
-              fontFamily: tokens.fontSans,
-            }}
-          >
+          <span style={{ fontSize: 12, fontWeight: 500, color: "rgba(255,255,255,0.7)" }}>
             {date}
-          </div>
+          </span>
         </div>
-      )}
-      {/* Text area */}
-      <div style={{ padding: 14, flex: 1 }}>
-        <h3
+
+        {/* Bottom Left Source Pill */}
+        <div
           style={{
-            fontSize: 15,
-            fontWeight: 700,
-            color: tokens.textPrimary,
-            fontFamily: tokens.fontSans,
-            lineHeight: 1.3,
-            margin: 0,
-            marginBottom: 8,
+            position: "absolute",
+            bottom: 16,
+            left: 20,
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+            backgroundColor: "rgba(0,0,0,0.5)",
+            backdropFilter: "blur(8px)",
+            padding: "6px 12px",
+            borderRadius: 9999,
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: 20,
+              height: 20,
+              backgroundColor: tokens.accent,
+              borderRadius: "50%",
+            }}
+          >
+            <span style={{ fontSize: 10, fontWeight: "bold", color: "white" }}>K</span>
+          </div>
+          <span style={{ fontSize: 12, fontWeight: 500, color: "rgba(255,255,255,0.9)" }}>
+            {topic}
+          </span>
+        </div>
+      </div>
+
+      {/* Content Area */}
+      <div
+        style={{
+          padding: "20px 28px 40px",
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <h2
+          style={{
+            fontSize: 26,
+            fontWeight: 600,
+            color: "#ffffff",
+            lineHeight: 1.35,
+            letterSpacing: "-0.02em",
+            margin: "0 0 24px 0",
           }}
         >
           {headline}
-        </h3>
+        </h2>
+        
         <p
           style={{
-            fontSize: 11,
-            color: tokens.textSecondary,
-            fontFamily: tokens.fontSerif,
-            lineHeight: 1.5,
+            fontSize: 18,
+            color: "rgba(255,255,255,0.8)",
+            fontFamily: tokens.fontSerif, // Use Lora/Serif here!
+            lineHeight: 1.8,
             margin: 0,
+            display: "-webkit-box",
+            WebkitLineClamp: 6,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
           }}
         >
-          Get the full story in 100 words. Multi-source synthesis from the top
-          outlets covering this story...
+          {summary}
         </p>
-      </div>
-      {/* Bottom bar */}
-      <div
-        style={{
-          padding: "8px 14px",
-          borderTop: `1px solid ${tokens.border}`,
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <span
-          style={{
-            fontSize: 10,
-            color: tokens.accent,
-            fontWeight: 700,
-            fontFamily: tokens.fontSans,
-          }}
-        >
-          KRUX
-        </span>
-        <span
-          style={{
-            fontSize: 10,
-            color: tokens.textSecondary,
-            fontFamily: tokens.fontSans,
-          }}
-        >
-          100 words
-        </span>
       </div>
     </div>
   );
