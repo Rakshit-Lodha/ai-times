@@ -520,7 +520,7 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -44 }}
             transition={{ type: "spring", stiffness: 400, damping: 35 }}
-            className="fixed top-0 left-0 right-0 z-50 flex h-[52px] items-center gap-2 overflow-x-auto px-4 no-scrollbar"
+            className="fixed top-0 left-0 right-0 z-50 flex h-[52px] items-center justify-center gap-2 overflow-x-auto px-4 no-scrollbar"
             style={{
               background: "linear-gradient(to bottom, rgba(8,8,8,0.97), rgba(8,8,8,0.88))",
               backdropFilter: "blur(16px)",

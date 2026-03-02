@@ -218,6 +218,17 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
   };
 
   const openNativeOrFallbackShare = async () => {
+    // Desktop (non-touch): copy link directly to clipboard
+    const isTouchDevice =
+      typeof window !== "undefined" &&
+      ("ontouchstart" in window || navigator.maxTouchPoints > 0);
+
+    if (!isTouchDevice) {
+      await copyLink();
+      return;
+    }
+
+    // Mobile: try native share, fallback to share sheet
     const shareUrl = getShareUrl();
     const shareData = {
       title: article.headline,
@@ -289,19 +300,26 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
               <span className="text-[12px] font-medium text-white/70">{formatDate(article.news_date)}</span>
             </div>
             {/* Share button */}
-            <button
-              onClick={openNativeOrFallbackShare}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-black/40 backdrop-blur-md transition-all hover:bg-black/60 active:scale-90"
-              aria-label="Share"
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="18" cy="5" r="3" />
-                <circle cx="6" cy="12" r="3" />
-                <circle cx="18" cy="19" r="3" />
-                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
-                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
-              </svg>
-            </button>
+            <div className="relative flex items-center">
+              {copyStatus === "copied" && (
+                <span className="absolute right-12 whitespace-nowrap rounded-full bg-green-500/90 px-2.5 py-1 text-[11px] font-semibold text-white animate-fade-in">
+                  Copied!
+                </span>
+              )}
+              <button
+                onClick={openNativeOrFallbackShare}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-black/40 backdrop-blur-md transition-all hover:bg-black/60 active:scale-90"
+                aria-label="Share"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="18" cy="5" r="3" />
+                  <circle cx="6" cy="12" r="3" />
+                  <circle cx="18" cy="19" r="3" />
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+                </svg>
+              </button>
+            </div>
           </div>
 
           {/* Bottom bar - sources and undo */}
