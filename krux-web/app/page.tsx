@@ -17,7 +17,7 @@ export default async function Home({ searchParams }: Props) {
     .order("created_at", { ascending: false })
     .limit(30);
 
-  const articles: Article[] = (data ?? []).map((article) => ({
+  let articles: Article[] = (data ?? []).map((article) => ({
     id: article.id,
     headline: article.headline,
     output: article.output,
@@ -35,6 +35,26 @@ export default async function Home({ searchParams }: Props) {
     if (foundIndex !== -1) {
       // +1 because index 0 is the intro card
       startIndex = foundIndex + 1;
+    } else if (!isNaN(articleId)) {
+      // Article not in initial batch (older article) — fetch it directly
+      const { data: single } = await supabase
+        .from("hundred_word_articles")
+        .select("id, headline, output, news_date, created_at, image_url, sources, topic")
+        .eq("id", articleId)
+        .single();
+
+      if (single) {
+        articles.unshift({
+          id: single.id,
+          headline: single.headline,
+          output: single.output,
+          news_date: single.news_date,
+          image_url: single.image_url,
+          sources: single.sources,
+          topic: single.topic,
+        });
+        startIndex = 1; // index 0 = intro, index 1 = the shared article
+      }
     }
   }
 
