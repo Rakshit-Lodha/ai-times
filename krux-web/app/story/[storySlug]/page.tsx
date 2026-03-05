@@ -167,7 +167,7 @@ export default async function StoryPage({
           </div>
         )}
 
-        <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-orange-300">{formatDate(story.news_date)}</p>
+        <p className="text-[11px] font-mono uppercase tracking-[0.22em] text-orange-300">{formatDate(story.created_at || story.news_date)}</p>
         <h1 className="mt-2 text-3xl font-bold leading-tight text-white md:text-4xl">{story.headline}</h1>
 
         <div className="mt-4 grid gap-2 text-[0.78rem] font-mono uppercase tracking-[0.18em] text-white/45">

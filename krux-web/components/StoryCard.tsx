@@ -117,9 +117,11 @@ function BottomSheet({ children, onClose }: { children: React.ReactNode; onClose
   );
 }
 
-function formatDate(newsDate: string): string {
-  const parsed = new Date(`${newsDate}T00:00:00`);
-  if (Number.isNaN(parsed.getTime())) return newsDate;
+function formatDate(dateValue: string): string {
+  const parsed = dateValue.includes("T")
+    ? new Date(dateValue)
+    : new Date(`${dateValue}T00:00:00`);
+  if (Number.isNaN(parsed.getTime())) return dateValue;
 
   const now = new Date();
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -297,7 +299,7 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
           <div className="absolute right-4 top-4 flex items-center gap-2">
             {/* Date pill */}
             <div className="rounded-full bg-black/40 px-3 py-2 backdrop-blur-md">
-              <span className="text-[12px] font-medium text-white/70">{formatDate(article.news_date)}</span>
+              <span className="text-[12px] font-medium text-white/70">{formatDate(article.created_at || article.news_date)}</span>
             </div>
             {/* Share button */}
             <div className="relative flex items-center">
