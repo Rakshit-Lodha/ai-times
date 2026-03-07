@@ -10,10 +10,16 @@ const TOPIC_MAP: Record<string, string> = {
   others: "Others",
 };
 
+function getIstMidnight(): string {
+  const istDate = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
+  return new Date(`${istDate}T00:00:00+05:30`).toISOString();
+}
+
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const offset = parseInt(searchParams.get("offset") || "0", 10);
   const topicSlug = searchParams.get("topic");
+  const todayFilter = searchParams.get("today");
 
   let query = supabase
     .from("hundred_word_articles")
@@ -22,6 +28,10 @@ export async function GET(request: NextRequest) {
 
   if (topicSlug && TOPIC_MAP[topicSlug]) {
     query = query.eq("topic", TOPIC_MAP[topicSlug]);
+  }
+
+  if (todayFilter === "1") {
+    query = query.gte("created_at", getIstMidnight());
   }
 
   const { data, error } = await query.range(offset, offset + BATCH_SIZE - 1);

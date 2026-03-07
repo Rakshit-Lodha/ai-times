@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useMotionValue, useTransform, animate, PanInfo } from "framer-motion";
 import StoryCard, { type Article } from "@/components/StoryCard";
+import { trackEvent } from "@/components/GoogleAnalytics";
 
 type DeckItem =
   | { kind: "intro"; id: string }
@@ -11,13 +12,14 @@ type DeckItem =
 
 type SwipeReaction = "like" | "skip" | null;
 
-type TopicFilter = "all" | "for-work" | "funding" | "reports";
+type TopicFilter = "all" | "today" | "for-work" | "reports" | "funding";
 
 const TOPICS = [
   { id: "all" as const, label: "My Feed" },
+  { id: "today" as const, label: "What's New" },
   { id: "for-work" as const, label: "For Work" },
-  { id: "funding" as const, label: "Funding" },
   { id: "reports" as const, label: "Reports" },
+  { id: "funding" as const, label: "Funding" },
 ];
 
 const SWIPE_THRESHOLD = 90;
@@ -252,7 +254,8 @@ function IntroCard({
   );
 }
 
-export default function SwipeDeck({ articles, startIndex }: { articles: Article[]; startIndex?: number }) {
+export default function SwipeDeck({ articles, startIndex, initialTodayFilter = false }: { articles: Article[]; startIndex?: number; initialTodayFilter?: boolean }) {
+  const initialTopic: TopicFilter = initialTodayFilter ? "today" : "all";
   const [loadedArticles, setLoadedArticles] = useState<Article[]>(articles);
   const [hasMore, setHasMore] = useState(true);
   const loadingRef = useRef(false);
@@ -266,7 +269,7 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
   const [isStartingIntro, setIsStartingIntro] = useState(false);
   const [showSwipeHint, setShowSwipeHint] = useState(!!startIndex);
   const [draggedAway, setDraggedAway] = useState(false);
-  const [selectedTopic, setSelectedTopic] = useState<TopicFilter>("all");
+  const [selectedTopic, setSelectedTopic] = useState<TopicFilter>(initialTopic);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [deckOpacity, setDeckOpacity] = useState(1);
   const [deckScale, setDeckScale] = useState(1);
@@ -313,10 +316,11 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
     setDeckOpacity(0);
     setDeckScale(0.96);
 
-    const topicParam = newTopic !== "all" ? `&topic=${newTopic}` : "";
+    const topicParam = newTopic !== "all" && newTopic !== "today" ? `&topic=${newTopic}` : "";
+    const todayParam = newTopic === "today" ? "&today=1" : "";
 
     const [data] = await Promise.all([
-      fetch(`/api/articles?offset=0${topicParam}`).then((r) => r.json()),
+      fetch(`/api/articles?offset=0${topicParam}${todayParam}`).then((r) => r.json()),
       new Promise<void>((r) => setTimeout(r, 220)),
     ]);
 
@@ -326,6 +330,9 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
     setIndex(1);
     x.set(0);
     loadingRef.current = false;
+    trackEvent("filter_change", {
+      filter_name: TOPICS.find((t) => t.id === newTopic)?.label ?? newTopic,
+    });
 
     setDeckOpacity(1);
     setDeckScale(1);
@@ -337,8 +344,9 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
     if (remainingCards <= 5 && hasMore && !loadingRef.current) {
       loadingRef.current = true;
 
-      const topicParam = selectedTopic !== "all" ? `&topic=${selectedTopic}` : "";
-      fetch(`/api/articles?offset=${loadedArticles.length}${topicParam}`)
+      const topicParam = selectedTopic !== "all" && selectedTopic !== "today" ? `&topic=${selectedTopic}` : "";
+      const todayParam = selectedTopic === "today" ? "&today=1" : "";
+      fetch(`/api/articles?offset=${loadedArticles.length}${topicParam}${todayParam}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.articles?.length > 0) {
@@ -382,14 +390,20 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
       const isRight = offset > 0 || velocity > 800;
 
       if (active && active.kind === "article") {
+        const direction = isRight ? "like" : "skip";
         fetch("/api/track", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             articleId: active.article.id,
-            reaction: isRight ? "like" : "skip",
+            reaction: direction,
           }),
         }).catch(() => { });
+        trackEvent("story_swipe", {
+          story_slug: active.article.headline,
+          direction,
+          filter: selectedTopic,
+        });
       }
 
       await animate(x, isRight ? 400 : -400, {
@@ -411,14 +425,20 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
     setDraggedAway(true);
 
     if (active && active.kind === "article") {
+      const reaction = direction > 0 ? "like" : "skip";
       fetch("/api/track", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           articleId: active.article.id,
-          reaction: direction > 0 ? "like" : "skip",
+          reaction,
         }),
       }).catch(() => { });
+      trackEvent("story_swipe", {
+        story_slug: active.article.headline,
+        direction: reaction,
+        filter: selectedTopic,
+      });
     }
 
     await animate(x, direction * 400, {
@@ -572,10 +592,16 @@ export default function SwipeDeck({ articles, startIndex }: { articles: Article[
         {/* Empty state when a category has no articles */}
         {pastIntro && loadedArticles.length === 0 && (
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 px-8 text-center">
-            <span className="text-4xl">📭</span>
-            <p className="text-[1rem] font-semibold text-white/70">No stories here yet</p>
+            <span className="text-4xl">{selectedTopic === "today" ? "🌅" : "📭"}</span>
+            <p className="text-[1rem] font-semibold text-white/70">
+              {selectedTopic === "today" ? "Today's stories are on the way" : "No stories here yet"}
+            </p>
             <p className="text-[0.85rem] text-white/40">
-              Try switching to <button onClick={() => void handleTopicChange("all")} className="text-orange-400 underline underline-offset-2">My Feed</button> for all stories
+              {selectedTopic === "today" ? (
+                <>Check back soon or browse <button onClick={() => void handleTopicChange("all")} className="text-orange-400 underline underline-offset-2">all stories</button></>
+              ) : (
+                <>Try switching to <button onClick={() => void handleTopicChange("all")} className="text-orange-400 underline underline-offset-2">My Feed</button> for all stories</>
+              )}
             </p>
           </div>
         )}

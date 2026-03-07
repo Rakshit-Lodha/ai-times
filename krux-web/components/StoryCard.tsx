@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { buildStoryPath, getFirstWords, normalizeText, parseSources } from "@/lib/story";
 import { detectGestureDirection } from "@/lib/gesture";
+import { trackEvent } from "@/components/GoogleAnalytics";
 
 export type Source = {
   name?: string;
@@ -130,17 +131,10 @@ function formatDate(dateValue: string): string {
 
   const articleDate = new Date(parsed.getFullYear(), parsed.getMonth(), parsed.getDate());
 
-  if (articleDate.getTime() === today.getTime()) {
-    return "Today";
-  }
-  if (articleDate.getTime() === yesterday.getTime()) {
-    return "Yesterday";
-  }
+  if (articleDate.getTime() === today.getTime()) return "Today";
+  if (articleDate.getTime() === yesterday.getTime()) return "Yesterday";
 
-  return parsed.toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-  });
+  return parsed.toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
 
 export default function StoryCard({ article, isPriority = false, onUndo, canUndo = false }: StoryCardProps) {
@@ -227,6 +221,7 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
 
     if (!isTouchDevice) {
       await copyLink();
+      trackEvent("story_share", { story_slug: article.headline, method: "copy_link" });
       return;
     }
 
@@ -241,6 +236,7 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
     if (typeof navigator !== "undefined" && navigator.share) {
       try {
         await navigator.share(shareData);
+        trackEvent("story_share", { story_slug: article.headline, method: "native" });
         return;
       } catch (error) {
         const shareError = error as { name?: string };
@@ -496,6 +492,7 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
               href={xShare}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent("story_share", { story_slug: article.headline, method: "x" })}
               className="flex flex-col items-center gap-2 rounded-2xl p-3 transition-all hover:bg-white/[0.05] active:scale-95"
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-black">
@@ -509,6 +506,7 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
               href={whatsappShare}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent("story_share", { story_slug: article.headline, method: "whatsapp" })}
               className="flex flex-col items-center gap-2 rounded-2xl p-3 transition-all hover:bg-white/[0.05] active:scale-95"
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366]">
@@ -522,6 +520,7 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
               href={linkedinShare}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent("story_share", { story_slug: article.headline, method: "linkedin" })}
               className="flex flex-col items-center gap-2 rounded-2xl p-3 transition-all hover:bg-white/[0.05] active:scale-95"
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#0A66C2]">
@@ -532,7 +531,7 @@ export default function StoryCard({ article, isPriority = false, onUndo, canUndo
               <span className="text-[0.7rem] text-white/60">LinkedIn</span>
             </a>
             <button
-              onClick={copyLink}
+              onClick={() => { copyLink(); trackEvent("story_share", { story_slug: article.headline, method: "copy_link" }); }}
               className="flex flex-col items-center gap-2 rounded-2xl p-3 transition-all hover:bg-white/[0.05] active:scale-95"
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/10">

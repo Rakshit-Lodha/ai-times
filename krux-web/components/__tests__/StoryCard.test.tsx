@@ -63,8 +63,9 @@ describe("StoryCard date display", () => {
         created_at: "2026-03-05T10:00:00+00:00",
       });
       render(<StoryCard article={article} />);
-      // created_at is today (March 5), should show "Today"
-      expect(screen.getByText("Today")).toBeInTheDocument();
+      // "Today" appears in both the badge and the date pill
+      const todayElements = screen.getAllByText("Today");
+      expect(todayElements.length).toBeGreaterThanOrEqual(1);
     });
   });
 
@@ -75,7 +76,8 @@ describe("StoryCard date display", () => {
         created_at: null,
       });
       render(<StoryCard article={article} />);
-      expect(screen.getByText("Today")).toBeInTheDocument();
+      const todayElements = screen.getAllByText("Today");
+      expect(todayElements.length).toBeGreaterThanOrEqual(1);
     });
   });
 
@@ -86,7 +88,8 @@ describe("StoryCard date display", () => {
         created_at: undefined,
       });
       render(<StoryCard article={article} />);
-      expect(screen.getByText("Today")).toBeInTheDocument();
+      const todayElements = screen.getAllByText("Today");
+      expect(todayElements.length).toBeGreaterThanOrEqual(1);
     });
   });
 
@@ -125,7 +128,6 @@ describe("StoryCard date display", () => {
   });
 
   it("prefers created_at over news_date even when news_date is newer", () => {
-    // Edge case: news_date could theoretically be "today" but created_at is older
     withFrozenDate("2026-03-05T12:00:00", () => {
       const article = makeArticle({
         news_date: "2026-03-05", // today
@@ -143,8 +145,8 @@ describe("StoryCard date display", () => {
       });
       render(<StoryCard article={article} />);
       // Should parse without crashing and show a valid date
-      const datePill = screen.getByText(/Today|Mar 5|Mar 4/);
-      expect(datePill).toBeInTheDocument();
+      const datePill = screen.getAllByText(/Today|Mar 5|Mar 4/);
+      expect(datePill.length).toBeGreaterThanOrEqual(1);
     });
   });
 
@@ -156,5 +158,62 @@ describe("StoryCard date display", () => {
     render(<StoryCard article={article} />);
     // Should fall back to raw string
     expect(screen.getByText("not-a-date")).toBeInTheDocument();
+  });
+});
+
+describe("StoryCard TODAY badge", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it("shows TODAY badge when article is from today", () => {
+    withFrozenDate("2026-03-05T12:00:00", () => {
+      const article = makeArticle({
+        created_at: "2026-03-05T10:00:00+00:00",
+      });
+      const { container } = render(<StoryCard article={article} />);
+      // Badge has gradient styling
+      const badge = container.querySelector(".bg-gradient-to-r.from-amber-500");
+      expect(badge).toBeInTheDocument();
+    });
+  });
+
+  it("does NOT show TODAY badge when article is from yesterday", () => {
+    withFrozenDate("2026-03-05T12:00:00", () => {
+      const article = makeArticle({
+        created_at: "2026-03-04T10:00:00+00:00",
+      });
+      const { container } = render(<StoryCard article={article} />);
+      const badge = container.querySelector(".bg-gradient-to-r.from-amber-500");
+      expect(badge).not.toBeInTheDocument();
+    });
+  });
+
+  it("does NOT show TODAY badge when article is older", () => {
+    withFrozenDate("2026-03-05T12:00:00", () => {
+      const article = makeArticle({
+        news_date: "2026-01-15",
+        created_at: null,
+      });
+      const { container } = render(<StoryCard article={article} />);
+      const badge = container.querySelector(".bg-gradient-to-r.from-amber-500");
+      expect(badge).not.toBeInTheDocument();
+    });
+  });
+
+  it("shows TODAY badge using news_date fallback when created_at is null", () => {
+    withFrozenDate("2026-03-05T12:00:00", () => {
+      const article = makeArticle({
+        news_date: "2026-03-05",
+        created_at: null,
+      });
+      const { container } = render(<StoryCard article={article} />);
+      const badge = container.querySelector(".bg-gradient-to-r.from-amber-500");
+      expect(badge).toBeInTheDocument();
+    });
   });
 });

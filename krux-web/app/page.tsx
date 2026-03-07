@@ -5,17 +5,28 @@ import { type Article } from "@/components/StoryCard";
 export const revalidate = 300;
 
 type Props = {
-  searchParams: Promise<{ start?: string }>;
+  searchParams: Promise<{ start?: string; today?: string }>;
 };
 
-export default async function Home({ searchParams }: Props) {
-  const { start } = await searchParams;
+function getIstMidnight(): string {
+  const istDate = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Kolkata" });
+  return new Date(`${istDate}T00:00:00+05:30`).toISOString();
+}
 
-  const { data } = await supabase
+export default async function Home({ searchParams }: Props) {
+  const { start, today } = await searchParams;
+  const isTodayFilter = today === "1";
+
+  let query = supabase
     .from("hundred_word_articles")
     .select("id, headline, output, news_date, created_at, image_url, sources, topic")
-    .order("created_at", { ascending: false })
-    .limit(30);
+    .order("created_at", { ascending: false });
+
+  if (isTodayFilter) {
+    query = query.gte("created_at", getIstMidnight());
+  }
+
+  const { data } = await query.limit(30);
 
   let articles: Article[] = (data ?? []).map((article) => ({
     id: article.id,
@@ -60,5 +71,5 @@ export default async function Home({ searchParams }: Props) {
     }
   }
 
-  return <SwipeDeck articles={articles} startIndex={startIndex} />;
+  return <SwipeDeck articles={articles} startIndex={startIndex ?? (isTodayFilter ? 1 : undefined)} initialTodayFilter={isTodayFilter} />;
 }
