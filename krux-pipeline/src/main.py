@@ -4,7 +4,7 @@ import sys
 import time
 
 from .config import get_processing_dates, get_today_range
-from .steps import content_selector, research, summary, images
+from .steps import rss_monitor, content_selector, research, summary, images
 
 logging.basicConfig(
     level=logging.INFO,
@@ -28,8 +28,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--step",
         type=int,
-        choices=[1, 2, 3, 4],
-        help="Run only a specific step (1=curation, 2=research, 3=summary, 4=images).",
+        choices=[0, 1, 2, 3, 4],
+        help="Run only a specific step (0=rss, 1=curation, 2=research, 3=summary, 4=images).",
     )
     return parser.parse_args()
 
@@ -51,6 +51,16 @@ def run_pipeline() -> None:
     logger.info("=" * 60)
 
     results: dict = {"date": date, "errors": []}
+
+    # ── Step 0: RSS Feed Monitor ──
+    if args.step is None or args.step == 0:
+        try:
+            rss_count = rss_monitor.run(dry_run=dry_run)
+            results["rss_entries"] = rss_count
+            logger.info("Step 0 complete: %d new RSS entries", rss_count)
+        except Exception as e:
+            logger.error("Step 0 FAILED: %s", e, exc_info=True)
+            results["errors"].append(f"rss_monitor: {e}")
 
     # ── Step 1: Content Selection ──
     if args.step is None or args.step == 1:
@@ -105,6 +115,7 @@ def _print_summary(results: dict, elapsed: float) -> None:
     logger.info("=" * 60)
     logger.info("PIPELINE SUMMARY")
     logger.info("  Date:       %s", results.get("date"))
+    logger.info("  RSS:        %s", results.get("rss_entries", "—"))
     logger.info("  Curated:    %s", results.get("curated_stories", "—"))
     logger.info("  Researched: %s", results.get("researched_events", "—"))
     logger.info("  Summaries:  %s", results.get("summaries_generated", "—"))
