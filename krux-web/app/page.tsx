@@ -1,6 +1,7 @@
 import { supabase } from "@/lib/supabase";
-import SwipeDeck from "@/components/SwipeDeck";
+import HomeShell from "@/components/HomeShell";
 import { type Article } from "@/components/StoryCard";
+import { type StackPreview } from "@/components/StackPreviewCard";
 
 export const revalidate = 300;
 
@@ -17,18 +18,26 @@ export default async function Home({ searchParams }: Props) {
   const { start, today } = await searchParams;
   const isTodayFilter = today === "1";
 
-  let query = supabase
+  // Fetch articles and stacks in parallel
+  let articleQuery = supabase
     .from("hundred_word_articles")
     .select("id, headline, output, news_date, created_at, image_url, sources, topic")
     .order("created_at", { ascending: false });
 
   if (isTodayFilter) {
-    query = query.gte("created_at", getIstMidnight());
+    articleQuery = articleQuery.gte("created_at", getIstMidnight());
   }
 
-  const { data } = await query.limit(30);
+  const [articlesResult, stacksResult] = await Promise.all([
+    articleQuery.limit(30),
+    supabase
+      .from("learn_stacks")
+      .select("id, slug, title, emoji, description, cover_gradient, cover_image_url, card_count")
+      .eq("is_published", true)
+      .order("sort_order"),
+  ]);
 
-  let articles: Article[] = (data ?? []).map((article) => ({
+  let articles: Article[] = (articlesResult.data ?? []).map((article) => ({
     id: article.id,
     headline: article.headline,
     output: article.output,
@@ -37,6 +46,17 @@ export default async function Home({ searchParams }: Props) {
     image_url: article.image_url,
     sources: article.sources,
     topic: article.topic,
+  }));
+
+  const stacks: StackPreview[] = (stacksResult.data ?? []).map((s) => ({
+    id: s.id,
+    slug: s.slug,
+    title: s.title,
+    emoji: s.emoji,
+    description: s.description,
+    cover_gradient: s.cover_gradient,
+    cover_image_url: s.cover_image_url,
+    card_count: s.card_count,
   }));
 
   // Find the starting index if coming from a shared link
@@ -71,5 +91,12 @@ export default async function Home({ searchParams }: Props) {
     }
   }
 
-  return <SwipeDeck articles={articles} startIndex={startIndex ?? (isTodayFilter ? 1 : undefined)} initialTodayFilter={isTodayFilter} />;
+  return (
+    <HomeShell
+      articles={articles}
+      stacks={stacks}
+      startIndex={startIndex ?? (isTodayFilter ? 1 : undefined)}
+      initialTodayFilter={isTodayFilter}
+    />
+  );
 }

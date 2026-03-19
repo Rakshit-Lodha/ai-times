@@ -254,7 +254,7 @@ function IntroCard({
   );
 }
 
-export default function SwipeDeck({ articles, startIndex, initialTodayFilter = false }: { articles: Article[]; startIndex?: number; initialTodayFilter?: boolean }) {
+export default function SwipeDeck({ articles, startIndex, initialTodayFilter = false, onPassIntro, topBarOffset = 0 }: { articles: Article[]; startIndex?: number; initialTodayFilter?: boolean; onPassIntro?: () => void; topBarOffset?: number }) {
   const initialTopic: TopicFilter = initialTodayFilter ? "today" : "all";
   const [loadedArticles, setLoadedArticles] = useState<Article[]>(articles);
   const [hasMore, setHasMore] = useState(true);
@@ -309,6 +309,10 @@ export default function SwipeDeck({ articles, startIndex, initialTodayFilter = f
   }, [x]);
 
   const pastIntro = index > 0;
+
+  useEffect(() => {
+    if (pastIntro && onPassIntro) onPassIntro();
+  }, [pastIntro, onPassIntro]);
 
   const handleTopicChange = useCallback(async (newTopic: TopicFilter) => {
     if (newTopic === selectedTopic || isTransitioning) return;
@@ -497,7 +501,7 @@ export default function SwipeDeck({ articles, startIndex, initialTodayFilter = f
   };
 
   return (
-    <main className={`fixed inset-0 w-full h-[100dvh] overflow-hidden overscroll-none bg-[#080808] text-white md:static md:min-h-screen md:flex md:items-center md:justify-center ${pastIntro ? "md:pt-[52px]" : ""}`}>
+    <main className="fixed inset-0 w-full h-[100dvh] overflow-hidden overscroll-none bg-[#080808] text-white md:static md:min-h-screen md:flex md:items-center md:justify-center">
       <style>{`
         @keyframes kruxCtaGradient {
           0% { background-position: 0% 50%; }
@@ -540,8 +544,9 @@ export default function SwipeDeck({ articles, startIndex, initialTodayFilter = f
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -44 }}
             transition={{ type: "spring", stiffness: 400, damping: 35 }}
-            className="fixed top-0 left-0 right-0 z-50 flex h-[52px] items-center justify-center gap-2 overflow-x-auto px-4 no-scrollbar"
+            className="fixed left-0 right-0 z-50 flex h-[52px] items-center justify-center gap-2 overflow-x-auto px-4 no-scrollbar"
             style={{
+              top: `${topBarOffset}px`,
               background: "linear-gradient(to bottom, rgba(8,8,8,0.97), rgba(8,8,8,0.88))",
               backdropFilter: "blur(16px)",
               WebkitBackdropFilter: "blur(16px)",
@@ -579,10 +584,10 @@ export default function SwipeDeck({ articles, startIndex, initialTodayFilter = f
 
       {/* Main Deck Container */}
       <div
-        className={`w-full md:max-w-[400px] lg:max-w-[480px] md:my-4 md:rounded-3xl md:border md:border-white/10 md:shadow-2xl md:overflow-hidden relative md:h-[85vh] ${
-          pastIntro ? "mt-[52px] h-[calc(100dvh-52px)]" : "h-[100dvh]"
-        }`}
+        className="w-full md:max-w-[400px] lg:max-w-[480px] md:my-4 md:rounded-3xl md:border md:border-white/10 md:shadow-2xl md:overflow-hidden relative md:h-[85vh]"
         style={{
+          marginTop: pastIntro ? `${52 + topBarOffset}px` : topBarOffset ? `${topBarOffset}px` : undefined,
+          height: pastIntro ? `calc(100dvh - ${52 + topBarOffset}px)` : topBarOffset ? `calc(100dvh - ${topBarOffset}px)` : "100dvh",
           opacity: deckOpacity,
           transform: `scale(${deckScale})`,
           transition: "opacity 220ms ease, transform 220ms ease, height 300ms cubic-bezier(0.4,0,0.2,1), margin-top 300ms cubic-bezier(0.4,0,0.2,1)",
