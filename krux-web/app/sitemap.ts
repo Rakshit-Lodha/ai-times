@@ -13,12 +13,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .order("created_at", { ascending: false })
     .limit(5000);
 
-  const storyUrls = (data ?? []).map((story) => ({
-    url: `${baseUrl}${buildStoryPath(story.id, story.headline)}`,
-    lastModified: new Date(story.created_at || story.news_date),
-    changeFrequency: "hourly" as const,
-    priority: 0.9,
-  }));
+  const now = Date.now();
+  const sevenDaysMs = 7 * 24 * 60 * 60 * 1000;
+
+  const storyUrls = (data ?? []).map((story) => {
+    const modified = new Date(story.created_at || story.news_date);
+    const isRecent = now - modified.getTime() < sevenDaysMs;
+    return {
+      url: `${baseUrl}${buildStoryPath(story.id, story.headline)}`,
+      lastModified: modified,
+      changeFrequency: "weekly" as const,
+      priority: isRecent ? 0.9 : 0.7,
+    };
+  });
 
   return [
     {

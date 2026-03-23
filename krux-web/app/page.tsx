@@ -1,5 +1,5 @@
 import { supabase } from "@/lib/supabase";
-import SwipeDeck from "@/components/SwipeDeck";
+import HomeShell from "@/components/HomeShell";
 import { type Article } from "@/components/StoryCard";
 
 export const revalidate = 300;
@@ -45,10 +45,8 @@ export default async function Home({ searchParams }: Props) {
     const articleId = parseInt(start, 10);
     const foundIndex = articles.findIndex((a) => a.id === articleId);
     if (foundIndex !== -1) {
-      // +1 because index 0 is the intro card
       startIndex = foundIndex + 1;
     } else if (!isNaN(articleId)) {
-      // Article not in initial batch (older article) — fetch it directly
       const { data: single } = await supabase
         .from("hundred_word_articles")
         .select("id, headline, output, news_date, created_at, image_url, sources, topic")
@@ -66,10 +64,16 @@ export default async function Home({ searchParams }: Props) {
           sources: single.sources,
           topic: single.topic,
         });
-        startIndex = 1; // index 0 = intro, index 1 = the shared article
+        startIndex = 1;
       }
     }
   }
 
-  return <SwipeDeck articles={articles} startIndex={startIndex ?? (isTodayFilter ? 1 : undefined)} initialTodayFilter={isTodayFilter} />;
+  return (
+    <HomeShell
+      articles={articles}
+      startIndex={startIndex ?? (isTodayFilter ? 1 : undefined)}
+      initialTodayFilter={isTodayFilter}
+    />
+  );
 }

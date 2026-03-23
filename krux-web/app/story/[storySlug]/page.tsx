@@ -81,6 +81,7 @@ export async function generateMetadata({
   const canonicalUrl = `${baseUrl}${canonicalPath}`;
   const description = getFirstWords(normalizeText(story.output), 20);
   const ogImage = story.image_url || `${baseUrl}/og-default.svg`;
+  const publishedTime = story.created_at || story.news_date;
 
   return {
     title: `${story.headline} | Krux`,
@@ -94,6 +95,10 @@ export async function generateMetadata({
       url: canonicalUrl,
       siteName: "Krux",
       type: "article",
+      publishedTime,
+      modifiedTime: publishedTime,
+      section: "Technology",
+      tags: ["artificial intelligence", "AI", "technology"],
       images: [{ url: ogImage }],
     },
     twitter: {
@@ -141,9 +146,24 @@ export default async function StoryPage({
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": canonicalUrl,
-      name: "Krux.News",
     },
     url: canonicalUrl,
+    author: {
+      "@type": "Organization",
+      name: "KRUX",
+      url: "https://krux.news",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "KRUX",
+      url: "https://krux.news",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://krux.news/api/pwa-icon?size=512",
+      },
+    },
+    inLanguage: "en",
+    isAccessibleForFree: true,
   };
 
   return (

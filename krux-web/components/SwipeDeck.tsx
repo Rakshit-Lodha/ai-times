@@ -497,7 +497,7 @@ export default function SwipeDeck({ articles, startIndex, initialTodayFilter = f
   };
 
   return (
-    <main className={`fixed inset-0 w-full h-[100dvh] overflow-hidden overscroll-none bg-[#080808] text-white md:static md:min-h-screen md:flex md:items-center md:justify-center ${pastIntro ? "md:pt-[52px]" : ""}`}>
+    <main className="fixed inset-0 w-full h-[100dvh] overflow-hidden overscroll-none bg-[#080808] text-white md:static md:min-h-screen md:flex md:items-center md:justify-center">
       <style>{`
         @keyframes kruxCtaGradient {
           0% { background-position: 0% 50%; }
@@ -579,10 +579,10 @@ export default function SwipeDeck({ articles, startIndex, initialTodayFilter = f
 
       {/* Main Deck Container */}
       <div
-        className={`w-full md:max-w-[400px] lg:max-w-[480px] md:my-4 md:rounded-3xl md:border md:border-white/10 md:shadow-2xl md:overflow-hidden relative md:h-[85vh] ${
-          pastIntro ? "mt-[52px] h-[calc(100dvh-52px)]" : "h-[100dvh]"
-        }`}
+        className="w-full md:max-w-[400px] lg:max-w-[480px] md:my-4 md:rounded-3xl md:border md:border-white/10 md:shadow-2xl md:overflow-hidden relative md:h-[85vh]"
         style={{
+          marginTop: pastIntro ? "52px" : undefined,
+          height: pastIntro ? "calc(100dvh - 52px)" : "100dvh",
           opacity: deckOpacity,
           transform: `scale(${deckScale})`,
           transition: "opacity 220ms ease, transform 220ms ease, height 300ms cubic-bezier(0.4,0,0.2,1), margin-top 300ms cubic-bezier(0.4,0,0.2,1)",
