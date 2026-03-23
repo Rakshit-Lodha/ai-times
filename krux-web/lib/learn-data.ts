@@ -40,6 +40,7 @@ export type CoursePreview = {
   subtopicCount: number;
   cardCount: number;
   estMinutes: number;
+  comingSoon?: boolean;
 };
 
 const BRAND_VOICE_COURSE: LearnCourse = {
@@ -328,8 +329,35 @@ export function getNextSubtopic(course: LearnCourse, currentPosition: number): L
   return course.subtopics.find((s) => s.position === currentPosition + 1);
 }
 
+const COMING_SOON_COURSES: CoursePreview[] = [
+  {
+    id: 100,
+    slug: "claude-code-from-zero-to-shipped",
+    title: "Claude Code: From Zero to Shipped",
+    emoji: "💻",
+    description: "Set up Claude Code, learn the workflow, and ship your first project — no engineering background needed.",
+    coverGradient: "linear-gradient(135deg, #3b82f6, #06b6d4)",
+    subtopicCount: 6,
+    cardCount: 24,
+    estMinutes: 25,
+    comingSoon: true,
+  },
+  {
+    id: 101,
+    slug: "automate-your-content-research",
+    title: "Automate Your Content Research with AI",
+    emoji: "🔍",
+    description: "Build a system that finds, filters, and summarizes industry news and competitor content — so you never start from a blank page.",
+    coverGradient: "linear-gradient(135deg, #10b981, #059669)",
+    subtopicCount: 5,
+    cardCount: 20,
+    estMinutes: 20,
+    comingSoon: true,
+  },
+];
+
 export function getCoursePreviews(): CoursePreview[] {
-  return COURSES.map((c) => ({
+  const live = COURSES.map((c) => ({
     id: c.id,
     slug: c.slug,
     title: c.title,
@@ -340,4 +368,5 @@ export function getCoursePreviews(): CoursePreview[] {
     cardCount: c.cardCount,
     estMinutes: c.estMinutes,
   }));
+  return [...live, ...COMING_SOON_COURSES];
 }

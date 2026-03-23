@@ -4,7 +4,7 @@ import sys
 import time
 
 from .config import get_processing_dates, get_today_range
-from .steps import rss_monitor, content_selector, research, summary, images
+from .steps import health_check, rss_monitor, content_selector, research, summary, images
 
 logging.basicConfig(
     level=logging.INFO,
@@ -51,6 +51,15 @@ def run_pipeline() -> None:
     logger.info("=" * 60)
 
     results: dict = {"date": date, "errors": []}
+
+    # ── Health Check ──
+    if args.step is None:
+        try:
+            healthy = health_check.run()
+            results["health_check"] = "passed" if healthy else "alerts_sent"
+        except Exception as e:
+            logger.error("Health check FAILED: %s", e, exc_info=True)
+            results["errors"].append(f"health_check: {e}")
 
     # ── Step 0: RSS Feed Monitor ──
     if args.step is None or args.step == 0:
