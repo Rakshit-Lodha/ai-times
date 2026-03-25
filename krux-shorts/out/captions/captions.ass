@@ -1,0 +1,79 @@
+[Script Info]
+ScriptType: v4.00+
+WrapStyle: 0
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Arial,58,&H00FFFFFF,&H000000FF,&H00000000,&HAA000000,1,0,0,0,100,100,0,0,3,0,0,2,20,20,200,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:00.92,Default,,0,0,0,,The Pentagon just
+Dialogue: 0,0:00:00.92,0:00:02.04,Default,,0,0,0,,blacklisted one of
+Dialogue: 0,0:00:02.04,0:00:03.26,Default,,0,0,0,,America's leading AI
+Dialogue: 0,0:00:03.26,0:00:04.20,Default,,0,0,0,,companies for saying
+Dialogue: 0,0:00:04.20,0:00:06.18,Default,,0,0,0,,no Anthropic built
+Dialogue: 0,0:00:06.18,0:00:06.78,Default,,0,0,0,,Claude to be
+Dialogue: 0,0:00:06.78,0:00:07.46,Default,,0,0,0,,the safe one
+Dialogue: 0,0:00:07.92,0:00:08.76,Default,,0,0,0,,the careful one
+Dialogue: 0,0:00:09.02,0:00:10.36,Default,,0,0,0,,the AI company
+Dialogue: 0,0:00:10.36,0:00:11.16,Default,,0,0,0,,that asks what
+Dialogue: 0,0:00:11.16,0:00:11.82,Default,,0,0,0,,could go wrong
+Dialogue: 0,0:00:11.82,0:00:13.98,Default,,0,0,0,,before shipping Now
+Dialogue: 0,0:00:13.98,0:00:14.98,Default,,0,0,0,,the Department of
+Dialogue: 0,0:00:14.98,0:00:15.66,Default,,0,0,0,,Defense wanted full
+Dialogue: 0,0:00:15.66,0:00:17.04,Default,,0,0,0,,access all lawful
+Dialogue: 0,0:00:17.04,0:00:18.46,Default,,0,0,0,,purposes no restrictions
+Dialogue: 0,0:00:19.34,0:00:20.30,Default,,0,0,0,,Anthropic said no
+Dialogue: 0,0:00:20.84,0:00:21.42,Default,,0,0,0,,They wouldn't sign
+Dialogue: 0,0:00:21.42,0:00:22.12,Default,,0,0,0,,away control of
+Dialogue: 0,0:00:22.12,0:00:22.74,Default,,0,0,0,,their models to
+Dialogue: 0,0:00:22.74,0:00:23.76,Default,,0,0,0,,the military machine
+Dialogue: 0,0:00:24.24,0:00:25.44,Default,,0,0,0,,Within weeks the
+Dialogue: 0,0:00:25.44,0:00:25.96,Default,,0,0,0,,Pentagon labeled them
+Dialogue: 0,0:00:25.96,0:00:26.84,Default,,0,0,0,,a supply chain
+Dialogue: 0,0:00:26.84,0:00:27.70,Default,,0,0,0,,risk to national
+Dialogue: 0,0:00:27.70,0:00:29.34,Default,,0,0,0,,security barred from
+Dialogue: 0,0:00:29.34,0:00:31.36,Default,,0,0,0,,defense contracts effective
+Dialogue: 0,0:00:31.36,0:00:33.72,Default,,0,0,0,,immediately Senator Warren
+Dialogue: 0,0:00:33.72,0:00:34.94,Default,,0,0,0,,called it retaliation
+Dialogue: 0,0:00:35.74,0:00:36.48,Default,,0,0,0,,Tech workers started
+Dialogue: 0,0:00:36.48,0:00:37.74,Default,,0,0,0,,circulating open letters
+Dialogue: 0,0:00:38.34,0:00:39.48,Default,,0,0,0,,Anthropic filed suit
+Dialogue: 0,0:00:39.90,0:00:40.44,Default,,0,0,0,,calling the action
+Dialogue: 0,0:00:40.44,0:00:42.42,Default,,0,0,0,,unprecedented and unlawful
+Dialogue: 0,0:00:43.18,0:00:43.88,Default,,0,0,0,,But here's what
+Dialogue: 0,0:00:43.88,0:00:44.56,Default,,0,0,0,,this is really
+Dialogue: 0,0:00:44.56,0:00:46.36,Default,,0,0,0,,about Anthropic is
+Dialogue: 0,0:00:46.36,0:00:46.90,Default,,0,0,0,,betting that courts
+Dialogue: 0,0:00:46.90,0:00:47.70,Default,,0,0,0,,will protect the
+Dialogue: 0,0:00:47.70,0:00:48.64,Default,,0,0,0,,company's right to
+Dialogue: 0,0:00:48.64,0:00:49.38,Default,,0,0,0,,choose its customers
+Dialogue: 0,0:00:49.92,0:00:51.18,Default,,0,0,0,,The Pentagon is
+Dialogue: 0,0:00:51.18,0:00:51.56,Default,,0,0,0,,betting it won't
+Dialogue: 0,0:00:51.56,0:00:52.32,Default,,0,0,0,,need to ask
+Dialogue: 0,0:00:52.76,0:00:53.60,Default,,0,0,0,,If you're building
+Dialogue: 0,0:00:53.60,0:00:54.68,Default,,0,0,0,,AI products this
+Dialogue: 0,0:00:54.68,0:00:55.48,Default,,0,0,0,,changes the game
+Dialogue: 0,0:00:55.48,0:00:57.20,Default,,0,0,0,,Every enterprise contract
+Dialogue: 0,0:00:57.60,0:00:58.82,Default,,0,0,0,,every government RFP
+Dialogue: 0,0:00:59.14,0:01:00.32,Default,,0,0,0,,every unrestricted access
+Dialogue: 0,0:01:00.32,0:01:01.30,Default,,0,0,0,,clause now has
+Dialogue: 0,0:01:01.30,0:01:02.06,Default,,0,0,0,,a different weight
+Dialogue: 0,0:01:02.98,0:01:03.54,Default,,0,0,0,,Can you actually
+Dialogue: 0,0:01:03.54,0:01:04.08,Default,,0,0,0,,say no to
+Dialogue: 0,0:01:04.08,0:01:04.90,Default,,0,0,0,,your biggest customer
+Dialogue: 0,0:01:05.52,0:01:06.14,Default,,0,0,0,,Or does signing
+Dialogue: 0,0:01:06.14,0:01:07.42,Default,,0,0,0,,mean surrendering control
+Dialogue: 0,0:01:07.42,0:01:07.98,Default,,0,0,0,,of what you
+Dialogue: 0,0:01:07.98,0:01:09.84,Default,,0,0,0,,built Anthropic built
+Dialogue: 0,0:01:09.84,0:01:10.78,Default,,0,0,0,,guardrails into their
+Dialogue: 0,0:01:10.78,0:01:12.26,Default,,0,0,0,,AI Now they're
+Dialogue: 0,0:01:12.26,0:01:12.82,Default,,0,0,0,,finding out if
+Dialogue: 0,0:01:12.82,0:01:13.28,Default,,0,0,0,,they can build
+Dialogue: 0,0:01:13.28,0:01:14.28,Default,,0,0,0,,guardrails around their
+Dialogue: 0,0:01:14.28,0:01:16.16,Default,,0,0,0,,company Can you
+Dialogue: 0,0:01:16.88,0:01:17.88,Default,,0,0,0,,This is Crux

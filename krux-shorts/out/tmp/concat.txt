@@ -1,0 +1,8 @@
+file '/Users/Rakshit.Lodha/Desktop/ai-times/krux-shorts/out/tmp/looped_hook.mp4'
+file '/Users/Rakshit.Lodha/Desktop/ai-times/krux-shorts/out/tmp/looped_setup.mp4'
+file '/Users/Rakshit.Lodha/Desktop/ai-times/krux-shorts/out/tmp/looped_escalation_1.mp4'
+file '/Users/Rakshit.Lodha/Desktop/ai-times/krux-shorts/out/tmp/looped_escalation_2.mp4'
+file '/Users/Rakshit.Lodha/Desktop/ai-times/krux-shorts/out/tmp/looped_turning_point.mp4'
+file '/Users/Rakshit.Lodha/Desktop/ai-times/krux-shorts/out/tmp/looped_implications.mp4'
+file '/Users/Rakshit.Lodha/Desktop/ai-times/krux-shorts/out/tmp/looped_close.mp4'
+file '/Users/Rakshit.Lodha/Desktop/ai-times/krux-shorts/out/tmp/looped_outro.mp4'
