@@ -9,7 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.82.0",
     "@supabase/supabase-js": "^2.95.3",
+    "exa-js": "^2.11.0",
     "framer-motion": "^12.34.3",
     "next": "16.1.6",
     "react": "19.2.3",

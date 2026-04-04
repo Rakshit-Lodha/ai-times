@@ -130,6 +130,31 @@ export default function CourseDetail({ course, basePath = "/learn-v1-test" }: { 
             })}
           </div>
         </div>
+
+        {/* Generate Voice Files CTA — shown when course is complete */}
+        {isComplete && (
+          <div className="mt-10">
+            <div className="rounded-2xl border border-orange-500/20 bg-orange-500/5 p-6">
+              <div className="text-center">
+                <span className="text-3xl">⚡</span>
+                <h3 className="mt-3 text-[1.1rem] font-bold text-white">
+                  Generate Your Voice Files
+                </h3>
+                <p className="mt-2 text-[0.85rem] leading-relaxed text-white/55">
+                  Put what you learned into action. We&apos;ll analyze your LinkedIn
+                  posts and generate all 4 files you need — voice profile, banned
+                  phrases, project instructions, and best posts collection.
+                </p>
+                <Link
+                  href={`${basePath}/${course.slug}/generate`}
+                  className="mt-5 inline-flex h-[50px] items-center justify-center rounded-2xl bg-orange-500 px-8 text-[0.95rem] font-bold text-white transition-all hover:bg-orange-600 active:scale-[0.98]"
+                >
+                  Generate My Voice Files
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Sticky CTA */}
@@ -149,9 +174,12 @@ export default function CourseDetail({ course, basePath = "/learn-v1-test" }: { 
             </>
           )}
           {isComplete && (
-            <div className="flex h-[50px] w-full items-center justify-center rounded-2xl border border-orange-500/30 bg-orange-500/10 text-[0.95rem] font-bold text-orange-400">
-              Course Complete ✓
-            </div>
+            <Link
+              href={`${basePath}/${course.slug}/generate`}
+              className="flex h-[50px] w-full items-center justify-center rounded-2xl bg-orange-500 text-[0.95rem] font-bold text-white transition-all hover:bg-orange-600 active:scale-[0.98]"
+            >
+              Generate My Voice Files
+            </Link>
           )}
         </div>
       </div>
