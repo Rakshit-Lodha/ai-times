@@ -1,16 +1,22 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Lora } from "next/font/google";
+import { Geist, IBM_Plex_Mono, Source_Serif_4 } from "next/font/google";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import "./globals.css";
 
-const inter = Inter({
+const geist = Geist({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-geist",
 });
 
-const lora = Lora({
+const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],
-  variable: "--font-lora",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-ibm-plex-mono",
+});
+
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  variable: "--font-source-serif",
 });
 
 export const viewport: Viewport = {
@@ -61,7 +67,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${lora.variable}`}>
+    <html
+      lang="en"
+      className={`${geist.variable} ${ibmPlexMono.variable} ${sourceSerif.variable}`}
+    >
       <body className="font-sans antialiased">
         <GoogleAnalytics />
         {children}

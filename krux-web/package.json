@@ -13,6 +13,7 @@
     "@supabase/supabase-js": "^2.95.3",
     "exa-js": "^2.11.0",
     "framer-motion": "^12.34.3",
+    "jszip": "^3.10.1",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3"

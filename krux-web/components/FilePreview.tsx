@@ -1,6 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import {
+  learnCardClass,
+  learnMonoStyle,
+  primaryButtonClass,
+  secondaryButtonClass,
+} from "@/components/learn-ui";
 
 type FilePreviewProps = {
   filename: string;
@@ -44,11 +50,6 @@ export default function FilePreview({
     setEditing(false);
   };
 
-  const handleCancel = () => {
-    setDraft(content);
-    setEditing(false);
-  };
-
   const startEditing = () => {
     setDraft(content);
     setExpanded(true);
@@ -56,106 +57,83 @@ export default function FilePreview({
   };
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.03]">
-      {/* Header */}
-      <div className="flex items-center gap-3 px-4 py-3.5">
-        <span className="text-lg">{icon}</span>
-        <span className="flex-1 text-[0.85rem] font-semibold text-white/80">
-          {filename}
-        </span>
-
-        <div className="flex gap-1.5">
-          {/* Copy */}
+    <div className={`${learnCardClass} overflow-hidden`}>
+      <div className="flex items-center gap-3 px-4 py-3">
+        <div className="flex h-[34px] w-[34px] items-center justify-center rounded-[10px] bg-[#16233A] text-base">
+          {icon}
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-[14px] font-semibold text-white">{filename}</p>
+          <p className="mt-0.5 text-[12px] text-slate-400">Preview, edit, or download</p>
+        </div>
+        <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={handleCopy}
-            className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/5 text-white/40 transition-all hover:bg-white/10 hover:text-white/60 active:scale-90"
-            title="Copy"
+            className="rounded-[12px] border border-[#223449] bg-[#101A2B] px-3 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-slate-300 transition hover:bg-[#16233A]"
+            style={learnMonoStyle}
           >
-            {copied ? (
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg>
-            ) : (
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-              </svg>
-            )}
+            {copied ? "Copied" : "Copy"}
           </button>
-
-          {/* Edit */}
-          {!editing && (
-            <button
-              type="button"
-              onClick={startEditing}
-              className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/5 text-white/40 transition-all hover:bg-white/10 hover:text-white/60 active:scale-90"
-              title="Edit"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-              </svg>
-            </button>
-          )}
-
-          {/* Download */}
           <button
             type="button"
             onClick={handleDownload}
-            className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/5 text-white/40 transition-all hover:bg-white/10 hover:text-white/60 active:scale-90"
-            title="Download"
+            className="rounded-[12px] border border-[#223449] bg-[#101A2B] px-3 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-slate-300 transition hover:bg-[#16233A]"
+            style={learnMonoStyle}
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
+            Save
           </button>
         </div>
       </div>
 
-      {/* Content */}
-      <div className="border-t border-white/5 px-4 py-3">
+      <div className="border-t border-white/5 px-4 py-4">
         {editing ? (
           <>
             <textarea
               value={draft}
-              onChange={(e) => setDraft(e.target.value)}
-              className="w-full min-h-[300px] rounded-xl border border-white/10 bg-white/5 p-4 font-mono text-[0.8rem] leading-relaxed text-white/70 placeholder:text-white/30 focus:border-orange-500/40 focus:outline-none resize-y"
+              onChange={(event) => setDraft(event.target.value)}
+              className="min-h-[280px] w-full resize-y rounded-[14px] border border-[#223449] bg-[#08111e] p-4 text-[0.82rem] leading-[1.6] text-slate-200 focus:border-[#3b82f666] focus:outline-none"
+              style={learnMonoStyle}
             />
-            <div className="mt-3 flex justify-end gap-2">
+            <div className="mt-3 flex flex-wrap justify-end gap-2">
               <button
                 type="button"
-                onClick={handleCancel}
-                className="h-9 rounded-xl border border-white/15 bg-white/5 px-4 text-[0.8rem] font-medium text-white/60 transition-all hover:bg-white/10 active:scale-[0.95]"
+                onClick={() => {
+                  setDraft(content);
+                  setEditing(false);
+                }}
+                className={secondaryButtonClass}
               >
                 Cancel
               </button>
-              <button
-                type="button"
-                onClick={handleSave}
-                className="h-9 rounded-xl bg-orange-500 px-4 text-[0.8rem] font-bold text-white transition-all hover:bg-orange-600 active:scale-[0.95]"
-              >
+              <button type="button" onClick={handleSave} className={primaryButtonClass}>
                 Save changes
               </button>
             </div>
           </>
         ) : (
           <>
-            <pre className="whitespace-pre-wrap text-[0.8rem] leading-relaxed text-white/50">
+            <pre
+              className="whitespace-pre-wrap text-[0.82rem] leading-[1.65] text-slate-300"
+              style={learnMonoStyle}
+            >
               {expanded ? content : previewLines}
               {!expanded && isLong && "..."}
             </pre>
-            {isLong && (
-              <button
-                type="button"
-                onClick={() => setExpanded(!expanded)}
-                className="mt-2 text-[0.75rem] font-medium text-orange-400/80 transition-all hover:text-orange-400"
-              >
-                {expanded ? "Show less" : "Show all"}
+            <div className="mt-4 flex flex-wrap gap-2">
+              <button type="button" onClick={startEditing} className={secondaryButtonClass}>
+                Edit file
               </button>
-            )}
+              {isLong && (
+                <button
+                  type="button"
+                  onClick={() => setExpanded((value) => !value)}
+                  className={secondaryButtonClass}
+                >
+                  {expanded ? "Show less" : "Show all"}
+                </button>
+              )}
+            </div>
           </>
         )}
       </div>

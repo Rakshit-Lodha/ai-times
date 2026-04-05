@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { learnMonoStyle } from "@/components/learn-ui";
 
 type PillSelectorProps = {
   label: string;
@@ -44,8 +45,13 @@ export default function PillSelector({
   const customEntries = selected.filter((s) => !options.includes(s));
 
   return (
-    <div>
-      <p className="mb-3 text-[0.85rem] font-semibold text-white/70">{label}</p>
+    <div className="rounded-[14px] border border-[#223449] bg-[#0F172A] p-[14px]">
+      <p
+        className="mb-3 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-400"
+        style={learnMonoStyle}
+      >
+        {label}
+      </p>
 
       <div className="flex flex-wrap gap-2">
         {/* Preset pills */}
@@ -56,10 +62,10 @@ export default function PillSelector({
               key={option}
               type="button"
               onClick={() => toggle(option)}
-              className={`rounded-xl border px-3.5 py-2 text-[0.8rem] font-medium transition-all active:scale-[0.95] ${
+              className={`rounded-[12px] border px-3.5 py-2 text-[0.8rem] font-medium transition-all active:scale-[0.95] ${
                 isSelected
-                  ? "border-orange-500/40 bg-orange-500/20 text-orange-400"
-                  : "border-white/10 bg-white/5 text-white/60 hover:bg-white/10"
+                  ? "border-[#3b82f666] bg-[#16233A] text-sky-200"
+                  : "border-[#223449] bg-[#101A2B] text-slate-300 hover:bg-[#16233A]"
               }`}
             >
               {option}
@@ -73,7 +79,7 @@ export default function PillSelector({
             key={entry}
             type="button"
             onClick={() => removeCustom(entry)}
-            className="flex items-center gap-1.5 rounded-xl border border-orange-500/40 bg-orange-500/20 px-3.5 py-2 text-[0.8rem] font-medium text-orange-400 transition-all active:scale-[0.95]"
+            className="flex items-center gap-1.5 rounded-[12px] border border-[#3b82f666] bg-[#16233A] px-3.5 py-2 text-[0.8rem] font-medium text-sky-200 transition-all active:scale-[0.95]"
           >
             {entry}
             <svg
@@ -97,7 +103,7 @@ export default function PillSelector({
           <button
             type="button"
             onClick={() => setShowInput(true)}
-            className="rounded-xl border border-dashed border-white/20 bg-transparent px-3.5 py-2 text-[0.8rem] font-medium text-white/40 transition-all hover:border-white/30 hover:text-white/60 active:scale-[0.95]"
+            className="rounded-[12px] border border-dashed border-slate-600 bg-transparent px-3.5 py-2 text-[0.8rem] font-medium text-slate-400 transition-all hover:border-slate-500 hover:text-slate-300 active:scale-[0.95]"
           >
             + Other
           </button>
@@ -118,12 +124,12 @@ export default function PillSelector({
               }
             }}
             placeholder={placeholder}
-            className="h-10 flex-1 rounded-xl border border-white/10 bg-white/5 px-3 text-[0.85rem] text-white placeholder:text-white/30 focus:border-orange-500/40 focus:outline-none"
+            className="h-10 flex-1 rounded-[12px] border border-[#223449] bg-[#101A2B] px-3 text-[0.85rem] text-white placeholder:text-white/30 focus:border-[#3b82f666] focus:outline-none"
           />
           <button
             type="button"
             onClick={addCustom}
-            className="h-10 rounded-xl bg-orange-500 px-4 text-[0.8rem] font-bold text-white transition-all hover:bg-orange-600 active:scale-[0.95]"
+            className="h-10 rounded-[12px] border border-[#60A5FA66] bg-[#3B82F6] px-4 text-[0.8rem] font-bold text-white transition-all hover:bg-[#4a8ff7] active:scale-[0.95]"
           >
             Add
           </button>
@@ -133,7 +139,7 @@ export default function PillSelector({
               setShowInput(false);
               setCustomInput("");
             }}
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/40 transition-all hover:bg-white/10"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[12px] border border-[#223449] bg-[#101A2B] text-slate-400 transition-all hover:bg-[#16233A]"
           >
             <svg
               width="14"

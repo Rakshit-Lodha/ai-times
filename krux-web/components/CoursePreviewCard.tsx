@@ -1,58 +1,75 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { useCourseProgress } from "@/lib/useProgress";
 import { type CoursePreview } from "@/lib/learn-data";
+import {
+  learnCardClass,
+  learnMonoStyle,
+  primaryButtonClass,
+  secondaryButtonClass,
+} from "@/components/learn-ui";
 
 export default function CoursePreviewCard({ course, basePath = "/learn-v1-test" }: { course: CoursePreview; basePath?: string }) {
-  const inner = (
-    <motion.div
-      whileTap={course.comingSoon ? undefined : { scale: 0.97 }}
-      className="relative flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-2xl border border-white/10 p-4"
-      style={{ background: course.coverGradient }}
-    >
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+  const { completedSubtopicCount } = useCourseProgress(course.slug);
+  const started = !course.comingSoon && completedSubtopicCount > 0;
+  const progress = course.subtopicCount > 0
+    ? Math.max(8, Math.round((completedSubtopicCount / course.subtopicCount) * 100))
+    : 0;
 
-      {/* Desaturate overlay for coming soon */}
-      {course.comingSoon && (
-        <div className="absolute inset-0 z-10 bg-black/50" />
-      )}
-
-      {/* Coming soon badge */}
-      {course.comingSoon && (
-        <div className="absolute right-3 top-3 z-20 rounded-full border border-white/20 bg-white/10 px-2.5 py-1 backdrop-blur-md">
-          <span className="text-[0.6rem] font-bold uppercase tracking-wider text-white/70">Coming Soon</span>
+  if (course.comingSoon) {
+    return (
+      <div className={`${learnCardClass} rounded-[20px] p-4`}>
+        <div className="flex items-start justify-between gap-4">
+          <h3 className="text-[20px] font-bold leading-[1.2] text-slate-200">
+            {course.title}
+          </h3>
         </div>
-      )}
-
-      <div className={`relative ${course.comingSoon ? "z-20" : "z-10"}`}>
-        <span className="text-3xl">{course.emoji}</span>
-        <h3 className={`mt-2 text-[0.95rem] font-bold leading-snug ${course.comingSoon ? "text-white/60" : "text-white"}`}>
-          {course.title}
-        </h3>
-        <p className={`mt-1.5 text-[0.75rem] leading-relaxed line-clamp-2 ${course.comingSoon ? "text-white/35" : "text-white/55"}`}>
-          {course.description}
+        <p className="mt-3 text-[14px] leading-[1.45] text-slate-500">
+          Planned next. This course will cover story structure, launch arcs, and
+          founder-led messaging.
         </p>
-        <div className="mt-3 flex items-center gap-2">
-          <span className={`rounded-full bg-white/10 px-2 py-0.5 text-[0.65rem] font-semibold ${course.comingSoon ? "text-white/35" : "text-white/60"}`}>
-            {course.subtopicCount} topics
-          </span>
-          <span className={`rounded-full bg-white/10 px-2 py-0.5 text-[0.65rem] font-semibold ${course.comingSoon ? "text-white/35" : "text-white/60"}`}>
-            {course.cardCount} cards
+        <div className="mt-4">
+          <span className={`${secondaryButtonClass} h-[38px] px-4 text-[0.78rem] text-white/55`}>
+            Coming Soon
           </span>
         </div>
       </div>
-    </motion.div>
-  );
-
-  if (course.comingSoon) {
-    return <div className="cursor-default">{inner}</div>;
+    );
   }
 
   return (
-    <Link href={`${basePath}/${course.slug}`}>
-      {inner}
-    </Link>
+    <div className={`${learnCardClass} p-4`}>
+      <div className="flex items-start justify-between gap-4">
+        <h3 className="max-w-[248px] text-[20px] font-bold leading-[1.15] text-slate-50">
+          {course.title}
+        </h3>
+      </div>
+      <p className="mt-3 text-[14px] leading-[1.45] text-slate-400">
+        {started
+          ? `${completedSubtopicCount} lessons done. Continue building a repeatable writing system that sounds like you.`
+          : course.description}
+      </p>
+
+      <div className="mt-4 h-2 overflow-hidden rounded-full bg-slate-800">
+        <div
+          className="h-full rounded-full bg-[#60A5FA] transition-[width] duration-500"
+          style={{ width: `${started ? progress : 8}%` }}
+        />
+      </div>
+
+      <div className="mt-4 flex items-center justify-between gap-3">
+        <div className="rounded-full border border-[#27406A] bg-[#16233A] px-3 py-2">
+          <span className="text-[12px] font-bold text-sky-200" style={learnMonoStyle}>
+            {started
+              ? `${Math.round((completedSubtopicCount / course.subtopicCount) * 100)}% complete`
+              : `${course.subtopicCount} lessons  ${course.estMinutes} min`}
+          </span>
+        </div>
+        <Link href={`${basePath}/${course.slug}`} className={`${primaryButtonClass} h-[40px] px-4 text-[0.82rem]`}>
+          {started ? "Continue" : "Start Course"}
+        </Link>
+      </div>
+    </div>
   );
 }
