@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
       zip.file(name, content);
     }
 
-    const archive = await zip.generateAsync({ type: "uint8array" });
+    const archive = await zip.generateAsync({ type: "arraybuffer" });
 
     return new NextResponse(archive, {
       status: 200,
