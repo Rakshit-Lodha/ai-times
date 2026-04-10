@@ -111,6 +111,9 @@ def transcribe_long_audio(audio_path: str, status_placeholder=None) -> str:
     return " ".join(transcripts)
 
 
+COOKIE_FILE = os.getenv("INSTAGRAM_COOKIES_PATH", "/etc/secrets/cookies.txt")
+
+
 def download_audio(url: str) -> str:
     tmp = tempfile.NamedTemporaryFile(suffix=".mp3", delete=False)
     tmp_path = tmp.name
@@ -127,6 +130,9 @@ def download_audio(url: str) -> str:
         ],
         "quiet": True,
     }
+    if os.path.isfile(COOKIE_FILE):
+        ydl_opts["cookiefile"] = COOKIE_FILE
+
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
     return tmp_path
