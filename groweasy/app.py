@@ -381,15 +381,26 @@ def inject_css():
 
 
 # ---------------------------------------------------------------------------
+# Pre-loaded reference analysis (demo mode)
+# ---------------------------------------------------------------------------
+PRELOADED_ANALYSIS_PATH = os.path.join(os.path.dirname(__file__), "reference_analysis.txt")
+
+
+def _load_preloaded_analysis() -> str | None:
+    if os.path.isfile(PRELOADED_ANALYSIS_PATH):
+        with open(PRELOADED_ANALYSIS_PATH) as f:
+            return f.read()
+    return None
+
+
+# ---------------------------------------------------------------------------
 # Session state init
 # ---------------------------------------------------------------------------
 def init_state():
     defaults = {
-        "step": 1,
-        "analysis": None,
+        "step": 2,  # skip URL input — start at script generation
+        "analysis": _load_preloaded_analysis(),
         "script": None,
-        "failed_urls": [],
-        "success_count": 0,
     }
     for k, v in defaults.items():
         if k not in st.session_state:
@@ -397,11 +408,9 @@ def init_state():
 
 
 def reset_state():
-    st.session_state.step = 1
-    st.session_state.analysis = None
+    st.session_state.step = 2
+    st.session_state.analysis = _load_preloaded_analysis()
     st.session_state.script = None
-    st.session_state.failed_urls = []
-    st.session_state.success_count = 0
 
 
 # ---------------------------------------------------------------------------
@@ -452,33 +461,11 @@ def render_step_1():
 
 
 def render_step_2():
-    st.markdown('<div class="step-pill">Step 2 of 3</div>', unsafe_allow_html=True)
-    st.markdown("## Reference Analysis")
-    st.markdown("### Here's what the top creators are doing.")
+    st.markdown('<div class="step-pill">Step 1 of 2</div>', unsafe_allow_html=True)
+    st.markdown("## GrowEasy Script Generator")
+    st.markdown("### We've analysed top creators. Now generate your script.")
 
     st.markdown("<br>", unsafe_allow_html=True)
-
-    # Render analysis sections as styled cards
-    analysis_text = st.session_state.analysis
-    sections = re.split(r"\n(?=\d+\.\s+[A-Z])", analysis_text)
-    for section in sections:
-        section = section.strip()
-        if not section:
-            continue
-        match = re.match(r"(\d+\.\s+[A-Z &]+)\n?(.*)", section, re.DOTALL)
-        if match:
-            title = match.group(1).strip()
-            body = match.group(2).strip()
-        else:
-            title = ""
-            body = section
-        st.markdown(
-            f'<div class="card"><h4>{title}</h4><p>{body.replace(chr(10), "<br>")}</p></div>',
-            unsafe_allow_html=True,
-        )
-
-    st.markdown("---")
-    st.markdown("### Now, generate your script")
 
     topic = st.text_input("Topic", placeholder="e.g. AI tools for founders")
     insight = st.text_area(
@@ -506,14 +493,30 @@ def render_step_2():
         st.session_state.step = 3
         st.rerun()
 
-    st.markdown("<br>", unsafe_allow_html=True)
-    if st.button("← Start Over", use_container_width=False):
-        reset_state()
-        st.rerun()
+    # Render analysis sections as styled cards below the form
+    st.markdown("---")
+    st.markdown("### Creator Style Analysis")
+    analysis_text = st.session_state.analysis
+    sections = re.split(r"\n(?=\d+\.\s+[A-Z])", analysis_text)
+    for section in sections:
+        section = section.strip()
+        if not section:
+            continue
+        match = re.match(r"(\d+\.\s+[A-Z &]+)\n?(.*)", section, re.DOTALL)
+        if match:
+            title = match.group(1).strip()
+            body = match.group(2).strip()
+        else:
+            title = ""
+            body = section
+        st.markdown(
+            f'<div class="card"><h4>{title}</h4><p>{body.replace(chr(10), "<br>")}</p></div>',
+            unsafe_allow_html=True,
+        )
 
 
 def render_step_3():
-    st.markdown('<div class="step-pill">Step 3 of 3</div>', unsafe_allow_html=True)
+    st.markdown('<div class="step-pill">Step 2 of 2</div>', unsafe_allow_html=True)
     st.markdown("## Your Script")
     st.markdown("### Ready to record. Copy it below.")
 
@@ -549,9 +552,7 @@ inject_css()
 init_state()
 
 step = st.session_state.step
-if step == 1:
-    render_step_1()
-elif step == 2:
+if step == 2:
     render_step_2()
 elif step == 3:
     render_step_3()
