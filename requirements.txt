@@ -5,3 +5,9 @@ httpx
 gunicorn
 supabase
 streamlit
+openai
+google-api-python-client
+yt-dlp
+pydub
+sarvamai
+isodate
