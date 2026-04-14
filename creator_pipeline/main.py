@@ -2,14 +2,14 @@ import argparse
 import json
 import logging
 
-from .steps import hourly, selector, sync_webhooks
+from .steps import hourly, selector
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Creator daily content pipeline")
     parser.add_argument(
         "--step",
-        choices=["sync", "selector", "youtube", "hourly", "all"],
+        choices=["selector", "youtube", "hourly", "all"],
         default="all",
         help="Pipeline step to run.",
     )
@@ -22,8 +22,6 @@ def main() -> None:
         results.update(hourly.run(dry_run=args.dry_run))
         print(json.dumps(results, indent=2))
         return
-    if args.step in {"sync", "all"}:
-        results["webhooks_synced"] = sync_webhooks.sync(dry_run=args.dry_run)
     if args.step in {"youtube", "all"}:
         from .steps import youtube_monitor
 

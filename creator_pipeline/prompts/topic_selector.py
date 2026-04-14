@@ -33,6 +33,7 @@ Strong categories:
 Selection rules:
 - Prefer topics that can become a concrete 45-90 second video.
 - Prefer useful "what to do" angles over generic news.
+- Default every selected topic to language "hinglish" unless a human explicitly asks otherwise.
 - Paid ads topics should include tools, best practices, zero-to-one setup,
   campaign structure, creative testing, tracking, attribution, landing pages,
   retargeting, or avoiding wasted ad spend.
@@ -52,11 +53,10 @@ Return strict JSON only:
       "suggested_angle": "how the creator should frame it",
       "why_relevant": "why this audience should care today",
       "recommended_format": "talking head | roleplay/skit | storytelling | tutorial/listicle | interview/podcast clip | motivational monologue",
-      "language": "hindi | hinglish | english",
+      "language": "hinglish",
       "score": 0,
       "source_urls": [{"name": "source", "url": "https://..."}]
     }
   ]
 }
 """
-

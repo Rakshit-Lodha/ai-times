@@ -1,13 +1,12 @@
 import json
 import logging
 
-from . import selector, sync_webhooks
+from . import selector
 
 
 def run(dry_run: bool = False) -> dict:
-    synced = sync_webhooks.sync(dry_run=dry_run)
-    selected = selector.run(dry_run=dry_run) if synced else 0
-    return {"webhooks_synced": synced, "candidates_selected": selected}
+    selected = selector.run(dry_run=dry_run)
+    return {"candidates_selected": selected}
 
 
 def main() -> None:
@@ -17,4 +16,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

@@ -7,6 +7,8 @@ This profile captures reusable patterns observed across reference transcripts. U
 ## 1) General Style Overview
 
 - Language: Hinglish (Hindi base with English phrases), heavy code-switching, transliteration-friendly.
+- Mandatory voice guardrail: do not write clean English explainer paragraphs. The output should sound like a creator speaking to Indian business owners: "agar aap", "dekho", "samjho", "iska matlab", "simple language mein", "aapko kya karna hai".
+- English words are allowed for business/finance terms (SGB, redemption, ROAS, CAC, offer, campaign), but the sentence frame should usually be Hindi/Hinglish.
 - Format variety: talking head, roleplay/skit, storytelling, motivational monologue, tutorial/listicle, interview clips.
 - Pacing: fast, high-energy; quick transitions; frequent micro-gestures and props; 60–150 seconds typical, with some longer slots around 2 minutes.
 - CTA cadence: frequent, specific, and actionable (comments for links, registration, next live class, etc.).
@@ -77,6 +79,7 @@ This profile captures reusable patterns observed across reference transcripts. U
 - Use colloquialisms, local expressions, and direct address (you, boss, bhai).
 - Transliterations that feel natural in spoken Hindi (e.g., “no brainER”, “deal करेगा”).
 - Use simple, concrete numbers and vivid adjectives to describe value.
+- Avoid formal finance/newsroom wording. Rewrite "derived from the three-day average" as "yeh price last 3 din ke gold average se nikla hai"; rewrite "verify your exact tranche" as "apna series number bank ya RBI Retail Direct par check kar lo".
 
 ---
 

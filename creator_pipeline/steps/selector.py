@@ -4,6 +4,7 @@ import logging
 from datetime import datetime
 
 from ..clients import require_openai_client, supabase
+from ..parallel_monitors import load_map
 from ..prompts.topic_selector import SYSTEM_PROMPT
 from ..utils.hash import stable_hash
 from ..utils.json import safe_load_json
@@ -13,9 +14,16 @@ logger = logging.getLogger(__name__)
 
 
 def fetch_raw_webhooks(limit: int = 80) -> list[dict]:
+    monitor_map = load_map()
+    monitor_ids = list(monitor_map.keys())
+    if not monitor_ids:
+        logger.warning("No creator monitor IDs found in creator_monitor_map.json.")
+        return []
+
     result = (
-        supabase.table("creator_raw_webhooks")
-        .select("id, news_output, news_date, source_urls, monitor_type, source_name, source_url, created_at")
+        supabase.table("webhooks")
+        .select("id, news_output, news_date, source_urls, monitor_type, monitor_id, event_group_id, created_at")
+        .in_("monitor_id", monitor_ids)
         .order("created_at", desc=True)
         .limit(limit)
         .execute()
@@ -81,7 +89,7 @@ def save_candidates(selection: dict, dry_run: bool = False) -> int:
 def run(limit: int = 80, dry_run: bool = False) -> int:
     raw_items = fetch_raw_webhooks(limit=limit)
     if not raw_items:
-        logger.warning("No creator raw webhooks found.")
+        logger.warning("No creator webhook rows found.")
         return 0
     selection = select_topics(raw_items)
     return save_candidates(selection, dry_run=dry_run)
