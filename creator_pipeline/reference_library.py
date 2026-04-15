@@ -1,11 +1,32 @@
 import ast
 import csv
+import json
 from pathlib import Path
 
 DEFAULT_REFERENCE_FILE = Path("/Users/Rakshit.Lodha/Downloads/refrences_tej.json")
 DEFAULT_TAGS_FILE = Path(__file__).resolve().parent.parent / "enriched_data_1.csv"
 DEFAULT_STYLE_FILE = Path(__file__).resolve().parent / "data" / "tej_style_profile.md"
+FALLBACK_REFERENCE_EXAMPLES_FILE = Path(__file__).resolve().parent / "data" / "tej_reference_examples.json"
 FALLBACK_STYLE_FILE = Path(__file__).resolve().parent.parent / "reference_analysis.txt"
+
+RELATED_CATEGORY_FALLBACKS = {
+    "paid ads & growth": [
+        "marketing",
+        "business strategy",
+        "ecommerce",
+        "sales & negotiation",
+    ],
+    "government schemes & policy": [
+        "business strategy",
+        "startup ideas & opportunities",
+        "investing & finance",
+    ],
+    "startup ideas & opportunities": [
+        "business strategy",
+        "marketing",
+        "ecommerce",
+    ],
+}
 
 
 def _to_int(value) -> int | None:
@@ -60,6 +81,11 @@ def load_reference_examples(
     reference_file: Path = DEFAULT_REFERENCE_FILE,
     tags_file: Path = DEFAULT_TAGS_FILE,
 ) -> list[dict]:
+    if not reference_file.exists():
+        if FALLBACK_REFERENCE_EXAMPLES_FILE.exists():
+            return json.loads(FALLBACK_REFERENCE_EXAMPLES_FILE.read_text(encoding="utf-8"))
+        return []
+
     payload = ast.literal_eval(reference_file.read_text(encoding="utf-8"))
     tag_by_link = _load_tags(tags_file)
     rows = []
@@ -115,6 +141,13 @@ def select_reference_examples(topic: dict, limit: int = 5) -> list[dict]:
         category_matches = [e for e in examples if e.get("topic_category") == category]
         if category_matches:
             examples = category_matches
+        else:
+            related_categories = RELATED_CATEGORY_FALLBACKS.get(category, [])
+            related_matches = [
+                e for e in examples if e.get("topic_category") in related_categories
+            ]
+            if related_matches:
+                examples = related_matches
     if content_format:
         format_matches = [e for e in examples if e.get("content_format") == content_format]
         if format_matches:

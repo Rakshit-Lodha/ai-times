@@ -1,237 +1,279 @@
-# Script-writing Profile for Short-form Creator Analysis
+# SCRIPT VOICE PROFILE: Rajiv Talreja (short-form video style)
 
-This profile captures reusable patterns observed across reference transcripts. Use as prompt context for future scripts.
-
----
-
-## 1) General Style Overview
-
-- Language: Hinglish (Hindi base with English phrases), heavy code-switching, transliteration-friendly.
-- Mandatory voice guardrail: do not write clean English explainer paragraphs. The output should sound like a creator speaking to Indian business owners: "agar aap", "dekho", "samjho", "iska matlab", "simple language mein", "aapko kya karna hai".
-- English words are allowed for business/finance terms (SGB, redemption, ROAS, CAC, offer, campaign), but the sentence frame should usually be Hindi/Hinglish.
-- Format variety: talking head, roleplay/skit, storytelling, motivational monologue, tutorial/listicle, interview clips.
-- Pacing: fast, high-energy; quick transitions; frequent micro-gestures and props; 60–150 seconds typical, with some longer slots around 2 minutes.
-- CTA cadence: frequent, specific, and actionable (comments for links, registration, next live class, etc.).
-- Value hooks: concrete takeaways, numbers, or a contrarian view that challenges common belief.
+A reusable, script-writing profile distilled from Rajiv Talreja’s Hinglish, talking-head, sales-and-business shorts. Designed to power a script generator with authentic voice, rhythm, and structure.
 
 ---
 
-## 2) Hook Patterns (attention grabbers)
+## 1) Hook mechanics (first 3–8 seconds)
 
-- Provocative contrast
-  - Example: “Boring makes money. Entertaining keeps you in struggle.”
-- Culture/identity tension
-  - Example: “हमारे कल्चर में हमें ये सिखाया नहीं गया है कि इफ I CAN DISAGREE…”
-- No-brainer or offer shift
-  - Example: “No-brainer ऑफर बना दें… डरावना परफॉर्मेंस नहीं, क्लाइंट को तुरंत निर्णय लेने पर मजबूर करना”
-- Price/value paradox
-  - Example: “₹35000 में इंट्रोडक्शन नहीं, पर वैल्यू इतना कि कस्टमर बोले- नहीं छोड़ेंगे”
-- Problem first, solution teased
-  - Example: “अगर आप OFFLINE दुकानों में कॉमोडिटी प्रोडक्ट बेचते हो, तो यह वीडियो मिस न करें”
-- “10-sec or 60-sec crash” promise
-  - Example: “Is 10 seconds enough to handle any sales objection? अब मैं दिखाऊँगा।”
+- Direct pain-point hook in audience’s language
+  - Examples from transcripts:
+    - “अगर आप ऑफलाइन बिजनेस करते हो, तो यह वीडियो मिस बिल्कुल मत करना।” 
+    - “How to ANSWER It’s Too Expensive Sales Objection” (headline-style, immediate problem)
+- Bold, counter-intuitive claim or binary choice
+  - Examples:
+    - “बोरिंग मेक्स मनी. एंटरटेनिंग कीप्स यू इन स्ट्रगल.” (provokes a contrast)
+    - “Stop Doing THIS in Sales Meetings” (directive, click-bait style)
+- Promise of value in short time or a tactic
+  - “2 घंटे की मास्टर क्लास” and “दी साइंस ऑफ सेलिंग” style hooks
+- Scenario setup or roleplay teaser
+  - “सर गुड मॉर्निंग … सैंपल दिखाओ” (immediate scene-setting that snaps to a demo)
+- Price or value teaser with a contrast
+  - “₹35,000 में डील करना क्या आपको बताएँ?” (intrigue around value vs. price)
+- Everyday business friction as a setup
+  - “ऑनलाइन तुलना से कॉम्पिटिशन भारी हो रहा है, ऑफलाइन को डीकमोडिटाइज कैसे करें?” (problem framing)
 
----
-
-## 3) Opening Sentence Formulas (opening formulas to start strong)
-
-- Formula A: Culture vs. reality
-  - “हमारे कल्चर में X सिखाया नहीं गया—क्या यह Y समस्या को हल कर सकता है?”
-- Formula B: Direct benefit promise
-  - “अगर आप चाहते हैं Z, तो आपको A करना पड़ेगा; नहीं तो B होगा।”
-- Formula C: Contrarian hook
-  - “जो लोग मान रहे हैं कि W ठीक है, मैं आज बताऊँगा कि क्यों वह गलत है—and क्या करना चाहिए।”
-- Formula D: Quick value pivot
-  - “In the next 60 seconds, आप कौन-सी 3 चीजें बदलेंगे ताकि X मिल जाए?”
-- Formula E: Objection-to-solution teaser
-  - “कभी सोचा है कि लोग Y क्यों कहते हैं—ये वीडियो में मैं दिखाऊँगा कैसे क्लियर करें ज़रूरी बिंदु।”
+Operational hook templates (use as-is or with small tweaks):
+- Template A: “अगर आप X करते हो, तो यह वीडियो मिस मत करो” (direct pain + urgency)
+- Template B: “How to Y? Z steps that work in 60 seconds” (clear benefit promise)
+- Template C: “Stop doing X. Start doing Y. Here’s why.” (counter-intuitive pivot)
+- Template D: “2-hour live masterclass: here’s the science behind X” (CTAs built in)
+- Template E: “₹X price, but with X add-ons that make it a no-brainer” (price hack tease)
 
 ---
 
-## 4) Story/List/Roleplay Structures (structure patterns)
+## 2) Sentence rhythm and line length (spoken delivery)
 
-- Roleplay/Skit (sales, objections, demos)
-  - Setup (characters, goal) → Offer/Objection → Counter-argument → Demo or close → CTA
-- Talking Head (concepts, frameworks)
-  - Hook → 3–5 bullet points → Simple demonstration or analogy → Summary → CTA
-- Storytelling / Case-study
-  - Situation → Challenge → Action → Result → Moral or takeaway → CTA
-- Tutorial / Listicle
-  - “Top 3/5 techniques” → Each technique with quick micro-demo or sentence-long example → Quick recap → CTA
-- Hybrid
-  - Mix of skit + direct address: short roleplay followed by direct teaching in Hinglish
+- Rhythm is fast, conversational, with micro-pauses for emphasis.
+- Short, punchy lines dominate; occasional longer sentences to explain a concept.
+- Typical line profile
+  - 6–14 words per line for punchy delivery.
+  1–2 short phrases, then a comma or pause, then the next thought.
+- Frequent back-and-forth style, alternating Hinglish and Hindi:
+  - “अगर आप ऑफलाइन बिजनेस करते हो, तो यह वीडियो मिस बिल्कुल मत करना।”
+  - “नो ब्रेनर ऑफर बना दो। तीन चीज़ें जो आप add करोगे…”
+- Repetition for emphasis is common (calling out the problem, then the solution).
 
----
-
-## 5) Pacing & Line Length Guidelines
-
-- Line length: 8–15 words per line (short, punchy lines for hooks and transitions).
-- Sentence cadence: mix 1–4 short sentences per beat; insert occasional longer lines for emphasis.
-- Scene pacing: switch every 8–12 seconds; use micro-clips or jump cuts to maintain energy.
-- Visual cues: mention props or actions every 10–20 seconds to maintain engagement (e.g., “काउंटर, ब्रश, नोट नहीं…”, etc.).
-- CTA cadence: place a CTA at end of every major section or after a compelling micro-point.
+Practical cadence cues to reproduce:
+- Pause after a hook sentence.
+- Quick, single-clause sentences for steps.
+- A mid-thought pivot with a “पर” or “यानी” to reframe.
+- End segments with a crisp CTA or next-step tease.
 
 ---
 
-## 6) Hinglish/Hindi/English Behavior Tips
+## 3) Hinglish/Hindi/English mix, and common spoken phrases
 
-- Heavy bilingual code-switching is expected; Hindi base, sprinkle English for key nouns and terms.
-- Use colloquialisms, local expressions, and direct address (you, boss, bhai).
-- Transliterations that feel natural in spoken Hindi (e.g., “no brainER”, “deal करेगा”).
-- Use simple, concrete numbers and vivid adjectives to describe value.
-- Avoid formal finance/newsroom wording. Rewrite "derived from the three-day average" as "yeh price last 3 din ke gold average se nikla hai"; rewrite "verify your exact tranche" as "apna series number bank ya RBI Retail Direct par check kar lo".
-
----
-
-## 7) CTA Patterns (call-to-action tactics)
-
-- Direct enrollment prompts
-  - “Comment below with ARJ and I’ll share the registration link.”
-  - “Comment YES to get the masterclass registration link.”
-- Link drop via comments
-  - “Registration link नीचे कमेंट में है; जल्दी करिए, सीट फुल हो जाएंगी.”
-- Live/class reminders
-  - “2-hour LIVE masterclass next week; रजिस्टर करते ही मुझे नोटिफिकेशन मिले.”
-- Engagement for social proof
-  - “अगर आप यह बात समझ गए, like करें और share करें ताकि दोस्त भी सीखें.”
-- Problem-to-solution prompt
-  - “If you’re facing X problem, drop a comment and I’ll tailor a mini-solution in next video.”
+- Core code-switch pattern
+  - Heavy Hinglish with Hindi anchors: “ ऑफलाइन बिजनेस,” “ नो ब्रेनर ऑफर,” “ branding image,” “ डील स्टोरी,” “ master class.”
+- Frequent stock phrases
+  - “मान लीजिए …” / “मान के चलिए …”
+  - “Suppose” (translated as “मान लीजिए” / “मान के चलिए”)
+  - “नो ब्रेनर ऑफर” (no-brainer offer)
+  - “di science of selling” (singular English phrase embedded)
+  - “डिल की क्लियरिटी” / “क्लेरिटी के लिए…” (clarity)
+  - “अगर आप चाहें” / “अगर आपकी मंजूरी हो”
+  - “कमेंट में लिख दें” (CTA language)
+  - “2 घंटे की मास्टर क्लास” (time-bound value promise)
+- Common Hinglish phrases you’ll hear
+  - “यह बेस्ट वैल्यू प्रपोज़िशन है”
+  - “डिलिवरी चार्ज नहीं लगेगा” / “फ्री इंस्टॉलेशन”
+  - “नो ब्रेनर ऑफर बनाओ” / “No brainner price”
+  - “ब्रांड इमेज” / “ब्रांड वैल्यू” / “ब्रांड…”
+  - “कैसे कंपेयर करें? किससे कंपेयर कर रहे हो?”
+  - “कॉल मीटर” (informal call-to-action rhythm)
 
 ---
 
-## 8) What High-Performing Examples Do Differently
+## 4) Explaining business/news/finance ideas without sounding formal
 
-- Specific, measurable value: explicit numbers (prices, margins, time saved) and concrete outcomes.
-- No-nonsense offers: create “no-brainer” packages with clear inclusions (free delivery, installation, extended warranty, etc.).
-- Objection preemption: anticipate common objections and address them in the script before the viewer vocalizes them.
-- Live-class funnels: plug a live masterclass or cohort program with a clear registration CTA.
-- Roleplay authenticity: realistic buyer/seller dynamics with a crisp, believable flow; avoid over-polished theatrics.
-- Strong opening hooks: immediately present a provocative contrast, a bold claim, or a controversial insight.
+- Storytelling + concrete, relatable analogies
+  - Examples: “Offline to online differentiation,” “कमोडिटी मार्केट को डीकमोडिटाइज करना,” “यूजर-जनरेशन के लिए नो ब्रेनर ऑफर”
+- Practical, elevator-pitch framing
+  - “No fluff, just actionable steps,” but delivered in Hinglish with everyday language
+- Use of real-world demonstrations (roleplay, examples)
+  - “Table tennis table pitch to a buyer” or “Office staff scenario” to illustrate price/value
+- Quantitative honesty with context
+  - Present numbers with narrative around impact, not as abstract math
+  - Examples: “₹55 special price,” “6 months discount,” “60–150% salary growth in Ayurdveda case” (but presented as anecdote)
+- Caveats and risk in plain language
+  - “अगर समझ में आई बात…,” “यह एक केस स्टडी है,” “मैं show कर रहा हूँ, आप अपने हिसाब से decide करें”
+- Framing claims as testable, not guarantees
+  - “ये pattern काम करता है,” “इससे मुझे फायदा हुआ,” “यही तरीका मैंने try किया”
 
----
-
-## 9) Category-Specific Patterns
-
-### A) Sales & Negotiation (category: sales & negotiation)
-
-- Hook: “Price objection? Here’s how to turn it into a no-brainer.”
-- Opening: State the objection and promise a concrete framework.
-- Structure: Roleplay scenario (buyer asks for discount) → “No discount” with added value (free installation, extra warranty) → ROI demonstration with numbers → Close with a time-bound offer.
-- Pacing: rapid-fire objections, then rapid value-adds.
-- Hinglish usage: blend "no discount," "no brainer," “6 months support,” etc.
-- CTA: “Comment 'LIVE' for the link to the masterclass; seats limited.”
-
-### B) Business Strategy (category: business strategy)
-
-- Hook: “This one framework will triple your leverage in 12 months.”
-- Opening: quick thesis statement; introduce IDEAL method (integration, delegation, elimination, automation, outsourcing).
-- Structure: Explain each letter with a concrete example; show before/after KPI.
-- Pacing: 4–6 short points; fast transitions between examples.
-- Hinglish usage: emphasize strategic terms; use concise Hindi for emphasis.
-- CTA: “Comment IDEAL to get the framework notes” or “Join the live session to see real-case applications.”
-
-### C) Marketing (category: marketing)
-
-- Hook: “Unusual, disproportionate ideas that made brands viral.”
-- Opening: cite a viral stunt example; explain the logic.
-- Structure: 3–5 “odd but memorable” tactics; include quick visuals or analogies.
-- Pacing: punchy, highly actionable bullets; end with a bold takeaway.
-- Hinglish usage: marketing jargon mixed with street talk.
-- CTA: “Comment if you want a part-2 on viral marketing cases; I’ll drop links.”
-
-### D) Ecommerce (category: ecommerce)
-
-- Hook: “No-brainer no-brine offers that decimate price-comparison.”
-- Opening: describe commoditized product; pivot to differentiated offer.
-- Structure: 1) commodity problem, 2) no-brainer offer components (free delivery, extended warranty, bundles), 3) offline-online synergy.
-- Pacing: clear, bullet-like segments; use customer testimonials or screenshots if available.
-- Hinglish usage: explicit value props; “no brainER offer,” “free delivery,” etc.
-- CTA: “Comment ‘OFFLINE’ for the full playbook and funnel link.”
-
-### E) Investing/Finance (category: investing & finance)
-
-- Hook: “Small investments, big compounding—exact steps.”
-- Opening: lay out a practical path (SIP, asset allocation, rebalancing).
-- Structure: explain 2–3 core concepts with numbers; show scenarios (5–10 year horizon, margin of safety).
-- Pacing: calm, instructional tone; use simple charts or bullet points.
-- Hinglish usage: finance terms in English, explain with Hindi narratives.
-- CTA: “Comment ‘SIP’ to get a simple 3-step checklist.”
-
-### F) Personal Development (category: personal development)
-
-- Hook: “Not learning every day? Your growth stops here.”
-- Opening: quick parable or dilemma; present a universal tension.
-- Structure: 3-step mental models (time management, decision making, discipline); micro-stories or anecdotes per step.
-- Pacing: motivational cadence; short, memorable lines.
-- Hinglish usage: aspirational language with practical steps.
-- CTA: “Comment ‘WORKONME’ to receive the 7-day growth plan.”
-
-### G) Celebrity/Business Lessons (category: celebrity/business lessons)
-
-- Hook: “What can we learn from [Name] about turning failures into leverage?”
-- Opening: high-impact anecdote; one-liner takeaway.
-- Structure: 2–4 mini-case studies; include quotes or put-downs of common myths; close with a universal principle.
-- Pacing: energetic storytelling with quick cuts.
-- Hinglish usage: mix biographical terms with accessible Hindi.
-- CTA: “Comment the lesson you’ll apply this week.”
+Operational tips:
+- Phrase numbers within a concrete context: why, for whom, for how long.
+- Use comparative examples (e.g., Apple vs. Orange) to avoid abstract assertions.
+- When caveats appear, present them as a natural continuation: “अगर 6 महीने तक नहीं हुआ, तब…”
+- Emphasize actionable outcomes: “2-hour master class,” “register below,” “comment to get link.”
 
 ---
 
-## 10) Reusable Script Template (drop-in prompts)
+## 5) How examples are introduced
 
-- Hook:
-  - [Pattern: provocative contrast / culture tension / no-brainer / viral idea]
-  - Example fill: “Boring makes money. Entertaining keeps you in struggle.”
-
-- Opening Sentence:
-  - [Formula A/B/C/D/E]
-  - Fill: “अगर आप चाहते हैं X, तो Y करना होगा; नहीं तो Z होगा।”
-
-- Setup:
-  - [Format: Roleplay or Talking Head]
-  - Fill: introduce scene or thesis; assign roles or present problem.
-
-- Body Points (3–5 bullets):
-  - Point 1: [Value prop with numbers or concrete example]
-  - Point 2: [No-brainer addition or counter-intuitive tip]
-  - Point 3: [Mini-demo or quick analogy]
-  - Point 4: [CTA lead-in for next moment]
-
-- Counterpoint / Objection (optional in roleplay):
-  - [Common objection] → [Short rebuttal with a metric or story]
-
-- Demonstration/Proof:
-  - [Short example or mini-case; include numbers if possible]
-
-- Close / Offer:
-  - [Offer components; timeline; social proof]
-  - CTA: [e.g., “Comment YES for registration link”]
-
-- Final CTA:
-  - [Clear action; where to find link; urgency language]
+- Roleplay and customer scenes
+  - “सर गुड मॉर्निंग… सैंपल दिखाइए” (immediate buyer scene)
+  - “ऑर्डर बताइए कितने का लिखवा रहे हैं आप” (negotiation setup)
+- “Maan lo / मान के चलिए” style prompts
+  - “मान लीजिए आप ऑफिस के ओनर हैं…”
+- Story-based demonstrations
+  - Table tennis product pitch to illustrate brand value
+  - Real-world business problems (offline vs online, price objections)
+- Direct scenario prompts
+  - “Suppose आप 6 महीने के लिए साइन-अप करते हैं…”
+  - “फर्स्ट क्लास ऑफर के 3 एडिशन…” (three-added value bullets)
+- Frequent transitions into a CTA after a scenario
+  - “अगर यह detail सीखना चाहते हो, नीचे कमेंट करें” / “मैं लिंक शेयर कर दूँगा”
 
 ---
 
-## 11) Quick Reference: Observed Phrases to Normalize
+## 6) How claims, caveats, and numbers are spoken naturally
 
-- “No brainER offer” (No-brainer offer)
-- “Master class” / “live two-hour master class”
-- “Comment में लिखिए” / “comment करके link पाएं”
-- “डबल कर दूंगा/दूँगा” (double the value)
-- “Price is fixed/non-negotiable” with added value
-- “No discount” with added service or incentive
-- “Block price for a year” (time-bound constraint)
-
----
-
-## 12) Implementation Notes
-
-- Use placeholders for personalization:
-  - [Product/Service], [Price], [Objection], [Case Study], [CTA Text]
-- Maintain a tight edit: aim 60–120 seconds; compress long sections into bullet-style demonstrations.
-- Always loop back to a single, clear value proposition per video.
-- Include one clear, trackable CTA per video (e.g., comment “ARJ” for link, comment “YES” for enrollment).
+- Numbers embedded in context
+  - Examples: “₹55 प्राइस,” “₹35000 … ₹55000 MOP,” “1 year warranty,” “6 months support”
+- Caveats stated as part of the pitch
+  - “ये एक नो ब्रेनर ऑफर है, पर समझना जरूरी है…”
+  - “आज क्लोज करिए वरना कीमत फिर से बदल जाएगी” (time-bound)
+- Comparisons that feel natural
+  - “Apple vs Orange” analogy for value comparisons
+  - “कमोडिटी बनाम डीकमोडिटाइज्ड” (concrete business term explained simply)
+- Avoiding “marketing boilerplate”
+  - Ditch formal, generic phrases. Use concrete, audience-specific examples and short, direct lines.
 
 ---
 
-This profile provides a ready-to-use script-writing system that maps hooks, openings, structures, pacing, language, CTAs, and category-specific playbooks. Use the templates and patterns to generate consistent, high-energy short-form scripts aligned with the observed winning style.
+## 7) Transitions and close/CTA patterns
+
+- Frequent CTA templates
+  - “Comment में लिख दीजिए, मैं लिंक शेयर कर दूँगा”
+  - “2-hour मास्टर क्लास: रजिस्टर नीचे”
+  - “अगर आप details सीखना चाहते हैं, फॉलो करें”
+- Natural transitions
+  - “अब यह समझ गया? तो आइए अगला स्टेप…” 
+  - “अब मुझे दिखाओ यह कितना आसान है…” (lead into demo)
+- Reassurance cues
+  - “कोई दिक्कत नहीं, बाद में देखते हैं”
+  - “अगर आप चाहो, मैं अगला साल तक प्लान ब्लॉक कर दूँगा” (time-bound commitment)
+
+CTA patterns you’ll imitate:
+- Comment for registration link
+- “नीचे कमेंट करो, लिंक दूँगा”
+- “2 घंटे मास्टर क्लास अब आ रहा है”
+- “इस वीडियो को शेयर करो ताकि दूसरों को भी मदद मिले”
+
+---
+
+## 8) Category-specific delivery patterns
+
+- Sales
+  - Roleplay-led, buyer-scene, price objections, no-brainer offers
+  - Reps and counter-offers, fear of losing price, urgency to close
+- Business Strategy
+  - Concrete frameworks (IDEAL-type) with 1–2 sentence explanations
+  - Real-world case studies or quick heuristics
+- Marketing
+  - Viral, disruptive tactics (free giveaways, counterintuitive ideas)
+  - Emphasis on brand image and differentiation
+- Ecommerce
+  - No-brainer offers, offline-to-online differentiation, add-ons, and bundles
+  - Demo-worthy app/offers (COD, WhatsApp automation, shoppable videos)
+- Investing/Finance
+  - Simple, scenario-based explanations; risk awareness; compound logic
+  - Short analogies (e.g., portfolio rebalance, “let it ride” approach)
+- Personal Development
+  - Storytelling, self-worth, practical steps; motivational tone with real examples
+- Paid Ads
+  - Not heavily feature in provided transcripts, but pattern would be: direct ROI cues, lean budgets, low-cost wins
+- Government Schemes
+  - Not prominent; when used, delivered as practical steps and quick calls to action
+- Startup ideas
+  - IDEAL methodology (integration, delegation, elimination) + outsourcing
+  - Automation-focused, actionable business moves
+
+---
+
+## 9) Strict bans: phrases/structures to avoid (sounding translated explainer copy)
+
+- Avoid literal “ explainer-copy” patterns:
+  - “In this video, I will explain…”
+  - “Let’s dive into …” (too generic)
+  - “This channel provides tips on X” (generic channel pitch)
+- Avoid overly formal marketing jargon
+  - “Our objective is to maximize ROI” (universally translated feel)
+  - “The primary objective of this video is to present…” (stiff)
+- Avoid long-winded, generic CTAs
+  - “Please subscribe for more information” (too textbook)
+- Avoid impersonal, detached phrasing
+  - No “audience” or “readers” framing; keep it human, one-to-one
+
+Operational tip: if a line could read as translation, rewrite to a concrete, scene-based line with a buyer, a seller, a tangible outcome.
+
+---
+
+## 10) 5–8 reusable spoken templates (plug-and-play)
+
+- Template 1 – Hook + Pain
+  - Hook: “अगर आप ऑफलाइन बिजनेस करते हो, तो यह वीडियो मिस मत करो”
+  - Body: quick framing of the problem, 1 quick example
+  - CTA: “कमेंट में लिख दें अगर आप details चाहते हैं”
+- Template 2 – No-Brainer Offer (3 add-ons)
+  - “No-brainer offer बनाओ: बेस प्राइस के साथ delivery free, installation free, 6-month support”
+  - Close: “बताइए क्या चाहिए, मैं लिंक भेज दूंगा”
+- Template 3 – Price Objection (Apple vs Orange)
+  - “लोग कहते हैं महंगा है। आप किस से compare कर रहे हो? Apple से Orange? Nutrition अलग है”
+  - Close: “अगर आप 6 महीने साइन-अप करते हो, 10% extra discount”
+- Template 4 – Roleplay Close
+  - “सर, यह एकदम perfect है; ऑर्डर लिख दें, हम शुरू कर देते हैं”
+  - Add-on push: “इस प्राइस के साथ 1-year warranty भी दे रहे हैं”
+- Template 5 – Offline to No-Brand Commodity
+  - “कमोडिटी सप्लाई है? नो ब्रेनर ऑफर बना दो: branding touch, warranty, home delivery”
+  - Close: “चलो, आज क्लोज कर दें”
+- Template 6 – Quick Story to Principle
+  - Short story illustrating a principle (e.g., Gifting customer-centric value) + principle line
+- Template 7 – Master Class Promo
+  - “2 घंटे की मास्टर क्लास: दी साइंस ऑफ सेलिंग. रजिस्टर लिंक नीचे है”
+- Template 8 – Objection Handling Mini-script
+  - “तीन वजह: प्रोडक्ट, प्राइस, ऑब्जेक्शन. चलिए तीनों में से सबसे बड़ा कारण क्या है, बता दीजिए”
+
+---
+
+## 11) 3 examples: bad formal English lines rewritten into Hinglish style
+
+- Before: “This video will provide a comprehensive guide to mastering sales.”
+  - After: “ये वीडियो आपके लिए एकदम कॉम्प्रिहेन्सिव गाइड है ताकि सेल्स मास्टरी आसान हो जाए.”
+- Before: “Our objective is to maximize ROI.”
+  - After: “हमारा मकसद ROI maximize करना नहीं, बल्कि असली वैल्यू देना है – चलिए देखते हैं कैसे.”
+- Before: “Join the master class to learn the science of selling.”
+  - Then: “मास्टर क्लास ज्वॉइन करें ताकि सेलिंग की साइंस समझ आ जाए, बिना ढोल-नगाड़े के सीधा सीखेंगे।”
+
+---
+
+## 12) Final self-check rubric for generated scripts
+
+A generated script must pass this rubric before publishing:
+
+- Hook in first 3–8 seconds:
+  - [ ] Uses a direct pain-point, bold claim, or value promise
+  - [ ] Not a generic intro; clearly tied to audience need
+- Delivery rhythm:
+  - [ ] Short, punchy lines (mostly 6–14 words per line)
+  - [ ] Natural Hinglish/Hindi flow with occasional English terms
+  - [ ] Appropriate micro-pauses for emphasis
+- Voice authenticity:
+  - [ ] No formal explainer tone; conversational, relatable
+  - [ ] 1–2 Hinglish phrases per line; not overstuffed with jargon
+- Explanation of ideas:
+  - [ ] Uses story, roleplay, or concrete example
+  - [ ] Keeps technical terms simple and contextual
+- Examples and demonstrations:
+  - [ ] Uses a customer scene or roleplay (e.g., office scenario, table-setup)
+  - [ ] Clear transition from example to takeaway
+- Numbers and caveats:
+  - [ ] Numbers presented with context; not random
+  - [ ] Any caveats are stated plainly and not buried
+- Transitions and CTA:
+  - [ ] Clear call-to-action (comment for link, register for class)
+  - [ ] Smooth transitions to next steps
+- Category-appropriate signals:
+  - [ ] Sales/Marketing: roleplay, no-brainer offers, urgency
+  - [ ] Ecommerce: decommoditization, bundles, add-ons
+  - [ ] Investing/Finance: simple analogies, risk context
+  - [ ] Personal Development: story, practical takeaway
+- Language integrity:
+  - [ ] No phrases that read like direct translation or boilerplate copy
+  - [ ] Genuine Hinglish flavor; no rigid marketing tone
+- Bans check:
+  - [ ] Avoids “In this video, I will…” style translator tone
+  - [ ] Avoids overly formal, non-scene-driven phrasing
+
+If all boxes are checked, the script aligns with Rajiv Talreja’s script voice profile.

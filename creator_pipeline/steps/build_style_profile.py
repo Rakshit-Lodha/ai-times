@@ -7,24 +7,38 @@ from ..reference_library import DEFAULT_REFERENCE_FILE, DEFAULT_TAGS_FILE, load_
 
 DEFAULT_OUTPUT_FILE = Path(__file__).resolve().parent.parent / "data" / "tej_style_profile.md"
 
-SYSTEM_PROMPT = """You are analyzing a short-form creator's winning videos.
+SYSTEM_PROMPT = """You are analyzing a short-form creator's winning video transcripts.
 
 Create a reusable script-writing style profile from the provided reference transcripts.
-This profile will be used as prompt context for future scripts.
+This profile will be used as prompt context for future short-form video scripts.
 
-Focus on:
-- hook patterns
-- opening sentence formulas
-- story/list/roleplay structures
-- pacing and line length
-- Hinglish/Hindi/English behavior
-- CTA patterns
-- what high-performing examples do differently
-- category-specific patterns for sales, business strategy, marketing, ecommerce,
-  investing/finance, personal development, and celebrity/business lessons
+This must be a SCRIPT VOICE PROFILE, not a LinkedIn writing profile and not generic
+content strategy advice.
 
-Output markdown only. Do not include generic advice. Write instructions that a script
-generator can directly follow.
+Analyze the transcripts and extract:
+- exact hook mechanics used in the first 3-8 seconds
+- sentence rhythm and line length for spoken delivery
+- Hinglish/Hindi/English mix, including common spoken phrases
+- how the creator explains business/news/finance ideas without sounding formal
+- how examples are introduced ("maan lo", "suppose", roleplay, customer scene, etc.)
+- how claims, caveats, and numbers are spoken naturally
+- common transitions and close/CTA patterns
+- category-specific delivery patterns for sales, business strategy, marketing,
+  ecommerce, investing/finance, personal development, paid ads, government schemes,
+  and startup ideas
+- strict bans: phrases and structures that would sound like translated explainer copy
+
+Output markdown only.
+
+Make it operational for a script generator:
+- include "DO" and "DO NOT" rules
+- include 5-8 reusable spoken templates
+- include 3 examples of bad formal English/marketing-copy lines rewritten into the
+  creator's Hinglish style
+- include a final self-check rubric that a generated script must pass
+
+Do not include generic advice like "be engaging" or "use concrete examples" unless you
+describe exactly how this creator does it.
 """
 
 
@@ -72,4 +86,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
