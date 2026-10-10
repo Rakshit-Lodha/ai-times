@@ -4,6 +4,7 @@
 import articlesData from "@/data/hundred_word_articles.json";
 import stacksData from "@/data/learn_stacks.json";
 import stackCardsData from "@/data/learn_stack_cards.json";
+import type { Source } from "@/components/StoryCard";
 
 export type ArticleRow = {
   id: number;
@@ -13,7 +14,8 @@ export type ArticleRow = {
   news_date: string;
   created_at: string | null;
   image_url: string | null;
-  sources: unknown;
+  // Stored as a JSON-encoded string by the pipeline (it was a jsonb string in Supabase).
+  sources: string | Source[] | null;
   topic: string | null;
 };
 
