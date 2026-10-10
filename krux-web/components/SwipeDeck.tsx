@@ -391,14 +391,6 @@ export default function SwipeDeck({ articles, startIndex, initialTodayFilter = f
 
       if (active && active.kind === "article") {
         const direction = isRight ? "like" : "skip";
-        fetch("/api/track", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            articleId: active.article.id,
-            reaction: direction,
-          }),
-        }).catch(() => { });
         trackEvent("story_swipe", {
           story_slug: active.article.headline,
           direction,
@@ -426,14 +418,6 @@ export default function SwipeDeck({ articles, startIndex, initialTodayFilter = f
 
     if (active && active.kind === "article") {
       const reaction = direction > 0 ? "like" : "skip";
-      fetch("/api/track", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          articleId: active.article.id,
-          reaction,
-        }),
-      }).catch(() => { });
       trackEvent("story_swipe", {
         story_slug: active.article.headline,
         direction: reaction,

@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabase";
+import { getPublishedStack } from "@/lib/db";
 import { notFound } from "next/navigation";
 import StackDeck from "@/components/StackDeck";
 import type { Metadata } from "next";
@@ -7,23 +7,8 @@ type Props = {
   params: Promise<{ stackSlug: string }>;
 };
 
-async function getStack(slug: string) {
-  const { data: stack } = await supabase
-    .from("learn_stacks")
-    .select("id, slug, title, emoji, description")
-    .eq("slug", slug)
-    .eq("is_published", true)
-    .single();
-
-  if (!stack) return null;
-
-  const { data: cards } = await supabase
-    .from("learn_stack_cards")
-    .select("id, position, headline, output, image_url")
-    .eq("stack_id", stack.id)
-    .order("position");
-
-  return { stack, cards: cards ?? [] };
+function getStack(slug: string) {
+  return getPublishedStack(slug);
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

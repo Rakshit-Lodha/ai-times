@@ -4,7 +4,7 @@ from html.parser import HTMLParser
 
 import feedparser
 
-from ..clients import supabase
+from .. import store
 from ..feeds import FEEDS, FeedSource
 from ..utils.retry import retry
 
@@ -65,16 +65,12 @@ def _extract_source_urls(entry, feed: FeedSource) -> list[dict]:
 
 
 def _is_already_seen(feed: FeedSource, guid: str) -> bool:
-    result = (
-        supabase.table("webhooks")
-        .select("id")
-        .eq("monitor_type", "rss")
-        .eq("event_group_id", feed.feed_id)
-        .eq("monitor_id", guid)
-        .limit(1)
-        .execute()
+    return store.exists(
+        "webhooks",
+        lambda r: r.get("monitor_type") == "rss"
+        and r.get("event_group_id") == feed.feed_id
+        and r.get("monitor_id") == guid,
     )
-    return bool(result.data)
 
 
 @retry(max_attempts=2, exceptions=(Exception,))
@@ -124,7 +120,7 @@ def _process_feed(feed: FeedSource, dry_run: bool = False) -> int:
             new_count += 1
             continue
 
-        supabase.table("webhooks").insert(record).execute()
+        store.insert("webhooks", record)
         logger.info("Inserted RSS entry: %s — %s", feed.feed_id, entry.get("title", ""))
         new_count += 1
 

@@ -1,0 +1,250 @@
+[
+ {
+  "id": "0b67a768-393d-45b6-877d-e636cac0c6d3",
+  "created_at": "2026-04-14T10:39:44.659515+00:00",
+  "updated_at": "2026-04-14T10:46:41.918562+00:00",
+  "candidate_key": "9d5c2af8dd007e3650987a326186ce2ec6569c25d0c6c4ace432e32cbf19352f",
+  "raw_webhook_ids": [
+   8
+  ],
+  "source_type": "parallel",
+  "source_name": null,
+  "title": "Startup India FoF 2.0: What it means for Indian startups and micro-VCs",
+  "summary": "The government launches Startup India FoF 2.0 with a ₹10,000 crore corpus targeting venture and growth capital, with a deep-tech focus. It will channel funds through SEBI-registered funds, via SIDBI as implementing agency, signaling a major shift for startups and micro‑VCs.",
+  "category": "government_schemes_policy",
+  "suggested_angle": "Explain practical steps for startups and micro-VCs to align with FoF 2.0: who can expect funding, how to position for deep-tech opportunities, and a simple 3‑step plan to approach fund managers.",
+  "why_relevant": "India’s funding landscape is expanding with a deep-tech focus; founders and operators should plan how to align product bets and funding searches with FoF 2.0.",
+  "recommended_format": "tutorial/listicle",
+  "language": "hinglish",
+  "score": 0,
+  "status": "selected",
+  "selection_reason": null,
+  "source_urls": [
+   {
+    "url": "https://www.pib.gov.in/PressReleaseDetail.aspx?PRID=2251638&reg=3&lang=1",
+    "name": "PIB"
+   }
+  ],
+  "metadata": {
+   "selector_run_at": "2026-04-14T10:39:44.212441"
+  },
+  "selected_at": "2026-04-14T10:46:41.918573+00:00"
+ },
+ {
+  "id": "f7e93bef-6983-43b3-99ba-53fbcf745d61",
+  "created_at": "2026-04-14T10:39:44.798663+00:00",
+  "updated_at": "2026-04-14T10:39:44.798663+00:00",
+  "candidate_key": "0e951c7620d917150a22c3694bced1fb5ec4b3ce90106118616cba0361b88364",
+  "raw_webhook_ids": [
+   7
+  ],
+  "source_type": "parallel",
+  "source_name": null,
+  "title": "New Economy Collective (NEC): Opportunity for Indian startups to go global",
+  "summary": "Startup Policy Forum (SPF) launches NEC to connect Indian startups with global markets and ease market-entry, compliance, and partnerships. It enables two-way flows of investment, talent, and collaboration—opening channels for localization tooling, cross-border partnerships, and outbound expansion.",
+  "category": "startup_ideas_opportunities",
+  "suggested_angle": "Highlight three concrete ways to leverage NEC: (1) partner and co-create go-to-market services, (2) use localization/compliance tooling, (3) pursue cross-border partnerships—with quick scripts for outreach.",
+  "why_relevant": "Global expansion is a key growth lever; NEC provides a structured path for Indian startups to access new markets.",
+  "recommended_format": "tutorial/listicle",
+  "language": "hinglish",
+  "score": 0,
+  "status": "new",
+  "selection_reason": null,
+  "source_urls": [
+   {
+    "url": "https://www.fortuneindia.com/business-news/startup-policy-forum-launches-new-economy-collective-to-link-indian-startups-with-global-markets/132397",
+    "name": "Fortune India"
+   }
+  ],
+  "metadata": {
+   "selector_run_at": "2026-04-14T10:39:44.605189"
+  },
+  "selected_at": null
+ },
+ {
+  "id": "c1af8c33-7f19-4db0-aeb6-926b22ec4175",
+  "created_at": "2026-04-14T10:39:44.858081+00:00",
+  "updated_at": "2026-04-14T10:56:02.943476+00:00",
+  "candidate_key": "2c0dcd82786b58f993db9cb6c3edd71aae09f00a901e9e60d7bc0402e5ada77a",
+  "raw_webhook_ids": [
+   1
+  ],
+  "source_type": "parallel",
+  "source_name": null,
+  "title": "Kwik Ads: AI-powered performance marketing for Indian D2C brands",
+  "summary": "GoKwik’s Kwik Ads uses autonomous AI agents for signal enrichment, creative research, benchmarking, and analysis, claiming ~25% ROAS uplift and ~15% CAC reduction with demos and partner case studies.",
+  "category": "paid_ads_growth",
+  "suggested_angle": "Give a practical 3-step pilot plan: choose a product, run 2-3 ads, and measure ROAS; outline metrics to track and when to scale using AI.",
+  "why_relevant": "Indian D2C brands can materially improve efficiency with AI-driven signals and automated creative; highly actionable for viewers.",
+  "recommended_format": "tutorial/listicle",
+  "language": "hinglish",
+  "score": 0,
+  "status": "scripted",
+  "selection_reason": null,
+  "source_urls": [
+   {
+    "url": "https://mediabrief.com/gokwik-launches-kwik-ads-an-agentic-ai-platform-to-automate-performance-marketing/",
+    "name": "Mediabrief"
+   }
+  ],
+  "metadata": {
+   "selector_run_at": "2026-04-14T10:39:44.673914"
+  },
+  "selected_at": "2026-04-14T10:56:02.9435+00:00"
+ },
+ {
+  "id": "aa542093-333f-442a-a8f7-bae62417cacc",
+  "created_at": "2026-04-14T10:39:44.929273+00:00",
+  "updated_at": "2026-04-14T11:16:04.831476+00:00",
+  "candidate_key": "12e16a89e36c5750be4afe7f4ea30ab7ad4a1ef904123939230593a895dcf350",
+  "raw_webhook_ids": [
+   14
+  ],
+  "source_type": "parallel",
+  "source_name": null,
+  "title": "Google consent controls: key changes for GA Ads integration starting June 15, 2026",
+  "summary": "Ads settings will govern data usage in line with user consent; 90-day grace; destination-specific controls; implications for tracking, attribution, and tag configuration across linked properties.",
+  "category": "paid_ads_growth",
+  "suggested_angle": "Provide a practical 5-point checklist to reconfigure GA4/Ads tagging for consent, plus 2 tests to run this week to preserve attribution accuracy.",
+  "why_relevant": "Tracking and attribution across ads and analytics will change; advertisers must adapt to avoid wasted spend and biased metrics.",
+  "recommended_format": "tutorial/listicle",
+  "language": "hinglish",
+  "score": 0,
+  "status": "scripted",
+  "selection_reason": null,
+  "source_urls": [
+   {
+    "url": "https://ppcnewsfeed.com/ppc-news/2026-04/google-consent-controls-analytics-ads/",
+    "name": "PPC News Feed"
+   }
+  ],
+  "metadata": {
+   "selector_run_at": "2026-04-14T10:39:44.734725"
+  },
+  "selected_at": "2026-04-14T11:16:04.831491+00:00"
+ },
+ {
+  "id": "7f5c8eaf-dde3-4f75-bed3-90bf29dfe227",
+  "created_at": "2026-04-14T10:39:45.01181+00:00",
+  "updated_at": "2026-04-15T06:33:43.761184+00:00",
+  "candidate_key": "b2aa798e39dbb8d4e3b3772fbe0abacc797ba9f3c2b3ba19351df456ac5b1bb6",
+  "raw_webhook_ids": [
+   18
+  ],
+  "source_type": "parallel",
+  "source_name": null,
+  "title": "AI Audience Builder: natural-language segmentation for regulated retailers",
+  "summary": "Springbig launches an AI Audience Builder with conversational segmentation designed for regulated retailers, enabling smarter targeting with compliance in mind.",
+  "category": "marketing_trends",
+  "suggested_angle": "Walkthrough: how to build audience segments using natural language prompts and show 2–3 example campaigns for regulated verticals.",
+  "why_relevant": "Regulated sectors face unique constraints; AI-enabled segmentation makes compliant targeting faster and more scalable.",
+  "recommended_format": "tutorial/listicle",
+  "language": "hinglish",
+  "score": 0,
+  "status": "scripted",
+  "selection_reason": null,
+  "source_urls": [
+   {
+    "url": "https://www.globenewswire.com/news-release/2026/04/13/3272615/0/en/Springbig-Launches-AI-Audience-Builder-Giving-Regulated-Retailers-a-Smarter-Way-to-Target-Engage-and-Grow.html",
+    "name": "GlobeNewswire"
+   }
+  ],
+  "metadata": {
+   "selector_run_at": "2026-04-14T10:39:44.811054"
+  },
+  "selected_at": "2026-04-15T06:33:43.761233+00:00"
+ },
+ {
+  "id": "85d66c2e-accb-4990-9338-eb268a2f3bda",
+  "created_at": "2026-04-14T10:39:45.083509+00:00",
+  "updated_at": "2026-04-14T11:24:20.181642+00:00",
+  "candidate_key": "ecf78f2f434fde66e5fa478cf5e087a7beb36a5bac9b79071268e6e014df35af",
+  "raw_webhook_ids": [
+   19
+  ],
+  "source_type": "parallel",
+  "source_name": null,
+  "title": "Mass Customizer: AI-driven TV creative at scale",
+  "summary": "Marketing Architects’ Mass Customizer enables AI-powered TV creative personalization at scale without exploding production costs, enabling localised or personalised broadcast.",
+  "category": "marketing_trends",
+  "suggested_angle": "Do a quick demo concept: feed a brand brief and show how ad variants adapt; discuss cost and time savings in a 45–90 second clip.",
+  "why_relevant": "TV/CTV creative is expensive; AI tooling can unlock scalable personalization for growth campaigns.",
+  "recommended_format": "tutorial/listicle",
+  "language": "hinglish",
+  "score": 0,
+  "status": "scripted",
+  "selection_reason": null,
+  "source_urls": [
+   {
+    "url": "https://www.businesswire.com/news/home/20260413190627/en/Marketing-Architects-Launches-Mass-Customizer-to-Balance-Reach-and-Relevance-on-TV",
+    "name": "BusinessWire"
+   }
+  ],
+  "metadata": {
+   "selector_run_at": "2026-04-14T10:39:44.893618"
+  },
+  "selected_at": "2026-04-14T11:24:20.181658+00:00"
+ },
+ {
+  "id": "1b3c92b7-1711-44b5-ab62-ea1763beaadb",
+  "created_at": "2026-04-14T10:39:45.153606+00:00",
+  "updated_at": "2026-04-14T10:55:08.500628+00:00",
+  "candidate_key": "5de88ac4bb8db0dc01f82f3139aeb471f33e67bed36c41b6cce95e5f08106346",
+  "raw_webhook_ids": [
+   17
+  ],
+  "source_type": "parallel",
+  "source_name": null,
+  "title": "The $500B blind spot in creator marketing: how to measure and maximize creator impact",
+  "summary": "Forbes identifies a large, under-measured opportunity in creator media; discusses measurement and integration into paid and distribution strategies.",
+  "category": "marketing_trends",
+  "suggested_angle": "Share 3 metrics to evaluate creator ROI, highlight common measurement gaps, and give a quick example of a creator-led campaign ROI uplift.",
+  "why_relevant": "Creator ROI is a high-priority topic; viewers need practical measurement frameworks to justify creator partnerships.",
+  "recommended_format": "tutorial/listicle",
+  "language": "hinglish",
+  "score": 0,
+  "status": "rejected",
+  "selection_reason": null,
+  "source_urls": [
+   {
+    "url": "https://www.forbes.com/sites/jamiegutfreund/2026/04/13/creator-marketings-500-billion-blind-spot-in-video-advertising/",
+    "name": "Forbes"
+   }
+  ],
+  "metadata": {
+   "selector_run_at": "2026-04-14T10:39:44.957485"
+  },
+  "selected_at": null
+ },
+ {
+  "id": "09114b9e-9bca-4b41-82f4-bbdec338ceb7",
+  "created_at": "2026-04-14T10:39:45.247163+00:00",
+  "updated_at": "2026-04-14T10:46:29.136712+00:00",
+  "candidate_key": "5f21ca09fbfaae8cf627b1c12900d26a038d8f227cc55a85cc7edaefbe794089",
+  "raw_webhook_ids": [
+   9
+  ],
+  "source_type": "parallel",
+  "source_name": null,
+  "title": "RBI SGB 2019-20 premature redemption on 15 April 2026: what it means for small investors and treasury decisions",
+  "summary": "Redemption price around ₹15,009 per unit; discuss liquidity, potential tax implications for individuals, and how to rebalance portfolios or reallocate funds.",
+  "category": "investing_finance",
+  "suggested_angle": "Walk through two to three scenarios based on common holdings, with quick arithmetic and a take on tax treatment for individuals.",
+  "why_relevant": "Investors among the audience hold SGBs; redemption impacts cash flow and short-term planning.",
+  "recommended_format": "tutorial/listicle",
+  "language": "english",
+  "score": 0,
+  "status": "scripted",
+  "selection_reason": null,
+  "source_urls": [
+   {
+    "url": "https://www.livemint.com/market/bonds/rbi-sets-sgb-premature-redemption-for-15-april-check-profit-on-10-units-11776149165688.html",
+    "name": "LiveMint"
+   }
+  ],
+  "metadata": {
+   "selector_run_at": "2026-04-14T10:39:45.057909"
+  },
+  "selected_at": "2026-04-14T10:46:29.136775+00:00"
+ }
+]

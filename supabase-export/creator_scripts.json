@@ -1,0 +1,656 @@
+[
+ {
+  "id": "b524751a-f74c-4567-8150-d31cd01c732c",
+  "created_at": "2026-04-14T10:49:48.788679+00:00",
+  "topic_id": "09114b9e-9bca-4b41-82f4-bbdec338ceb7",
+  "research_brief_id": "f8a645e4-7291-4f82-8007-6829a2476460",
+  "model_provider": "openai",
+  "model": "gpt-5-nano",
+  "language": null,
+  "content_format": null,
+  "hook_options": [
+   "RBI set ₹15,009/unit redemption for 2019-20 SGB—here's what changes for your April 15 exit.",
+   "From April 2026, tax changes will affect SGB exits—premature redemptions may not be tax-free.",
+   "Three fast scenarios: online issue, secondary market, and hold-to-maturity—exact numbers and tax implications."
+  ],
+  "final_script": "If you hold RBI Sovereign Gold Bonds 2019-20 Series V, the RBI has scheduled a premature redemption on April 15, 2026. The fixed redemption price is ₹15,009 per unit, derived from the three-day IBJA average before redemption. You also earned 2.5% fixed interest per year on the initial investment, paid semi-annually. Let’s run three quick scenarios. Scenario 1: online original issue. Suppose you bought 1 unit online at about ₹3,738. Redemption at ₹15,009 per unit yields a pre-tax gain of ₹11,271 per unit, plus accrued interest for the holding period. Scenario 2: secondary-market purchase. If you bought Series V in the secondary market around ₹3,800 and redeem on April 15, 2026, your gross gain looks similar, but tax depends on whether you’re held to maturity under the new regime. Scenario 3: hold-to-maturity. Under Budget 2026 rules, tax-exemption on SGB redemptions is restricted; from April 1, 2026, exiting prematurely may be taxable unless held to maturity. Treasuries and portfolios should adjust cash flow accordingly. Takeaway: verify your exact tranche and window with your bank, NSDL/CDSL, or RBI Retail Direct; compare ₹15,009 to current gold prices, and decide your exit under the new tax regime. If you have other SGBs, note that redemption dates differ; don’t assume all share the same window. Action: check your tranche details and plan your exit now.",
+  "caption": "SGB 2019-20 Series V redemption on April 15 at ₹15,009/unit. Tax rules shift from Apr 2026—here’s the quick 3-scenario plan to decide your exit. Verify your tranche and wallet with your bank or NSDL/CDSL.",
+  "broll": [
+   "Close-up of a bank/DMAT screen showing SGB holdings",
+   "On-screen text: ₹15,009 per unit (three-day IBJA average) with a calendar splash for April 15, 2026",
+   "Graphic: 3 scenarios with simple numbers (online issue ~₹3,738; secondary ~₹3,800)",
+   "IBJA price chart or a quick animation showing the 3-day average calculation",
+   "Tax guidance screenshots (Budget 2026 FAQ) and RBI/NSDL portals"
+  ],
+  "cta": "Check your exact SGB tranche and redemption window with your bank, NSDL/CDSL, or RBI Retail Direct; compare ₹15,009 to current gold prices and plan your exit under the new tax regime.",
+  "source_urls": [
+   {
+    "url": "https://economictimes.indiatimes.com/wealth/invest/302-return-on-sgb-premature-redemption-date-gold-bond-turns-rs-1-lakh-investment-into-rs-4-02-lakh/articleshow/130251811.cms",
+    "name": "Economic Times - 302% return on SGB premature redemption date (April 15, 2026)"
+   },
+   {
+    "url": "https://www.businesstoday.in/personal-finance/investment/story/sgb-redemption-dates-out-for-apr-sep-2026-april-1-tax-rule-alters-investor-returns-518255-2026-02-27",
+    "name": "Business Today - SGB redemption dates Apr–Sep 2026; tax changes effective Apr 1, 2026"
+   },
+   {
+    "url": "https://www.livemint.com/money/personal-finance/after-budget-shuts-tax-free-exits-on-sgbs-small-february-window-offers-last-chance-11770119940047.html",
+    "name": "Live Mint - After Budget shuts tax-free exits on SGBs"
+   },
+   {
+    "url": "https://www.incometaxindia.gov.in/Documents/Budget2026/FAQs-Budget-2026.pdf",
+    "name": "Income Tax Department - Budget 2026 FAQs (SGB exemption rules from Apr 1, 2026)"
+   },
+   {
+    "url": "https://nsdl.co.in/downloadables/pdf/2025-0033-Policy-Premature_Redemption_Calendar_for_Sovereign_Gold_Bonds_for_the_period_April_2025_to_September_2025.pdf",
+    "name": "NSDL - Premature Redemption Calendar for SGBs (Apr 2025–Sep 2025)"
+   }
+  ],
+  "reference_transcript_ids": [],
+  "metadata": {
+   "style_profile_source": "creator_pipeline/data/tej_style_profile.md"
+  }
+ },
+ {
+  "id": "bda7daab-bee7-403c-854e-3c4bd713710f",
+  "created_at": "2026-04-14T10:59:24.997938+00:00",
+  "topic_id": "c1af8c33-7f19-4db0-aeb6-926b22ec4175",
+  "research_brief_id": "cf91bae6-2084-49ea-a27a-6df399c17c29",
+  "model_provider": "openai",
+  "model": "gpt-5-nano",
+  "language": null,
+  "content_format": null,
+  "hook_options": [
+   "3-step pilot plan se ROAS boost ki real test. Ek product, 2–3 ads, AB testing.",
+   "Kwik Ads ke AI se Meta ads me ~25% ROAS uplift? 3-step pilot se khud check karo.",
+   "AI-driven signals + 2 creatives: CAC ko kam kaise karein? Practical 3-step plan."
+  ],
+  "final_script": "3-step pilot plan se ROAS boost ki real test. Ek product, 2–3 ads, AB testing. Shuru karte hain.\n\nStep 1: Product selection. Ek product choose karo jiska funnel clearly defined ho — ad se landing page, phir checkout tak sab track ho. Baseline ROAS aur CAC set kar lo; target values define karo.\n\nStep 2: 2–3 ads. 2–3 creatives banao with different angles: problem/solution, benefit showcase, social proof. Kwik Ads AI tumhare ad account ko 200+ signals ke saath analyze karega aur best lookalike audience allocate karega. AI Ad Opportunities se bid shifts, pacing aur audience ideas mil sakte hain. In 2–3 creatives ko run karke real signals dekho.\n\nStep 3: Measure and decide scaling. Pilot ke end me ROAS aur CAC compare karo against baseline. Agar ROAS improve hota hai aur CAC control me rehta hai, tab scale ki planning AI insights ke saath karo. Dhyan rahe—GoKwik ki ~25% ROAS uplift aur ~15% CAC reduction jaise claims marketing material hain; real results product, market aur creative quality par depend karte hain, isliye test ko controlled rakho.\n\nTips: Test lean rakho, data privacy aur platform policies ki compliance ensure karo; sirf ek product par focused pilot rakho aur funnel gaps AB testing se fix karo.\n\nCTA: Pilot checklist ke liye comment YES likho; main link comments me drop kar dunga.",
+  "caption": "Kwik Ads ke 3-step pilot plan for Indian D2C brands: ek product, 2–3 ads, ROAS/CAC ko test karo. Caveat: results vary; always run a controlled test.",
+  "broll": [
+   "Screen recording of Kwik Ads dashboard showing AI signals and recommendations",
+   "Desk shot of a single product with funnel diagram (ad -> landing -> checkout)",
+   "Side-by-side visuals of 2–3 ad creatives being reviewed",
+   "Whiteboard scene sketching Step 1, Step 2, Step 3",
+   "Graph or chart illustrating ROAS and CAC trends",
+   "Overlay text: 200+ signals, AI Ad Opportunities, lookalike audiences"
+  ],
+  "cta": "Comment YES for the pilot checklist",
+  "source_urls": [
+   {
+    "url": "https://www.gokwik.co/",
+    "name": "GoKwik (Kwik Ads official)"
+   },
+   {
+    "url": "https://brandequity.economictimes.indiatimes.com/news/research/advertising/gokwik-introduces-kwik-ads-an-agentic-ai-platform-to-optimise-performance-marketing/130225608",
+    "name": "ETBrandEquity - GoKwik introduces Kwik Ads"
+   },
+   {
+    "url": "https://mediabrief.com/gokwik-launches-kwik-ads-an-agentic-ai-platform-to-automate-performance-marketing/",
+    "name": "Mediabrief (GoKwik Kwik Ads coverage)"
+   }
+  ],
+  "reference_transcript_ids": [],
+  "metadata": {
+   "style_profile_source": "creator_pipeline/data/tej_style_profile.md"
+  }
+ },
+ {
+  "id": "a8df7577-93fb-4c1c-84f1-6e64fa14c7a8",
+  "created_at": "2026-04-14T11:04:57.375024+00:00",
+  "topic_id": "c1af8c33-7f19-4db0-aeb6-926b22ec4175",
+  "research_brief_id": "cf91bae6-2084-49ea-a27a-6df399c17c29",
+  "model_provider": "openai",
+  "model": "gpt-5-nano",
+  "language": null,
+  "content_format": null,
+  "hook_options": [
+   "3-step pilot se samjho: ek product choose karo, 2–3 ads chalao, ROAS measure karo—AI se scaling ka blueprint.",
+   "Meta ads me AI se ~25% ROAS uplift ho sakta hai; Ye video 3-step pilot ke through batayega kaise test karein.",
+   "Indian D2C brands ke liye 200M+ shopper signals ke saath Kwik Ads ka quick test plan—ready to start?"
+  ],
+  "final_script": "3-step pilot se samjho: ek product choose karo, 2–3 ads chalao, ROAS measure karo—AI se scaling ka blueprint. Step 1: Product pick. Funnel clearly defined ho: audience, offer, checkout; data trackable ho to aage badho. Step 2: Run 2–3 ads. Har ad me creative ya copy alag rakho aur test karo; Kwik Ads AI signals se best audiences aur creatives identify karte hain. Step 3: Measure ROAS aur CAC. Result ko compare karo, AB testing se funnel gaps fix hota hai; Kwik Ads 200+ signals se journey conversions track karta hai. Caveat: yeh claims marketing hain; real results product, data quality aur creative par depend karte hain. GoKwik ki claims me ~25% ROAS uplift aur ~15% CAC reduction ka zikr hai; partner case studies isko support karte hain, par har brand ke liye results vary kar sakte hain. Example skey: skincare brand ne 2–3 ads se AI-guided optimization se best audience par spend shift kiya; electronics brand ne optimization ideas test kiye. Toh shuru karo: ek product, 2–3 ads, ek chhota test window—aur AI signals se decision lo. Agar aap start karna chahte ho, comment YES for the pilot template and next steps.",
+  "caption": "Kwik Ads ke 3-step pilot plan: (1) ek product choose, (2) 2–3 ads run, (3) ROAS & CAC measure karo. AI signals se scaling decide hoga. Caveat: results vary by product and creatives. Ready to test? Comment YES for the pilot template.",
+  "broll": [
+   "Host talking head in Hinglish, energetic pace",
+   "Screen recording of Kwik Ads dashboard and 200+ signals animation",
+   "Visualization of 2–3 ad creatives side-by-side with audience icons",
+   "Graph showing hypothetical ROAS uplift and CAC trend",
+   "Close-up on a product shot with funnel stages (awareness → consider → purchase)",
+   "On-screen text: ‘3-step pilot: product, 2–3 ads, measure ROAS/CAC’",
+   "CTA screen: ‘Comment YES for pilot template’"
+  ],
+  "cta": "Comment YES for the pilot template",
+  "source_urls": [
+   {
+    "url": "https://www.gokwik.co/",
+    "name": "GoKwik Kwik Ads official"
+   },
+   {
+    "url": "https://brandequity.economictimes.indiatimes.com/news/research/advertising/gokwik-introduces-kwik-ads-an-agentic-ai-platform-to-optimise-performance-marketing/130225608",
+    "name": "ETBrandEquity - GoKwik introduces Kwik Ads"
+   },
+   {
+    "url": "https://mediabrief.com/gokwik-launches-kwik-ads-an-agentic-ai-platform-to-automate-performance-marketing/",
+    "name": "Mediabrief - GoKwik Kwik Ads coverage"
+   }
+  ],
+  "reference_transcript_ids": [],
+  "metadata": {
+   "style_profile_source": "creator_pipeline/data/tej_style_profile.md"
+  }
+ },
+ {
+  "id": "590880f3-ab52-459a-a816-cd119dd66790",
+  "created_at": "2026-04-14T11:18:31.600996+00:00",
+  "topic_id": "aa542093-333f-442a-a8f7-bae62417cacc",
+  "research_brief_id": "5c68e65f-7496-48c2-ac5d-e7eaca5ae00a",
+  "model_provider": "openai",
+  "model": "gpt-5-nano",
+  "language": null,
+  "content_format": null,
+  "hook_options": [
+   "June 15 se attribution ki game badal jayegi—Consent Mode ke sath GA4 aur Ads sirf ad_storage signals par depend karenge.",
+   "5-point checklist ke sath aapki tagging ab rainproof ho jayegi; warna data gaps ke liye aapko last minute scramble karna padega.",
+   "2 quick tests to preserve attribution—isse week me run kar lo, warna numbers biased ho sakte hain."
+  ],
+  "final_script": "June 15 se attribution ki game badal jayegi—Consent Mode ke sath GA4 aur Ads ab sirf ad_storage signals par depend karenge.\nSamjho: agar ad_storage milta hai to ads identifiers use ho sakte hain; agar denied hai to signals non-identifying tak simit rahenge.\nToh aaj ka video 5-point checklist aur 2 quick tests ke saath hai, jo aapki tagging ko rainproof banayenge.\nChaliye shuru karte hain:\n\n1) Consent Mode ko GA4/gtag/Tag Manager tags me enable karein.\n2) CMP se ad_storage aur analytics_storage signals correctly pass ho rahe hain ya nahi, verify karein.\n3) GA4 <-> Ads linking me consent controls ki duplication na ho; sirf Ads settings data govern kare.\n4) Consent Mode ke impact results ko monitor karein; conversions ka yeh naya flow kaisa chal raha hai, dekhte raho.\n5) Privacy policy aur disclosures update karein; data usage consent-driven flows clearly reflect ho.\n\nIs hafte ke do quick tests:\n(a) CMP consent toggles simulate karke GA4 aur Ads attribution flow check karein.\n(b) DebugView/real-time events me GCLID ya non-identifying pings ki presence verify karein.\n\nNote: Official guidance ke mutabik June 15 ke baad GA Signals ki role behavior reporting me limited hogi; updates Google ki docs me milti rahengi. Agar signals properly pass hue, tabhi measurement gaps kam honge; agar nahi hue to modeled conversions help kar sakte hain par perfect parity hamesha guarantee nahi hoti.\n\nToh bas yahi 5 steps, 2 tests, aur aapka attribution zyada reliable rahega. Comment YES for the checklist link.",
+  "caption": "GA4/Ads consent changes 2026 ke liye ready ho jao: 5-point checklist + 2 quick tests to preserve attribution. Hinglish, concrete steps, bina fluff. Comment YES for the checklist link.",
+  "broll": [
+   "CMP consent banner on screen (demo) with ad_storage/analytics_storage toggles",
+   "GA4/gtag/Tag Manager tagging interface ki screen capture",
+   "Linked GA4-Ads settings page show karte hue",
+   "Simple data-flow animation: user consent -> ad_storage signals -> attribution",
+   "DebugView ya real-time events ki screenshot ya screen recording with GCLID/non-identifying pings",
+   "Privacy policy disclosure page ki quick view"
+  ],
+  "cta": "Comment YES for the checklist link",
+  "source_urls": [
+   {
+    "url": "https://support.google.com/analytics/answer/17016975",
+    "name": "Google Analytics Help - Updates to Google Analytics Data Controls"
+   },
+   {
+    "url": "https://ads.google.com/intl/us-EN/home/privacy/solutions/consent-mode/",
+    "name": "Ads Privacy Hub - Consent Mode"
+   },
+   {
+    "url": "https://searchengineland.com/google-simplifies-analytics-and-ads-consent-rules-474206",
+    "name": "Search Engine Land - Google simplifies Analytics and Ads consent rules"
+   }
+  ],
+  "reference_transcript_ids": [],
+  "metadata": {
+   "style_profile_source": "creator_pipeline/data/tej_style_profile.md"
+  }
+ },
+ {
+  "id": "8c00ea25-865d-4d28-a3b2-e35c35bf987c",
+  "created_at": "2026-04-14T11:26:50.097518+00:00",
+  "topic_id": "85d66c2e-accb-4990-9338-eb268a2f3bda",
+  "research_brief_id": "c93eece1-b6a9-49e5-942a-1740688d75aa",
+  "model_provider": "openai",
+  "model": "gpt-5-nano",
+  "language": null,
+  "content_format": null,
+  "hook_options": [
+   "Hero TV ad se har region ko catch karo—bina extra shoots ke.",
+   "AI-powered Mass Customizer ke through localised ya personalised creatives, instantly.",
+   "Badi campaigns, chhoti costs? TV me personalization ab scalable."
+  ],
+  "final_script": "Bhai log, hero TV ad se har region ko catch karo—bina extra shoots.\nAI se possible hai—Mass Customizer ke saath.\nAb 60–90 seconds me demo dekhte hain.\nBrand brief milta hai, AI variants turant banata hai.\nStep 1: Hero spot ready.\nStep 2: AI on-screen graphics, CTAs, offers ko adjust karta.\nStep 3: Geography, audience, life stage ke hisaab se variations.\nStep 4: Voice pacing clone se near real-time lines.\nStep 5: Compliance approvals aur talent rights check.\nResult: reach aur relevance dono bana rahe, cost kam.\nIska matlab: reshoots nahi, timelines chhote, production costs kam.\nLekin licensing rights ki clarity check karna na bhulein.\nROI har brand par vary karta hai; outcomes guaranteed nahi.\nComment DEMO for the step-by-step files aur next actions.",
+  "caption": "Mass Customizer se TV ads me personalization at scale. 60–90 second demo: hero spot se har region ke liye variants, bina extra shoots ke. Try karna hai? Comment DEMO for the files.",
+  "broll": [
+   "Talking head shot of creator explaining",
+   "Screen recording of AI interface generating ad variants",
+   "Geography map highlighting regional localization",
+   "On-screen CTAs changing by region",
+   "Voice talent pacing waveform being cloned",
+   "Timeline/clock graphic shrinking to show faster production",
+   "Checklist pop-up: licensing rights, approvals"
+  ],
+  "cta": "Comment DEMO for the link",
+  "source_urls": [
+   {
+    "url": "https://www.businesswire.com/news/home/20260413190627/en/Marketing-Architects-Launches-Mass-Customizer-to-Balance-Reach-and-Relevance-on-TV",
+    "name": "Business Wire"
+   },
+   {
+    "url": "https://blog.marketingarchitects.com/blog/marketing-architects-launches-mass-customizer-to-balance-reach-and-relevance-on-tv",
+    "name": "Marketing Architects Blog"
+   }
+  ],
+  "reference_transcript_ids": [],
+  "metadata": {
+   "style_profile_source": "creator_pipeline/data/tej_style_profile.md"
+  }
+ },
+ {
+  "id": "e9c08662-9f2e-418f-9be9-6a9132d6b4d7",
+  "created_at": "2026-04-14T11:27:32.011207+00:00",
+  "topic_id": "85d66c2e-accb-4990-9338-eb268a2f3bda",
+  "research_brief_id": "c93eece1-b6a9-49e5-942a-1740688d75aa",
+  "model_provider": "openai",
+  "model": "gpt-5-nano",
+  "language": null,
+  "content_format": null,
+  "hook_options": [
+   "TV ads ki production cost itni high hoti hai ki brand ruk jaata hai.",
+   "Mass Customizer se scale karo—bina extra shoots ke.",
+   "Hero spot se shuru, AI variants near real-time bana leta hai."
+  ],
+  "final_script": "TV ads ki production cost itni high hoti hai ki brand ruk jaata hai.\nMass Customizer se scale karo, bina extra shoots ke.\nShuru karte hain ek hero spot par; AI graphics, CTAs, offers adjust hote hain.\nAur voice pacing bhi clone karta hai, taaki delivery natural lage.\nGeography, audience cohort, life stage, seasonality—sab ke liye variants generate hote hain.\nIska matlab reach to broad hai, par context-specific message bhi milta hai.\nUse case: region-specific price-off CTAs, ya seasonality ke sath life stage messaging.\nCaveat: cloned voice rights aur AI variations ke licensing abhi disclosed nahi hain.\nROI hamesha brand par depend karta hai—data quality aur approvals zaroori hote hain.\nAb brand brief do, region, audience, seasonality—AI turant variants bana dega.\nHero spot → AI variants → regional CTAs → quick approvals.\nAapko karna kya hai? DM ya comment kijiye 'DEMO MASS'.\nMass Customizer agency toolkit hai; currently Marketing Architects ke clients ke liye.\nMisfits & Machines ki AI audio capability ki wajah se audio bottlenecks kam hote hain.\nReady to test? Quick demo ke liye comment kariye.",
+  "caption": "Mass Customizer ke saath TV creative scale karo—hero se regional variants tak, bina reshoots ke. 60-second demo.",
+  "broll": [
+   "Talking head shot with energetic delivery",
+   "Screen recording of Mass Customizer interface adjusting hero spot graphics",
+   "Preview of geography/audience-specific variants side-by-side",
+   "Audio waveform and voice timing being cloned for new lines",
+   "Overlay of region-specific CTAs popping up on screen",
+   "Timer/clock icon showing rapid iteration",
+   "Brand brief input form on screen",
+   "Compliance/approval checklist animation",
+   "Mention of Misfits & Machines AI audio features",
+   "Before vs. after comparison of original vs. AI-generated variants"
+  ],
+  "cta": "Comment 'DEMO MASS' for the demo link",
+  "source_urls": [
+   {
+    "url": "https://www.businesswire.com/news/home/20260413190627/en/Marketing-Architects-Launches-Mass-Customizer-to-Balance-Reach-and-Relevance-on-TV",
+    "name": "Business Wire"
+   },
+   {
+    "url": "https://blog.marketingarchitects.com/blog/marketing-architects-launches-mass-customizer-to-balance-reach-and-relevance-on-tv",
+    "name": "Marketing Architects Blog"
+   }
+  ],
+  "reference_transcript_ids": [],
+  "metadata": {
+   "style_profile_source": "creator_pipeline/data/tej_style_profile.md"
+  }
+ },
+ {
+  "id": "fcaa6eed-5d91-434c-96a3-bc0f49beddc0",
+  "created_at": "2026-04-14T11:28:43.563885+00:00",
+  "topic_id": "85d66c2e-accb-4990-9338-eb268a2f3bda",
+  "research_brief_id": "c93eece1-b6a9-49e5-942a-1740688d75aa",
+  "model_provider": "openai",
+  "model": "gpt-5-nano",
+  "language": null,
+  "content_format": null,
+  "hook_options": [
+   "Ek hero spot se AI se near real-time variants? bina reshoots.",
+   "TV ads ki reach aur relevance dono? AI-powered Mass Customizer se.",
+   "Localize karo, personalize karo, production cost girao—sab ek tool me."
+  ],
+  "final_script": "Ek hero spot se AI se near real-time variants? bina reshoots.\nAaj 60-second quick demo dikhata hoon ki yeh karta hai.\nStarting point: approved hero spot, bas AI chalu.\nAI on-screen graphics, CTAs, offers adjust karta hai.\nVoice pacing bhi clone ho sakta hai—talent-free variation.\nCustomization knobs: geography, audience, life stage, seasonality.\nAur har variant me CTAs alag ho sakte hain.\nCost aur time? No reshoots, no extra production costs.\nDemo concept: brand brief daalo, variants turant ban jayengi.\nStep 1–2: hero feed karo; geography aur audience sync.\nStep 3: alag CTAs aur offers add karo.\nStep 4: voice pacing ko clone rakhna; approvals kar lo.\nROI vary karega; dono cheez data par depend karta hai.\nComment DEMO for notes; YES for full link.",
+  "caption": "Mass Customizer se TV creative at scale? Dekho 60-second demo: hero se regional variants, seasonality, aur voice pacing—sab near real-time. Bina extra shoots. #TVAdvertising #AI #MarketingTrends",
+  "broll": [
+   "AI interface generating ad variants on screen",
+   "Split-screen: hero spot with geotargeted CTAs",
+   "Close-up: voice pacing waveform and talent copy",
+   "Timeline visualization: no reshoots or extra production",
+   "Brand brief input form being filled",
+   "Multiple variant playback with regional offers captions"
+  ],
+  "cta": "Comment DEMO for step-by-step notes",
+  "source_urls": [
+   {
+    "url": "https://www.businesswire.com/news/home/20260413190627/en/Marketing-Architects-Launches-Mass-Customizer-to-Balance-Reach-and-Relevance-on-TV",
+    "name": "Business Wire"
+   },
+   {
+    "url": "https://blog.marketingarchitects.com/blog/marketing-architects-launches-mass-customizer-to-balance-reach-and-relevance-on-tv",
+    "name": "Marketing Architects Blog"
+   }
+  ],
+  "reference_transcript_ids": [],
+  "metadata": {
+   "style_profile_source": "creator_pipeline/data/tej_style_profile.md"
+  }
+ },
+ {
+  "id": "6e480d1c-5ec0-4671-90cf-bf5bdb8066c0",
+  "created_at": "2026-04-15T16:46:20.865206+00:00",
+  "topic_id": "aa542093-333f-442a-a8f7-bae62417cacc",
+  "research_brief_id": "5c68e65f-7496-48c2-ac5d-e7eaca5ae00a",
+  "model_provider": "openai",
+  "model": "gpt-5-nano",
+  "language": null,
+  "content_format": null,
+  "hook_options": [
+   "Agar aap ads me attribution pe depend karte ho, to 15 June ke baad sab kuch badal jayega.",
+   "Consent mode ke changes ke chakkar me aapka ROI bhi halke ya heavy ho sakta hai—decide karlo aaj.",
+   "Signals ki duniya ab ad_storage par dependent hai; CMP sahi pass na ho to gaps samajh lo."
+  ],
+  "final_script": "Agar aap ads me attribution pe depend karte ho, to 15 June ke baad sab kuch badal jayega.\nOfficial change: GA analytics data controls ab Ads Consent Mode ke under aayenge, aur ad data sirf ad_storage se govern hoga.\nPehla beat — actionable: Consent Mode ko GA4/gtag/Tag Manager me enable rakho, aur CMP se ad_storage aur analytics_storage signals theek se pass ho rahe hain ya nahi verify karo.\nGA4 <-> Ads linking me duplication se bachon, data governance sirf Ads settings ko govern kare; isse attribution zyada clean rahegi.\nJab consent milta hai to ads conversions normally report honge; jab mana ho to conversion modeling se gaps fill kiye ja sakte hain.\nDusra beat — do quick tests is hafte: (a) CMP consent grant/deny simulate karke GA4 aur Ads attribution flow check karo; (b) DebugView me GCLID ya non-identifying pings ki presence verify karo.\nIn tests se pata chalega ki aapki measurement gaps kitni hain aur kab modeling ki zaroorat padegi.\nTeesra beat — privacy disclosures update karo: data usage aur consent-driven data flows clearly likho; policy me changes reflect karo.\nIske alawa yaad rakho ki 90-day grace period aur future governance changes ho sakte hain, to ready raho.\nConversion modeling se gaps cover ho sakte hain, par parity hamesha guaranteed nahi hoti; monitor results.\nCaveat: rollout thoda gradual hoga; regions ke hisaab se differences ho sakte hain; latest docs follow karna.\nClose: ab action lo: CMP setup verify karo, Consent Mode enable karo, 2 tests run karo, privacy disclosures update karo.\nComment me 'Consent' likho ya niche main links share kar dunga.",
+  "caption": "GA4/Ads consent mode changes ke saath attribution ko safe rakhne ki 5-point checklist + 2 quick tests. Shuru karo aaj. #ConsentMode #GA4 #DigitalMarketing",
+  "broll": [
+   "CMP banner on page showing ad_storage/analytics_storage toggles",
+   "GA4/gtag/Tag Manager tagging screen with Consent Mode enabled",
+   "Debugger/DebugView real-time events showing GCLID or non-identifying pings",
+   "Privacy policy update document open and highlighted",
+   "Linked GA4 <-> Ads settings page with clear data governance note"
+  ],
+  "cta": "Comment me 'Consent' for the links and I’ll drop the exact docs and test scripts",
+  "source_urls": [
+   {
+    "url": "https://support.google.com/analytics/answer/17016975",
+    "name": "Google Analytics Help - Updates to Google Analytics Data Controls"
+   },
+   {
+    "url": "https://ads.google.com/intl/us-EN/home/privacy/solutions/consent-mode/",
+    "name": "Ads Privacy Hub - Consent Mode"
+   },
+   {
+    "url": "https://searchengineland.com/google-simplifies-analytics-and-ads-consent-rules-474206",
+    "name": "Search Engine Land - Google simplifies Analytics and Ads consent rules"
+   }
+  ],
+  "reference_transcript_ids": [],
+  "metadata": {
+   "style_profile_source": "creator_pipeline/data/tej_style_profile.md",
+   "reference_examples_used": [
+    {
+     "title": "Ecommerce Apps Can Double Your Revenue 📈",
+     "views": 13490,
+     "content_format": "tutorial/listicle",
+     "topic_category": "ecommerce",
+     "performance_score": 80
+    }
+   ]
+  }
+ },
+ {
+  "id": "46cf8fbc-2d74-4bc8-aba7-e01773bb4bd8",
+  "created_at": "2026-04-15T16:58:06.400936+00:00",
+  "topic_id": "7f5c8eaf-dde3-4f75-bed3-90bf29dfe227",
+  "research_brief_id": "119900bb-3e49-4589-8151-af706a65f527",
+  "model_provider": "openai",
+  "model": "gpt-5-nano",
+  "language": null,
+  "content_format": null,
+  "hook_options": [
+   "Aap regulated retailer ho? Compliance ke saath targeting ab seconds me possible hai.",
+   "Plain-English prompts se segments banenge—no filters, no data gymnastics.",
+   "Regulated sectors me AI se targeting fast, aur yeh non-technical marketers ke liye bhi hai."
+  ],
+  "final_script": "Aap regulated retailer ho? Compliance ke saath targeting ab seconds me possible hai.\nYe AI Audience Builder plain-English prompts se segments bana deta hai.\nMatlab: bina heavy filters ke real-time audience, bina data gymnastics.\nPehla beat: Pehla rule—bas prompts likho, AI turant audience bana dega.\nDusra beat: Do prompts se 2-3 campaigns turant test ho jayenge.\nPrompt A: 'High-frequency cannabis customers jinhone 45 din me $100+ spend kiya, aur 30 din me 2 visits kiye'.\nCampaign A: In segments ko exclusive loyalty offer bhejo.\nPrompt B: 'CBD topical purchases last 30 days par un customers ko re-engage karo jo rewards miss kiye'.\nCampaign B: Limited-time bundle se re-engage karo.\nTeesra beat: Availability turant hai; sab subscribers ke liye no extra cost.\nCaveat: Yeh claims press release par adharit hain; real results data quality aur regulatory rules par depend karte hain.\nClose/CTA: Agar aap regulated retailer ho, niche 2 prompts likho; main demo link share kar dunga.",
+  "caption": "Regulated retailers ke liye AI audience builder: plain-English prompts se instant segmentation. 2 simple prompts try karo, demo link niche. #AIinMarketing #RegulatedRetail",
+  "broll": [
+   "Marketer plain-English prompt likhte hue screen capture",
+   "AI dashboard par audience segments ki instant creation",
+   "2-3 example campaigns: loyalty offer, re-engagement bundle",
+   "Team-wide access visuals aur compliance-focused UI cue"
+  ],
+  "cta": "Comment karo 'demo' ya niche prompts likho, main demo link share kar dunga",
+  "source_urls": [
+   {
+    "url": "https://www.globenewswire.com/news-release/2026/04/13/3272615/0/en/Springbig-Launches-AI-Audience-Builder-Giving-Regulated-Retailers-a-Smarter-Way-to-Target-Engage-and-Grow.html",
+    "name": "GlobeNewswire - Springbig launches AI Audience Builder"
+   },
+   {
+    "url": "https://fr.investing.com/news/company-news/springbig-lance-un-outil-de-ciblage-daudience-alimente-par-lia-93CH-3356039",
+    "name": "Investing.com - Reuters coverage"
+   }
+  ],
+  "reference_transcript_ids": [],
+  "metadata": {
+   "style_profile_source": "creator_pipeline/data/tej_style_profile.md",
+   "reference_examples_used": [
+    {
+     "title": "Ecommerce Apps Can Double Your Revenue 📈",
+     "views": 13490,
+     "content_format": "tutorial/listicle",
+     "topic_category": "ecommerce",
+     "performance_score": 80
+    }
+   ]
+  }
+ },
+ {
+  "id": "2fe9761c-a8e8-4f00-a8e6-2fd171e22dac",
+  "created_at": "2026-04-15T16:58:30.832213+00:00",
+  "topic_id": "7f5c8eaf-dde3-4f75-bed3-90bf29dfe227",
+  "research_brief_id": "119900bb-3e49-4589-8151-af706a65f527",
+  "model_provider": "openai",
+  "model": "gpt-5-nano",
+  "language": null,
+  "content_format": null,
+  "hook_options": [
+   "A regulated retailer ho? Audience segmentation itni slow mat samjho. AI se seconds mein segment banao.",
+   "Manual filters khatam, plain English prompts se audience banao—compliance-friendly, fast.",
+   "Socho: tumhe bas plain English me prompts do, aur campaigns ready ho jayein—scaling ab minutes mein."
+  ],
+  "final_script": "A regulated retailer ho? Audience segmentation itni slow mat samjho. Plain English prompts se segmentation seconds mein ho sakta hai.\nSpringbig ne AI Audience Builder launch kiya hai, regulated retailers ke liye.\nIska matlab: aap apne shabdon me audience batao, aur AI segment taiyar ho jaata hai.\nBeat 1: Audience ko bol do, jaise tum bolte ho.\nKoi filters, koi data science ki training ki zaroorat nahi.\nReal-time data se targeting zyada precise ho jaata hai.\nBeat 2: 2–3 practical prompts ke examples.\nExample A: Create a segment of high-frequency cannabis customers who spent over $100 in the last 45 days and visited twice in the last 30 days.\nCampaign idea: exclusive loyalty offer for a new product line.\nExample B: Identify customers who purchased CBD topical s in the last month but have not engaged with rewards in 60 days.\nCampaign: re-engagement offer plus a limited-time bundle.\nExample C: Find top 5% lifetime value customers who shopped in past 90 days and visited more than once per location; VIP early-access promo.\nCampaign: VIP access message with personalized rewards.\nBeat 3: Ab sab marketers ke liye, data scientist ki zaroorat nahi.\nKoi coding nahi; bas prompts likho, AI automatically segments.\nReal-time data se messages zyada relevant hote hain.\nAur yeh regulated retailers ke liye compliance-minded automation hai.\nAvailability immediate hai; Springbig platform subscribers ke liye no extra cost.\nYe AI-native MarTech suite ka hissa hai, campaigns, messaging, loyalty analytics sab milke.\nCaveat: yeh claims press release par based hain; real-world hasil data ki quality par depend karega.\nToh ab apne regulated store ke liye 2 prompts likh ke test karo.\nComment me 'demo' likho; main walkthrough link share kar dunga.\nIs channel ko aage ke videos ke liye subscribe karna mat bhoolen.",
+  "caption": "Regulated retailers ke liye AI se segmentation ab plain-English prompts me. Instant audience, faster campaigns, aur compliance-friendly. 2–3 example prompts se shuruat karo aur dekhna how real-time data lifts relevance. Caveats: press-release claims hain, real-world results vary. Demo link ke liye comment karo.",
+  "broll": [
+   "On-screen UI showing a prompt like 'Create a segment...' converting into a list of customers",
+   "Split-screen: 'Hours' vs 'Seconds' to illustrate speed",
+   "Close-up shot of a dashboard updating in real-time as prompts are entered",
+   "Visuals of cannabis/regulatory retailer imagery with compliance checkmarks",
+   "Founder/coach talking to camera, then cut to quick roleplay: marketer typing prompts",
+   "CTA screen with 'Comment for demo link' and a simple arrow animation"
+  ],
+  "cta": "Comment me 'demo' to get the walkthrough link",
+  "source_urls": [
+   {
+    "url": "https://www.globenewswire.com/news-release/2026/04/13/3272615/0/en/Springbig-Launches-AI-Audience-Builder-Giving-Regulated-Retailers-a-Smarter-Way-to-Target-Engage-and-Grow.html",
+    "name": "GlobeNewswire - Springbig launches AI Audience Builder"
+   },
+   {
+    "url": "https://fr.investing.com/news/company-news/springbig-lance-un-outil-de-ciblage-daudience-alimente-par-lia-93CH-3356039",
+    "name": "Investing.com - Springbig launches AI Audience Builder"
+   }
+  ],
+  "reference_transcript_ids": [],
+  "metadata": {
+   "style_profile_source": "creator_pipeline/data/tej_style_profile.md",
+   "reference_examples_used": [
+    {
+     "title": "Ecommerce Apps Can Double Your Revenue 📈",
+     "views": 13490,
+     "content_format": "tutorial/listicle",
+     "topic_category": "ecommerce",
+     "performance_score": 80
+    }
+   ]
+  }
+ },
+ {
+  "id": "26c542e2-157b-431c-94ed-ca2468b71b1f",
+  "created_at": "2026-04-15T17:04:12.768693+00:00",
+  "topic_id": "7f5c8eaf-dde3-4f75-bed3-90bf29dfe227",
+  "research_brief_id": "119900bb-3e49-4589-8151-af706a65f527",
+  "model_provider": "openai",
+  "model": "gpt-5.4",
+  "language": null,
+  "content_format": null,
+  "hook_options": [
+   "Agar aapka business regulated category mein hai, to marketing ki sabse badi problem ad banana nahi, audience banana hai.",
+   "Hours laga ke segment bana rahe ho? Tab tak customer ka mood change ho chuka hota hai.",
+   "Data team ke bina smart targeting nahi ho sakti... ye belief ab purana ho raha hai."
+  ],
+  "final_script": "Agar aap regulated category mein ho,\nmarketing ki sabse badi dikkat creative nahi hai.\nSahi audience, jaldi, aur compliance ke saath banana hai.\n\nAb dekho game kya change hua hai.\nSpringbig ne ek AI Audience Builder launch kiya hai,\njahan aap filters khol ke dimaag nahi khapate.\nSimple language mein likho,\naur AI segment bana deta hai.\n\nIska matlab aapko kya samajhna hai?\nFuture un logon ka hai jo prompt se campaign chalayenge,\nspreadsheet se nahi atkenge.\n\nMaan lo aapka regulated retail brand hai.\nAap normally kya karte ho?\nLast purchase, visit frequency, spend amount,\nreward activity... sab manually jodte ho.\nTime gaya.\nMomentum gaya.\n\nAb prompt aise socho.\nUn customers ko nikalo\njinhone last 45 days mein 100 dollar se zyada spend kiya,\naur last 30 days mein do baar aaye.\nAb inko new product line ka loyalty offer bhejo.\n\nDoosra use case.\nJo log last month topical products le chuke hain,\npar 60 days se rewards ke saath engage nahi kiya.\nInko re-engagement offer bhejo,\nsaath mein limited-time bundle.\n\nTeesra powerful play.\nTop lifetime value wale customers,\njo last 90 days mein active the.\nInke liye VIP early-access promo.\nSabko same message mat bhejo.\nBest buyers ko best treatment do.\n\nSabse bada lesson kya hai?\nAb sophisticated segmentation sirf data specialist ka kaam nahi rahega.\nMarketer khud audience bana payega,\naur setup hours se seconds tak aa sakta hai.\n\nPar ek warning hai.\nAI tabhi smart lagega\njab aapka customer data clean ho.\nAur regulated business mein compliance ka dhyan\nAI ke bharose poora chhodna mat.\n\nTo aapko kya karna hai?\nAaj hi apne business ke 3 audience prompts likho.\nHigh value.\nAt-risk.\nRepeat buyer.\nPhir dekho aapki campaigns kitni fast aur relevant hoti hain.",
+  "caption": "Regulated business mein problem ads ki nahi hoti. Problem hoti hai sahi audience ko jaldi target karne ki. Ab natural-language prompts se segmentation possible ho raha hai. Sawal ye nahi hai AI aaya ya nahi. Sawal ye hai aap prompt likhna kab start karoge.",
+  "broll": [
+   "Talking head with bold text: 'Audience banana mushkil hai, ad banana nahi'",
+   "Screen recording style mockup of typing a natural-language prompt into an AI segmentation tool",
+   "On-screen split: manual filters and logic on one side, simple prompt on the other",
+   "Text overlay examples: 'High value', 'At-risk', 'Repeat buyer'",
+   "CRM/dashboard style visuals showing customer segments populating instantly",
+   "Close-up talking head for warning line with text: 'Clean data + compliance zaroori hai'"
+  ],
+  "cta": "Agar aap chaho, main iske liye 10 ready-to-use audience prompts bana dunga. Comment karo: PROMPTS",
+  "source_urls": [
+   {
+    "url": "https://www.globenewswire.com/news-release/2026/04/13/3272615/0/en/Springbig-Launches-AI-Audience-Builder-Giving-Regulated-Retailers-a-Smarter-Way-to-Target-Engage-and-Grow.html",
+    "name": "GlobeNewswire - Springbig launches AI Audience Builder"
+   },
+   {
+    "url": "https://fr.investing.com/news/company-news/springbig-lance-un-outil-de-ciblage-daudience-alimente-par-lia-93CH-3356039",
+    "name": "Investing.com - Springbig launches AI Audience Builder (Reuters report)"
+   }
+  ],
+  "reference_transcript_ids": [],
+  "metadata": {
+   "style_profile_source": "creator_pipeline/data/tej_style_profile.md",
+   "reference_examples_used": [
+    {
+     "title": "Ecommerce Apps Can Double Your Revenue 📈",
+     "views": 13490,
+     "content_format": "tutorial/listicle",
+     "topic_category": "ecommerce",
+     "performance_score": 80
+    }
+   ]
+  }
+ },
+ {
+  "id": "d35b9c26-69d7-4209-a161-725ee4d9d350",
+  "created_at": "2026-04-16T02:14:43.492686+00:00",
+  "topic_id": "85d66c2e-accb-4990-9338-eb268a2f3bda",
+  "research_brief_id": "c93eece1-b6a9-49e5-942a-1740688d75aa",
+  "model_provider": "openai",
+  "model": "gpt-5.4",
+  "language": null,
+  "content_format": null,
+  "hook_options": [
+   "Agar aap TV ya CTV pe ads chalate ho, ek hi ad sabko dikhana ab sabse mehenga mistake hai.",
+   "TV ad banana mehenga hota hai. Par usse 10 version banana, ab zaroori nahi mehenga ho.",
+   "Reach chahiye aur relevance bhi chahiye? Ab shayad dono ek saath mil sakte hain."
+  ],
+  "final_script": "Agar aap TV ya CTV pe ad chala rahe ho,\nek hi creative sab jagah chalana,\naaj ke time pe smart move nahi hai.\n\nProblem kya hoti hai?\nHar city alag.\nHar audience alag.\nPar ad ek hi.\nAur naya version banana matlab reshoot, naya edit, naya voiceover, naya kharcha.\n\nAb interesting cheez ye hui hai.\nEk AI tool aaya hai jo approved hero ad se hi multiple TV variants bana sakta hai.\nMatlab onscreen graphics badal do,\nCTA badal do,\noffer badal do,\naur voice ki pacing bhi same style mein adapt ho sakti hai.\nWo bhi bina manual re-edit ke, near real-time.\n\nMaan lo aapka skincare brand hai.\nHero ad same rahega.\nDelhi ke liye alag offer,\nnew moms ke liye alag message,\nsummer ke liye alag line,\naur end mein alag CTA.\nAd ka skeleton same,\ncontext change.\nYahi game hai.\n\nIska matlab simple language mein samjho.\nAapko har baar naya ad shoot nahi karna.\nPehle ek strong hero spot banao.\nPhir uske variations geography, audience cohort, seasonality aur product focus ke hisaab se nikalo.\nTV ki reach bhi rahe,\nrelevance bhi badhe.\n\nPar ek warning hai.\nVoice clone aur usage rights ko lightly mat lena.\nTalent approval, compliance, aur final sign-off clear hona chahiye.\nAur sirf AI laga diya to results guaranteed nahi hote.\nCreative aur targeting dono matter karte hain.\n\nAapko kya karna hai?\nAgar aap ads chala rahe ho,\nagle campaign mein ek hero creative socho,\nphir pucho: iske 5 smart versions kaunse ban sakte hain,\nbina production cost udaaye?\nYahi soch agle 12 mahine ka edge degi.",
+  "caption": "TV ad ka game change ho raha hai. Ek hero ad se multiple localized ya audience-based variants nikal sakte ho bina har baar reshoot ki tension ke. Par rights, approvals aur creative quality clear honi chahiye. Smart brands ab reach ke saath relevance bhi build karenge.",
+  "broll": [
+   "Talking head with bold text: 'One TV ad for everyone = expensive mistake'",
+   "Show one hero TV ad on screen, then duplicate into multiple variant tiles",
+   "On-screen swap examples: city name, CTA, offer, season tag",
+   "Mock example for skincare brand: Delhi offer vs new moms vs summer version",
+   "Highlight words on screen: 'No reshoot', 'No manual edit', 'Near real-time'",
+   "Warning screen: 'Check voice rights + compliance approvals'"
+  ],
+  "cta": "Comment karo 'TV' agar tum chahte ho main iska practical use case breakdown banaun.",
+  "source_urls": [
+   {
+    "url": "https://www.businesswire.com/news/home/20260413190627/en/Marketing-Architects-Launches-Mass-Customizer-to-Balance-Reach-and-Relevance-on-TV",
+    "name": "Business Wire"
+   },
+   {
+    "url": "https://blog.marketingarchitects.com/blog/marketing-architects-launches-mass-customizer-to-balance-reach-and-relevance-on-tv",
+    "name": "Marketing Architects Blog"
+   }
+  ],
+  "reference_transcript_ids": [],
+  "metadata": {
+   "style_profile_source": "creator_pipeline/data/tej_style_profile.md",
+   "reference_examples_used": [
+    {
+     "title": "How to Grow your Offline Business SALES",
+     "views": 13361,
+     "content_format": "talking head",
+     "topic_category": "sales & negotiation",
+     "performance_score": 70
+    },
+    {
+     "title": "Boring makes money. Entertaining keeps you in struggle.",
+     "views": 14622,
+     "content_format": "talking head",
+     "topic_category": "business strategy",
+     "performance_score": 70
+    },
+    {
+     "title": "How to Grow FAST Without Ads or Big Budget",
+     "views": 29898,
+     "content_format": "talking head",
+     "topic_category": "marketing",
+     "performance_score": 70
+    },
+    {
+     "title": "Starting Ecommerce? Watch This First",
+     "views": 29569,
+     "content_format": "roleplay/skit",
+     "topic_category": "ecommerce",
+     "performance_score": 70
+    }
+   ]
+  }
+ },
+ {
+  "id": "05384b27-a71e-4486-9882-d883b7c1210d",
+  "created_at": "2026-04-16T02:14:43.617744+00:00",
+  "topic_id": "09114b9e-9bca-4b41-82f4-bbdec338ceb7",
+  "research_brief_id": "f8a645e4-7291-4f82-8007-6829a2476460",
+  "model_provider": "openai",
+  "model": "gpt-5.4",
+  "language": null,
+  "content_format": null,
+  "hook_options": [
+   "Agar aapke paas SGB hai, to 15 April ko paisa aayega ya tax ka jhatka lagega?",
+   "Gold mein profit dekh ke khush mat ho jao... April 2026 ke baad game tax ka ho gaya hai.",
+   "SGB ka redemption sirf paisa milne ki news nahi hai. Yeh portfolio decision ka moment hai."
+  ],
+  "final_script": "Agar aapke paas SGB 2019-20 Series V hai,\n15 April 2026 ko sirf redemption nahi ho raha,\naapka tax aur cash-flow decision ho raha hai.\n\nRBI ne is tranche ka premature redemption price fix kiya hai,\n15,009 rupaye per unit.\nEk unit matlab 1 gram gold.\n\nAb simple language mein samjho.\nMaan lo aapne ek unit online issue par liya tha,\nlagbhag 3,738 mein.\nAb exit 15,009 par ho raha hai.\nMatlab around 11,271 ka capital gain per unit,\naur upar se 2.5% annual interest alag mila hoga holding period mein.\n\nSunne mein mast lag raha hai.\nPar ek warning hai.\n1 April 2026 ke baad rule change ho chuka hai.\nHar redemption tax-free nahi maana jayega.\nAgar aap original subscriber ho aur maturity tak hold kiya hai,\ntabhi exemption ka benefit relevant ho sakta hai.\nPremature redemption par tax lag sakta hai.\n\nDusra scene samjho.\nAgar aapne yeh SGB secondary market se kharida tha,\nto gross profit dekh ke khush mat ho.\nAfter-tax profit dekho.\nPaper pe 15,009 dikhega,\naccount mein real winner wahi hai jo tax ke baad number samjhe.\n\nTeesri baat, business owners ke liye important.\nAgar aap personal ya company treasury mein SGB rakhte ho,\nisse aane wala cash idle mat chhodna.\nPehle decide karo,\nyeh paisa emergency buffer mein jayega,\ndebt reduce karega,\nya portfolio rebalance hoga.\n\nBas ek galti mat karna.\nSaare SGBs ki date same maan lena.\nApna exact tranche,\nwindow,\nand holding type check karo.\n\nAaj hi bank, depository, ya RBI details verify karo,\naur after-tax gain nikaalo.\nProfit wahi hota hai jo pocket mein bache.",
+  "caption": "SGB redemption aa raha hai? Sirf exit price mat dekho. April 2026 ke baad tax ka game change ho gaya hai. Apna tranche, holding type aur after-tax gain aaj hi check karo.",
+  "broll": [
+   "Phone screen par SGB certificate / holding statement zoom-in",
+   "On-screen text: '15 April 2026 | ₹15,009 per unit'",
+   "Whiteboard ya notepad par quick math: 3,738 -> 15,009",
+   "Split screen: 'Original issue holder' vs 'Secondary market buyer'",
+   "Tax warning text pop-up: 'Premature redemption tax-free ho zaroori nahi'",
+   "Portfolio buckets visual: emergency fund / debt repayment / rebalance"
+  ],
+  "cta": "Comment karo 'SGB' agar aapko iske liye simple gain-check framework chahiye.",
+  "source_urls": [
+   {
+    "url": "https://economictimes.indiatimes.com/wealth/invest/302-return-on-sgb-premature-redemption-date-gold-bond-turns-rs-1-lakh-investment-into-rs-4-02-lakh/articleshow/130251811.cms",
+    "name": "Economic Times - 302% return on SGB premature redemption date (April 15, 2026 price ₹15,009)"
+   },
+   {
+    "url": "https://www.businesstoday.in/personal-finance/investment/story/sgb-redemption-dates-out-for-apr-sep-2026-april-1-tax-rule-alters-investor-returns-518255-2026-02-27",
+    "name": "Business Today - SGB redemption dates Apr–Sep 2026; tax changes effective Apr 1, 2026"
+   },
+   {
+    "url": "https://www.livemint.com/money/personal-finance/after-budget-shuts-tax-free-exits-on-sgbs-small-february-window-offers-last-chance-11770119940047.html",
+    "name": "Live Mint - After Budget shuts tax-free exits on SGBs"
+   },
+   {
+    "url": "https://www.incometaxindia.gov.in/Documents/Budget2026/FAQs-Budget-2026.pdf",
+    "name": "Income Tax Department - Budget 2026 FAQs"
+   }
+  ],
+  "reference_transcript_ids": [],
+  "metadata": {
+   "style_profile_source": "creator_pipeline/data/tej_style_profile.md",
+   "reference_examples_used": [
+    {
+     "title": "How to Grow your Offline Business SALES",
+     "views": 13361,
+     "content_format": "talking head",
+     "topic_category": "sales & negotiation",
+     "performance_score": 70
+    },
+    {
+     "title": "Boring makes money. Entertaining keeps you in struggle.",
+     "views": 14622,
+     "content_format": "talking head",
+     "topic_category": "business strategy",
+     "performance_score": 70
+    },
+    {
+     "title": "How to Grow FAST Without Ads or Big Budget",
+     "views": 29898,
+     "content_format": "talking head",
+     "topic_category": "marketing",
+     "performance_score": 70
+    },
+    {
+     "title": "Starting Ecommerce? Watch This First",
+     "views": 29569,
+     "content_format": "roleplay/skit",
+     "topic_category": "ecommerce",
+     "performance_score": 70
+    }
+   ]
+  }
+ }
+]

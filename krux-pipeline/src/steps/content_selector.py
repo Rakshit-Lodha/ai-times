@@ -1,7 +1,8 @@
 import json
 import logging
 
-from ..clients import supabase, claude
+from .. import store
+from ..clients import claude
 from ..prompts.content_selector import SYSTEM_PROMPT
 from ..utils.json_repair import safe_load_llm_json
 from ..utils.retry import retry
@@ -11,17 +12,12 @@ logger = logging.getLogger(__name__)
 
 def fetch_webhooks(date: str, next_date: str) -> list[dict]:
     """Fetch webhooks for the date range and deduplicate by exact news_output."""
-    result = (
-        supabase.table("webhooks")
-        .select("id", "news_output", "source_urls", "news_date", "monitor_type", "created_at")
-        .gte("created_at", date)
-        .lt("created_at", next_date)
-        .order("created_at", desc=False)
-        .execute()
-    )
+    fields = ("id", "news_output", "source_urls", "news_date", "monitor_type", "created_at")
+    rows = store.select("webhooks", store.created_between(date, next_date))
 
     unique_results = []
-    for item in result.data:
+    for row in rows:
+        item = {k: row.get(k) for k in fields}
         current_news = item["news_output"]
         if not any(existing["news_output"] == current_news for existing in unique_results):
             unique_results.append(item)
@@ -56,8 +52,7 @@ def save_curation_audit(content: dict) -> dict | None:
         "others": mix.get("others", 0),
         "selection_notes": content.get("selection_notes"),
     }
-    res = supabase.table("curation_audit").insert(payload).execute()
-    return res.data[0] if res.data else None
+    return store.insert("curation_audit", payload)
 
 
 def save_curated_items(content: dict, dry_run: bool = False) -> list[dict]:
@@ -81,17 +76,11 @@ def save_curated_items(content: dict, dry_run: bool = False) -> list[dict]:
             continue
 
         # Idempotency check
-        existing = (
-            supabase.table("curation_selected_items")
-            .select("event_id")
-            .eq("event_id", event_id)
-            .execute()
-        )
-        if existing.data:
+        if store.exists("curation_selected_items", lambda r: r["event_id"] == event_id):
             logger.info("Skipping duplicate event_id: %s", event_id)
             continue
 
-        supabase.table("curation_selected_items").insert(record).execute()
+        store.insert("curation_selected_items", record)
         logger.info("Saved curated item: %s", event_id)
         saved.append(record)
 

@@ -1,14 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
-// Mock supabase before importing the route
-const mockRange = vi.fn();
-const mockEq = vi.fn(() => ({ range: mockRange }));
-const mockOrder = vi.fn(() => ({ range: mockRange, eq: mockEq }));
-const mockSelect = vi.fn(() => ({ order: mockOrder }));
-const mockFrom = vi.fn(() => ({ select: mockSelect }));
+const mockListArticles = vi.fn();
 
-vi.mock("@/lib/supabase", () => ({
-  supabase: { from: (...args: unknown[]) => mockFrom(...args) },
+vi.mock("@/lib/db", () => ({
+  listArticles: (...args: unknown[]) => mockListArticles(...args),
 }));
 
 import { GET } from "../route";
@@ -20,59 +15,62 @@ function makeRequest(url: string) {
 
 beforeEach(() => {
   vi.clearAllMocks();
-  mockRange.mockResolvedValue({ data: [], error: null });
+  mockListArticles.mockReturnValue([]);
 });
 
 describe("GET /api/articles", () => {
-  it("selects topic in the query", async () => {
-    await GET(makeRequest("/api/articles?offset=0"));
-
-    expect(mockFrom).toHaveBeenCalledWith("hundred_word_articles");
-    expect(mockSelect).toHaveBeenCalledWith(
-      expect.stringContaining("topic")
-    );
-  });
-
   it("does not apply topic filter when no topic param", async () => {
     await GET(makeRequest("/api/articles?offset=0"));
 
-    expect(mockEq).not.toHaveBeenCalled();
-    expect(mockRange).toHaveBeenCalledWith(0, 19);
+    expect(mockListArticles).toHaveBeenCalledWith(
+      expect.objectContaining({ topic: undefined, offset: 0, limit: 20 })
+    );
   });
 
   it("applies topic filter for valid slugs", async () => {
     const cases = [
-      { slug: "for-work", dbValue: "Workflow Improvement" },
+      { slug: "for-work", dbValue: "Workflow improvement" },
       { slug: "funding", dbValue: "Funding" },
-      { slug: "reports", dbValue: "Reports" },
+      { slug: "reports", dbValue: "Report" },
       { slug: "others", dbValue: "Others" },
     ];
 
     for (const { slug, dbValue } of cases) {
-      vi.clearAllMocks();
-      mockRange.mockResolvedValue({ data: [], error: null });
-
+      mockListArticles.mockClear();
       await GET(makeRequest(`/api/articles?offset=0&topic=${slug}`));
 
-      expect(mockEq).toHaveBeenCalledWith("topic", dbValue);
+      expect(mockListArticles).toHaveBeenCalledWith(
+        expect.objectContaining({ topic: dbValue })
+      );
     }
   });
 
   it("ignores invalid topic slugs", async () => {
     await GET(makeRequest("/api/articles?offset=0&topic=invalid-slug"));
 
-    expect(mockEq).not.toHaveBeenCalled();
+    expect(mockListArticles).toHaveBeenCalledWith(
+      expect.objectContaining({ topic: undefined })
+    );
+  });
+
+  it("applies the today filter", async () => {
+    await GET(makeRequest("/api/articles?offset=0&today=1"));
+
+    expect(mockListArticles).toHaveBeenCalledWith(
+      expect.objectContaining({ since: expect.any(String) })
+    );
   });
 
   it("respects offset parameter", async () => {
     await GET(makeRequest("/api/articles?offset=20"));
 
-    expect(mockRange).toHaveBeenCalledWith(20, 39);
+    expect(mockListArticles).toHaveBeenCalledWith(
+      expect.objectContaining({ offset: 20, limit: 20 })
+    );
   });
 
   it("returns hasMore=true when batch is full", async () => {
-    const fullBatch = Array.from({ length: 20 }, (_, i) => ({ id: i }));
-    mockRange.mockResolvedValue({ data: fullBatch, error: null });
+    mockListArticles.mockReturnValue(Array.from({ length: 20 }, (_, i) => ({ id: i })));
 
     const res = await GET(makeRequest("/api/articles?offset=0"));
     const json = await res.json();
@@ -81,21 +79,11 @@ describe("GET /api/articles", () => {
   });
 
   it("returns hasMore=false when batch is partial", async () => {
-    mockRange.mockResolvedValue({ data: [{ id: 1 }], error: null });
+    mockListArticles.mockReturnValue([{ id: 1 }]);
 
     const res = await GET(makeRequest("/api/articles?offset=0"));
     const json = await res.json();
 
     expect(json.hasMore).toBe(false);
-  });
-
-  it("returns 500 on supabase error", async () => {
-    mockRange.mockResolvedValue({ data: null, error: { message: "DB down" } });
-
-    const res = await GET(makeRequest("/api/articles?offset=0"));
-
-    expect(res.status).toBe(500);
-    const json = await res.json();
-    expect(json.error).toBe("DB down");
   });
 });

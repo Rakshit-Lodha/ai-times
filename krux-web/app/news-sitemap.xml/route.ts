@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabase";
+import { listArticles } from "@/lib/db";
 import { buildStoryPath, getBaseUrl } from "@/lib/story";
 
 export const dynamic = "force-dynamic";
@@ -9,13 +9,7 @@ export async function GET() {
   // Google News sitemaps should only contain articles from the last 48 hours
   const twoDaysAgo = new Date(Date.now() - 48 * 60 * 60 * 1000).toISOString();
 
-  const { data } = await supabase
-    .from("hundred_word_articles")
-    .select("id, headline, created_at, news_date")
-    .gte("created_at", twoDaysAgo)
-    .order("created_at", { ascending: false });
-
-  const articles = data ?? [];
+  const articles = listArticles({ since: twoDaysAgo });
 
   const urls = articles
     .map((article) => {

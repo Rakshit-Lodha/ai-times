@@ -42,7 +42,5 @@ def _require_env(name: str) -> str:
     return value
 
 
-SUPABASE_URL = _require_env("SUPABASE_URL")
-SUPABASE_KEY = _require_env("SUPBASE_KEY")  # typo preserved to match existing env
 CLAUDE_API_KEY = _require_env("CLAUDE_API_KEY")
 OPENAI_API_KEY = _require_env("OPENAI_API_KEY")

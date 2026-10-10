@@ -1,0 +1,56 @@
+[
+ {
+  "id": 1,
+  "stack_id": 1,
+  "position": 1,
+  "headline": "Claude Projects — Give AI Your Brand Context Permanently",
+  "output": "Most marketers start every Claude chat from scratch. Projects fix that. A Claude Project is a persistent workspace where you upload brand guidelines, tone docs, audience personas, and past campaigns. Every conversation inside that Project already knows your context. Think of it as giving Claude a permanent desk at your company. Create one Project per brand or client. Drop in your style guide, your best-performing copy, and a one-page brief on your audience. Now every prompt starts with context, not a cold start. This alone cuts your prompting time in half.",
+  "image_url": null,
+  "created_at": "2026-03-19T17:58:56.168518+00:00"
+ },
+ {
+  "id": 2,
+  "stack_id": 1,
+  "position": 2,
+  "headline": "How to Write a Brand Voice Doc AI Can Actually Use",
+  "output": "Your brand guidelines PDF was written for humans. AI needs something different. Write a brand voice doc in plain instructions: \"We sound confident but never arrogant. We use short sentences. We never say synergy.\" Include 3 examples of good copy and 3 examples of bad copy. Add your banned words list. Specify your audience in one sentence. Upload this to your Claude Project. The difference is immediate — instead of generic marketing speak, Claude starts writing copy that sounds like your team wrote it. Update this doc quarterly as your voice evolves.",
+  "image_url": null,
+  "created_at": "2026-03-19T17:58:56.168518+00:00"
+ },
+ {
+  "id": 3,
+  "stack_id": 1,
+  "position": 3,
+  "headline": "Your First Claude Skill — Automate Your Weekly Report",
+  "output": "Claude Skills are reusable prompt templates you build once and run forever. Start with your weekly marketing report — something you do every week that follows the same structure. Define the Skill: input is raw metrics (paste from your dashboard), output is a formatted report with trends, highlights, and recommendations. Set the format, tone, and sections you always include. Save it as a Skill in your Project. Next Monday, paste your numbers and hit run. What took 45 minutes now takes 3. Skills turn repetitive knowledge work into one-click automation.",
+  "image_url": null,
+  "created_at": "2026-03-19T17:58:56.168518+00:00"
+ },
+ {
+  "id": 4,
+  "stack_id": 1,
+  "position": 4,
+  "headline": "How to Upload Campaign Data and Get Instant Analysis",
+  "output": "Claude reads CSVs, spreadsheets, and PDFs. Export your campaign performance data from Google Ads, Meta, or your analytics tool. Upload it directly into your Claude Project conversation. Ask specific questions: \"Which ad creative had the best CTR last month?\" or \"Compare Q1 vs Q2 performance by channel.\" Claude will analyze the data, find patterns you missed, and suggest optimizations. Pro tip: upload multiple months at once and ask for trend analysis. The key is asking focused questions, not \"analyze this data.\" Specificity gets you actionable insights instead of generic summaries.",
+  "image_url": null,
+  "created_at": "2026-03-19T17:58:56.168518+00:00"
+ },
+ {
+  "id": 5,
+  "stack_id": 1,
+  "position": 5,
+  "headline": "Chaining Prompts — From Brief to Finished Copy in 3 Steps",
+  "output": "Stop trying to get perfect copy in one prompt. Chain three instead. Prompt 1: \"Based on this brief, generate 5 angle options for this campaign.\" Pick your favorite. Prompt 2: \"Write 3 variations of this angle as [ad copy/email/landing page]. Match our brand voice doc.\" Prompt 3: \"Now critique these variations. Which is strongest and why? Suggest one improvement for each.\" This chain works because each step builds on the last. Claude's output quality jumps dramatically when you break complex tasks into focused steps. Save this chain as a Skill for your team.",
+  "image_url": null,
+  "created_at": "2026-03-19T17:58:56.168518+00:00"
+ },
+ {
+  "id": 6,
+  "stack_id": 1,
+  "position": 6,
+  "headline": "Skills Are Shareable — One Person Builds, Whole Team Uses",
+  "output": "The real power of Claude Skills is distribution. Once you build a Skill that works — say, your weekly report generator or your ad copy chain — anyone on your team can use it. They don't need to understand prompting. They just fill in the inputs and run it. This is how AI scales in a marketing team: one person becomes the Skill builder, everyone else becomes a Skill user. Start a shared Project with your team's best Skills. Add new ones monthly. Within a quarter, your team has a custom AI toolkit built specifically for how you work.",
+  "image_url": null,
+  "created_at": "2026-03-19T17:58:56.168518+00:00"
+ }
+]

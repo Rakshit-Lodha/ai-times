@@ -1,6 +1,7 @@
 import logging
 
-from ..clients import supabase, openai_client
+from .. import store
+from ..clients import openai_client
 from ..prompts import (
     research_funding,
     research_model,
@@ -28,16 +29,10 @@ _TOPICS_WITH_SOURCES = {"Funding", "Model announcements/enhancements", "Others",
 
 def fetch_curated_by_topic(date: str, next_date: str, topic: str) -> list[dict]:
     """Fetch curated items for a specific topic, created today."""
-    result = (
-        supabase.table("curation_selected_items")
-        .select("event_id, output, sources, news_date, topic")
-        .gte("created_at", date)
-        .lt("created_at", next_date)
-        .eq("topic", topic)
-        .order("created_at", desc=False)
-        .execute()
+    in_range = store.created_between(date, next_date)
+    return store.select(
+        "curation_selected_items", lambda r: in_range(r) and r.get("topic") == topic
     )
-    return result.data
 
 
 @retry(max_attempts=3, exceptions=(Exception,))
@@ -66,23 +61,17 @@ def save_research(record: dict, dry_run: bool = False) -> None:
         logger.info("[DRY RUN] Would save research for: %s", record["event_id"])
         return
 
-    existing = (
-        supabase.table("research_assistant")
-        .select("event_id")
-        .eq("event_id", record["event_id"])
-        .execute()
-    )
-    if existing.data:
+    if store.exists("research_assistant", lambda r: r["event_id"] == record["event_id"]):
         logger.info("Skipping duplicate research event_id: %s", record["event_id"])
         return
 
-    supabase.table("research_assistant").insert({
+    store.insert("research_assistant", {
         "event_id": record["event_id"],
         "model_provider": "openai",
         "news_date": record["news_date"],
         "output": record["output"],
         "topic": record["topic"],
-    }).execute()
+    })
 
 
 def research_topic(
@@ -100,13 +89,7 @@ def research_topic(
     for event in events:
         try:
             # Skip already-researched events before calling the API
-            existing = (
-                supabase.table("research_assistant")
-                .select("event_id")
-                .eq("event_id", event["event_id"])
-                .execute()
-            )
-            if existing.data:
+            if store.exists("research_assistant", lambda r: r["event_id"] == event["event_id"]):
                 logger.info("%s: skipping already-researched %s", topic, event["event_id"])
                 success += 1
                 continue

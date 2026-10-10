@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { cache } from "react";
 import { notFound, redirect } from "next/navigation";
-import { supabase } from "@/lib/supabase";
+import { getArticle } from "@/lib/db";
 import {
   buildStoryPath,
   buildStorySlug,
@@ -26,14 +26,7 @@ type StoryRecord = {
 };
 
 const getStoryById = cache(async (storyId: number): Promise<StoryRecord | null> => {
-  const { data, error } = await supabase
-    .from("hundred_word_articles")
-    .select("id, headline, output, news_date, created_at, image_url, sources")
-    .eq("id", storyId)
-    .maybeSingle();
-
-  if (error || !data) return null;
-  return data as StoryRecord;
+  return getArticle(storyId);
 });
 
 function formatDate(value: string | null): string {
