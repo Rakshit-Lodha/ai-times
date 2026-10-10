@@ -5,7 +5,7 @@ from pathlib import Path
 
 import requests
 
-from ..clients import supabase
+from .. import store
 from ..config import _require_env
 
 logger = logging.getLogger(__name__)
@@ -67,13 +67,7 @@ def _check_recent_webhooks() -> list[str]:
     cutoff = (datetime.now(timezone.utc) - timedelta(hours=_WEBHOOK_GAP_HOURS)).isoformat()
 
     try:
-        result = (
-            supabase.table("webhooks")
-            .select("id", count="exact")
-            .gte("created_at", cutoff)
-            .execute()
-        )
-        count = result.count if result.count is not None else len(result.data)
+        count = len(store.select("webhooks", store.created_between(cutoff, store.now_iso())))
         if count == 0:
             alerts.append(f"No new webhooks in the last {_WEBHOOK_GAP_HOURS}h")
         else:
@@ -89,7 +83,7 @@ def _send_alert_email(alerts: list[str], resend_api_key: str, to_email: str) -> 
     body_lines = ["The following issues were detected:\n"]
     for alert in alerts:
         body_lines.append(f"  • {alert}")
-    body_lines.append("\nCheck Parallel dashboard and Render logs immediately.")
+    body_lines.append("\nCheck the Parallel dashboard and the GitHub Actions pipeline logs.")
 
     try:
         resp = requests.post(

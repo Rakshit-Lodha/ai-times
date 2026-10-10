@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabase";
+import { listArticles } from "@/lib/db";
 import { buildStoryPath, getBaseUrl, getFirstWords, normalizeText } from "@/lib/story";
 
 export const dynamic = "force-dynamic";
@@ -19,13 +19,7 @@ function toRfc822(dateStr: string): string {
 export async function GET() {
   const baseUrl = getBaseUrl();
 
-  const { data } = await supabase
-    .from("hundred_word_articles")
-    .select("id, headline, output, created_at, news_date")
-    .order("created_at", { ascending: false })
-    .limit(50);
-
-  const articles = data ?? [];
+  const articles = listArticles({ limit: 50 });
 
   const items = articles
     .map((article) => {

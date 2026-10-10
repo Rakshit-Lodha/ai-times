@@ -1,7 +1,11 @@
 import base64
+import io
 import logging
 
-from ..clients import supabase, claude, openai_client
+from PIL import Image
+
+from .. import store
+from ..clients import claude, openai_client
 from ..prompts.image import SYSTEM_PROMPT
 from ..utils.retry import retry
 
@@ -10,14 +14,7 @@ logger = logging.getLogger(__name__)
 
 def fetch_articles_without_images() -> list[dict]:
     """Fetch articles from hundred_word_articles where image_url is NULL."""
-    result = (
-        supabase.table("hundred_word_articles")
-        .select("id", "headline", "output", "image_url")
-        .is_("image_url", "null")
-        .order("created_at", desc=False)
-        .execute()
-    )
-    return result.data
+    return store.select("hundred_word_articles", lambda r: not r.get("image_url"))
 
 
 @retry(max_attempts=3, exceptions=(Exception,))
@@ -46,25 +43,20 @@ def generate_image(prompt_text: str) -> bytes:
     return base64.b64decode(result.data[0].b64_json)
 
 
-@retry(max_attempts=3, exceptions=(Exception,))
-def upload_to_storage(article_id: int, image_bytes: bytes) -> str:
-    """Upload image to Supabase storage and return the public URL."""
-    file_name = f"{article_id}.png"
+def save_image(article_id: int, image_bytes: bytes) -> str:
+    """Save the image as WebP into krux-web/public and return its site-relative URL."""
+    file_name = f"{article_id}.webp"
+    store.IMAGE_DIR.mkdir(parents=True, exist_ok=True)
 
-    supabase.storage.from_("article-image").upload(
-        file_name,
-        image_bytes,
-        file_options={"content-type": "image/png", "upsert": "true"},
-    )
+    with Image.open(io.BytesIO(image_bytes)) as img:
+        img.convert("RGB").save(store.IMAGE_DIR / file_name, "WEBP", quality=80)
 
-    return supabase.storage.from_("article-image").get_public_url(file_name)
+    return f"{store.IMAGE_URL_PREFIX}/{file_name}"
 
 
 def update_image_url(article_id: int, public_url: str) -> None:
     """Update the article's image_url in hundred_word_articles."""
-    supabase.table("hundred_word_articles").update(
-        {"image_url": public_url}
-    ).eq("id", article_id).execute()
+    store.update("hundred_word_articles", lambda r: r["id"] == article_id, {"image_url": public_url})
 
 
 def run(dry_run: bool = False) -> int:
@@ -88,7 +80,7 @@ def run(dry_run: bool = False) -> int:
                 continue
 
             image_bytes = generate_image(prompt_text)
-            public_url = upload_to_storage(article["id"], image_bytes)
+            public_url = save_image(article["id"], image_bytes)
             update_image_url(article["id"], public_url)
 
             success += 1

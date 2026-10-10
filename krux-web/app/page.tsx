@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabase";
+import { getArticle, listArticles } from "@/lib/db";
 import HomeShell from "@/components/HomeShell";
 import { type Article } from "@/components/StoryCard";
 
@@ -17,18 +17,12 @@ export default async function Home({ searchParams }: Props) {
   const { start, today } = await searchParams;
   const isTodayFilter = today === "1";
 
-  let query = supabase
-    .from("hundred_word_articles")
-    .select("id, headline, output, news_date, created_at, image_url, sources, topic")
-    .order("created_at", { ascending: false });
+  const data = listArticles({
+    since: isTodayFilter ? getIstMidnight() : undefined,
+    limit: 30,
+  });
 
-  if (isTodayFilter) {
-    query = query.gte("created_at", getIstMidnight());
-  }
-
-  const { data } = await query.limit(30);
-
-  let articles: Article[] = (data ?? []).map((article) => ({
+  const articles: Article[] = data.map((article) => ({
     id: article.id,
     headline: article.headline,
     output: article.output,
@@ -47,11 +41,7 @@ export default async function Home({ searchParams }: Props) {
     if (foundIndex !== -1) {
       startIndex = foundIndex + 1;
     } else if (!isNaN(articleId)) {
-      const { data: single } = await supabase
-        .from("hundred_word_articles")
-        .select("id, headline, output, news_date, created_at, image_url, sources, topic")
-        .eq("id", articleId)
-        .single();
+      const single = getArticle(articleId);
 
       if (single) {
         articles.unshift({
