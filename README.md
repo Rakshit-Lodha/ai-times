@@ -64,11 +64,11 @@ Krux.news runs without a paid database or server:
 | Piece | Where it runs |
 | --- | --- |
 | Website (`krux-web`) | Vercel Hobby, root directory `krux-web`, auto-deploys on every push to `main` |
-| Daily pipeline (`krux-pipeline`) | GitHub Actions cron, `.github/workflows/krux-pipeline.yml` (05:37 IST) |
+| Daily pipeline (`krux-pipeline`) | Not scheduled. Run it manually if you want new stories |
 | Database | JSON files committed to this repo, written by `krux-pipeline/src/store.py` |
 | Images | WebP files in `krux-web/public/article-images/`, served by Vercel's CDN |
 
-Each pipeline run commits its new rows and images, and that push redeploys the site.
+The site is currently an archive: nothing publishes new stories automatically. Running the pipeline locally and pushing its changes adds stories and redeploys the site.
 
 Tables (one JSON array per file):
 
@@ -100,7 +100,7 @@ The site used to run on Supabase and Render. Everything from that Supabase proje
 
 ## Environment Variables
 
-### Pipeline (GitHub repository secrets)
+### Pipeline (only if you run it locally)
 
 - `CLAUDE_API_KEY` (required)
 - `OPENAI_API_KEY` (required)
@@ -146,11 +146,9 @@ Useful pipeline options from [`krux-pipeline/src/main.py`](/Users/Rakshit.Lodha/
 
 ## Publish Flow
 
-1. The GitHub Actions pipeline writes new stories and images into the repo and commits them to `main`.
-2. Vercel redeploys `krux-web` on that push.
+1. Run the pipeline locally (`python -m src` in `krux-pipeline`). It writes new stories into `krux-web/data/` and images into `krux-web/public/article-images/`.
+2. Commit and push to `main`. Vercel redeploys `krux-web`.
 3. The web app reads `krux-web/data/hundred_word_articles.json` and serves the feed, story pages, RSS, and sitemaps.
-
-To run the pipeline on demand, open Actions → "Krux daily pipeline" → "Run workflow" (optionally with a date).
 
 ## Repo Scope
 
