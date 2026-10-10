@@ -114,15 +114,16 @@ def test_format_news_output_no_summary():
 # ── is_already_seen ──
 
 
-@patch("src.steps.rss_monitor.supabase")
-def test_is_already_seen_true(mock_sb):
-    mock_sb.table.return_value.select.return_value.eq.return_value.eq.return_value.eq.return_value.limit.return_value.execute.return_value = MagicMock(data=[{"id": 1}])
+_SEEN_ROW = {"id": 1, "monitor_type": "rss", "event_group_id": "test_blog", "monitor_id": "guid-1"}
+
+
+@patch("src.store._load", return_value=[_SEEN_ROW])
+def test_is_already_seen_true(mock_load):
     assert _is_already_seen(SAMPLE_FEED, "guid-1") is True
 
 
-@patch("src.steps.rss_monitor.supabase")
-def test_is_already_seen_false(mock_sb):
-    mock_sb.table.return_value.select.return_value.eq.return_value.eq.return_value.eq.return_value.limit.return_value.execute.return_value = MagicMock(data=[])
+@patch("src.store._load", return_value=[{**_SEEN_ROW, "monitor_id": "guid-2"}])
+def test_is_already_seen_false(mock_load):
     assert _is_already_seen(SAMPLE_FEED, "guid-1") is False
 
 
@@ -131,7 +132,7 @@ def test_is_already_seen_false(mock_sb):
 
 @patch("src.steps.rss_monitor._is_already_seen", return_value=False)
 @patch("src.steps.rss_monitor._fetch_feed")
-@patch("src.steps.rss_monitor.supabase")
+@patch("src.steps.rss_monitor.store")
 def test_process_feed_inserts_new(mock_sb, mock_fetch, mock_seen):
     now = datetime.now()
     mock_fetch.return_value = [
@@ -140,12 +141,12 @@ def test_process_feed_inserts_new(mock_sb, mock_fetch, mock_seen):
     ]
     count = _process_feed(SAMPLE_FEED)
     assert count == 2
-    assert mock_sb.table.return_value.insert.call_count == 2
+    assert mock_sb.insert.call_count == 2
 
 
 @patch("src.steps.rss_monitor._is_already_seen", return_value=True)
 @patch("src.steps.rss_monitor._fetch_feed")
-@patch("src.steps.rss_monitor.supabase")
+@patch("src.steps.rss_monitor.store")
 def test_process_feed_skips_seen(mock_sb, mock_fetch, mock_seen):
     now = datetime.now()
     mock_fetch.return_value = [
@@ -153,12 +154,12 @@ def test_process_feed_skips_seen(mock_sb, mock_fetch, mock_seen):
     ]
     count = _process_feed(SAMPLE_FEED)
     assert count == 0
-    mock_sb.table.return_value.insert.assert_not_called()
+    mock_sb.insert.assert_not_called()
 
 
 @patch("src.steps.rss_monitor._is_already_seen", return_value=False)
 @patch("src.steps.rss_monitor._fetch_feed")
-@patch("src.steps.rss_monitor.supabase")
+@patch("src.steps.rss_monitor.store")
 def test_process_feed_dry_run(mock_sb, mock_fetch, mock_seen):
     now = datetime.now()
     mock_fetch.return_value = [
@@ -166,7 +167,7 @@ def test_process_feed_dry_run(mock_sb, mock_fetch, mock_seen):
     ]
     count = _process_feed(SAMPLE_FEED, dry_run=True)
     assert count == 1
-    mock_sb.table.return_value.insert.assert_not_called()
+    mock_sb.insert.assert_not_called()
 
 
 @patch("src.steps.rss_monitor._fetch_feed", side_effect=Exception("network error"))
@@ -177,7 +178,7 @@ def test_process_feed_fetch_failure(mock_fetch):
 
 @patch("src.steps.rss_monitor._is_already_seen", return_value=False)
 @patch("src.steps.rss_monitor._fetch_feed")
-@patch("src.steps.rss_monitor.supabase")
+@patch("src.steps.rss_monitor.store")
 def test_process_feed_skips_old_entries(mock_sb, mock_fetch, mock_seen):
     old_date = datetime.now() - timedelta(days=10)
     mock_fetch.return_value = [

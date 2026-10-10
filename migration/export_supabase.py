@@ -96,7 +96,10 @@ def main() -> None:
     write_json(ROOT / "supabase-export" / "storage_objects.json", objects)
 
     IMAGE_DIR.mkdir(parents=True, exist_ok=True)
-    names = [o["name"] for o in objects if o["bucket_id"] == "article-image"]
+    names = [
+        o["name"] for o in objects
+        if o["bucket_id"] == "article-image" and not o["name"].endswith(".emptyFolderPlaceholder")
+    ]
     with ThreadPoolExecutor(max_workers=16) as pool:
         converted = dict(pool.map(convert, names))
     failed = [n for n, v in converted.items() if v is None]
