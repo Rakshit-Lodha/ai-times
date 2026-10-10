@@ -1,0 +1,16 @@
+[
+ {
+  "id": 1,
+  "slug": "set-up-claude-as-your-marketing-assistant",
+  "title": "Set Up Claude as Your Marketing Assistant",
+  "emoji": "🤖",
+  "description": "Go from blank chat to a personalized AI that knows your brand, your data, and your workflows.",
+  "cover_gradient": "linear-gradient(135deg, #D97757, #7c3aed)",
+  "cover_image_url": null,
+  "card_count": 6,
+  "sort_order": 1,
+  "is_published": true,
+  "created_at": "2026-03-19T17:58:56.168518+00:00",
+  "updated_at": "2026-03-19T17:58:56.168518+00:00"
+ }
+]

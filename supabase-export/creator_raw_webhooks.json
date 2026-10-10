@@ -1,0 +1,1102 @@
+[
+ {
+  "id": 1,
+  "created_at": "2026-04-14T10:38:48.719209+00:00",
+  "timestamp": "2026-04-14T10:02:06.134964+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_967d03e7f109443514a7c98921a66edf10ab2e3ebf350635",
+  "monitor_id": "monitor_967d03e7f10944358e10a7888c46bd7d",
+  "monitor_type": "paid_ads_growth",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "GoKwik launched Kwik Ads, an agentic AI performance-marketing platform for Indian D2C brands. Kwik Ads uses autonomous AI agents for signal enrichment (claims >200 Meta-compatible purchase signals from a 200M shopper network), creative research, benchmarking, and analysis. GoKwik says the platform supplies higher-quality purchase signals to ad algorithms (Meta signals partnership and Meta Agency Partner status cited), and reports early results: ~25% improvement in ROAS and ~15% reduction in CAC for participating brands, with customer case examples and partners (Personal Touch Skincare, Pee Safe, Bombay Shaving Company, What’s Up Wellness, Saada). Kwik Ads is available for demos and is positioned to impact creative testing, signal-based targeting, attribution inputs, and AI-assisted campaign setup for Indian advertisers.",
+  "news_date": "2026-04-14",
+  "source_urls": [
+   "https://mediabrief.com/gokwik-launches-kwik-ads-an-agentic-ai-platform-to-automate-performance-marketing/"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4269,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_967d03e7f109443514a7c98921a66edf10ab2e3ebf350635"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "paid_ads_growth"
+      },
+      "monitor_id": "monitor_967d03e7f10944358e10a7888c46bd7d"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T10:02:06.134964+00:00"
+    },
+    "news_date": "2026-04-14",
+    "timestamp": "2026-04-14T10:02:06.134964+00:00",
+    "created_at": "2026-04-14T10:02:07.343647+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_967d03e7f10944358e10a7888c46bd7d",
+    "news_output": "GoKwik launched Kwik Ads, an agentic AI performance-marketing platform for Indian D2C brands. Kwik Ads uses autonomous AI agents for signal enrichment (claims >200 Meta-compatible purchase signals from a 200M shopper network), creative research, benchmarking, and analysis. GoKwik says the platform supplies higher-quality purchase signals to ad algorithms (Meta signals partnership and Meta Agency Partner status cited), and reports early results: ~25% improvement in ROAS and ~15% reduction in CAC for participating brands, with customer case examples and partners (Personal Touch Skincare, Pee Safe, Bombay Shaving Company, What’s Up Wellness, Saada). Kwik Ads is available for demos and is positioned to impact creative testing, signal-based targeting, attribution inputs, and AI-assisted campaign setup for Indian advertisers.",
+    "source_urls": [
+     "https://mediabrief.com/gokwik-launches-kwik-ads-an-agentic-ai-platform-to-automate-performance-marketing/"
+    ],
+    "monitor_type": "paid_ads_growth",
+    "event_group_id": "mevtgrp_967d03e7f109443514a7c98921a66edf10ab2e3ebf350635"
+   },
+   "source_webhook_id": 4269
+  },
+  "dedupe_hash": "b408796de7023309391dc7512b1400a046c79c891ffda93a94641b2b7e0419a5"
+ },
+ {
+  "id": 2,
+  "created_at": "2026-04-14T10:38:48.894253+00:00",
+  "timestamp": "2026-04-14T10:01:45.988065+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_7cff1a0945e240831b6d1095502fb89bf7977283ff4734e2",
+  "monitor_id": "monitor_7cff1a0945e24083a1b02f5026e6a7d1",
+  "monitor_type": "marketing_trends",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "Agility PR (Bulldog Reporter) published guidance for brands planning promotions around America's 250th birthday, warning of clutter similar to Super Bowl/Olympics and recommending newsworthy, locally/nationally relevant themes (press freedom, immigration, voting rights) to earn media attention. Practical video angles: distribution tactics for big-event campaigns, how to craftnewsworthy brand narratives, and examples of PR-led creative that breaks through clutter.",
+  "news_date": "2026-04-14",
+  "source_urls": [
+   "https://www.agilitypr.com/pr-news/pr-news-trends/how-brands-can-avoid-the-super-bowl-and-olympics-trap-during-americas-birthday-celebration/"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4265,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_7cff1a0945e240831b6d1095502fb89bf7977283ff4734e2"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "marketing_trends"
+      },
+      "monitor_id": "monitor_7cff1a0945e24083a1b02f5026e6a7d1"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T10:01:45.988065+00:00"
+    },
+    "news_date": "2026-04-14",
+    "timestamp": "2026-04-14T10:01:45.988065+00:00",
+    "created_at": "2026-04-14T10:01:46.829303+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_7cff1a0945e24083a1b02f5026e6a7d1",
+    "news_output": "Agility PR (Bulldog Reporter) published guidance for brands planning promotions around America's 250th birthday, warning of clutter similar to Super Bowl/Olympics and recommending newsworthy, locally/nationally relevant themes (press freedom, immigration, voting rights) to earn media attention. Practical video angles: distribution tactics for big-event campaigns, how to craftnewsworthy brand narratives, and examples of PR-led creative that breaks through clutter.",
+    "source_urls": [
+     "https://www.agilitypr.com/pr-news/pr-news-trends/how-brands-can-avoid-the-super-bowl-and-olympics-trap-during-americas-birthday-celebration/"
+    ],
+    "monitor_type": "marketing_trends",
+    "event_group_id": "mevtgrp_7cff1a0945e240831b6d1095502fb89bf7977283ff4734e2"
+   },
+   "source_webhook_id": 4265
+  },
+  "dedupe_hash": "0405400aa977cf0768391917df56a6eb3267885ec81833f06b0faf62f0ad76a2"
+ },
+ {
+  "id": 3,
+  "created_at": "2026-04-14T10:38:49.046281+00:00",
+  "timestamp": "2026-04-14T10:01:45.988065+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_7cff1a0945e240831b6d1095502fb89bf7977283ff4734e2",
+  "monitor_id": "monitor_7cff1a0945e24083a1b02f5026e6a7d1",
+  "monitor_type": "marketing_trends",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "Brainwaves launched an AI platform for marketing and creative teams that uses >10 specialist AI agents in parallel (audience, culture, category, insight) to turn brand research into continuous strategy. Early pilots reportedly cut time-to-brief by up to 70% and the product emphasizes connecting brand intelligence to creative workflows (practical video angles: demo of converting research into briefs, walkthrough of specialist agents, case-study of time-to-brief reduction and agency/brand pilot work).",
+  "news_date": "2026-04-14",
+  "source_urls": [
+   "https://ecommercenews.com.au/story/brainwaves-launches-ai-platform-for-marketing-teams"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4264,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_7cff1a0945e240831b6d1095502fb89bf7977283ff4734e2"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "marketing_trends"
+      },
+      "monitor_id": "monitor_7cff1a0945e24083a1b02f5026e6a7d1"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T10:01:45.988065+00:00"
+    },
+    "news_date": "2026-04-14",
+    "timestamp": "2026-04-14T10:01:45.988065+00:00",
+    "created_at": "2026-04-14T10:01:46.469992+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_7cff1a0945e24083a1b02f5026e6a7d1",
+    "news_output": "Brainwaves launched an AI platform for marketing and creative teams that uses >10 specialist AI agents in parallel (audience, culture, category, insight) to turn brand research into continuous strategy. Early pilots reportedly cut time-to-brief by up to 70% and the product emphasizes connecting brand intelligence to creative workflows (practical video angles: demo of converting research into briefs, walkthrough of specialist agents, case-study of time-to-brief reduction and agency/brand pilot work).",
+    "source_urls": [
+     "https://ecommercenews.com.au/story/brainwaves-launches-ai-platform-for-marketing-teams"
+    ],
+    "monitor_type": "marketing_trends",
+    "event_group_id": "mevtgrp_7cff1a0945e240831b6d1095502fb89bf7977283ff4734e2"
+   },
+   "source_webhook_id": 4264
+  },
+  "dedupe_hash": "49b7af11f07bff47e6a6b2ea6c1599870083f6fa40ede2b06e3246ca585a9272"
+ },
+ {
+  "id": 4,
+  "created_at": "2026-04-14T10:38:49.187945+00:00",
+  "timestamp": "2026-04-14T10:01:39.360008+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_ae8435b40e8d4beddd03e478f4a37d427a570d11b4f00652",
+  "monitor_id": "monitor_ae8435b40e8d4beda38b7c69616a070a",
+  "monitor_type": "business_strategy",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "Jordan Phosphate Mines Company (JPMC) announcement (reported 2026-04-14) that the selling price of phosphoric acid will increase to $1,360 per tonne for Q2 2026 (up $70/tonne from Q1). The release cites agreements with major consumers and stronger export demand — a direct, material pricing change affecting customers and input-cost assumptions in fertilizer and chemical supply chains.",
+  "news_date": "2026-04-14",
+  "source_urls": [
+   "https://www.zawya.com/en/economy/levant/jordan-jpmc-announces-price-hike-for-phosphoric-acid-edelokiu"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4262,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_ae8435b40e8d4beddd03e478f4a37d427a570d11b4f00652"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "business_strategy"
+      },
+      "monitor_id": "monitor_ae8435b40e8d4beda38b7c69616a070a"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T10:01:39.360008+00:00"
+    },
+    "news_date": "2026-04-14",
+    "timestamp": "2026-04-14T10:01:39.360008+00:00",
+    "created_at": "2026-04-14T10:01:41.326184+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_ae8435b40e8d4beda38b7c69616a070a",
+    "news_output": "Jordan Phosphate Mines Company (JPMC) announcement (reported 2026-04-14) that the selling price of phosphoric acid will increase to $1,360 per tonne for Q2 2026 (up $70/tonne from Q1). The release cites agreements with major consumers and stronger export demand — a direct, material pricing change affecting customers and input-cost assumptions in fertilizer and chemical supply chains.",
+    "source_urls": [
+     "https://www.zawya.com/en/economy/levant/jordan-jpmc-announces-price-hike-for-phosphoric-acid-edelokiu"
+    ],
+    "monitor_type": "business_strategy",
+    "event_group_id": "mevtgrp_ae8435b40e8d4beddd03e478f4a37d427a570d11b4f00652"
+   },
+   "source_webhook_id": 4262
+  },
+  "dedupe_hash": "92217fafd41ad54edd640ad136bb1a8328069b5a92cbd6442863698851f31619"
+ },
+ {
+  "id": 5,
+  "created_at": "2026-04-14T10:38:49.348866+00:00",
+  "timestamp": "2026-04-14T10:01:39.360008+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_ae8435b40e8d4beddd03e478f4a37d427a570d11b4f00652",
+  "monitor_id": "monitor_ae8435b40e8d4beda38b7c69616a070a",
+  "monitor_type": "business_strategy",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "Publicis Q1 2026 presentation (published 2026-04-14) showing organic growth of 6.4% and that AI-powered marketing services now constitute ~86% of net revenue. The slides frame AI as a structural tailwind and describe strategic initiatives (Marcel AI platform, expanded Microsoft partnership) and how the company is rebalancing services toward agentic/AI-enabled offerings — a material business-model/strategy shift with practical lessons about embedding AI to widen competitive separation.",
+  "news_date": "2026-04-14",
+  "source_urls": [
+   "https://www.investing.com/news/company-news/publicis-q1-2026-slides-organic-growth-hits-64-ai-drives-gains-93CH-4612030"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4261,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_ae8435b40e8d4beddd03e478f4a37d427a570d11b4f00652"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "business_strategy"
+      },
+      "monitor_id": "monitor_ae8435b40e8d4beda38b7c69616a070a"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T10:01:39.360008+00:00"
+    },
+    "news_date": "2026-04-14",
+    "timestamp": "2026-04-14T10:01:39.360008+00:00",
+    "created_at": "2026-04-14T10:01:40.48577+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_ae8435b40e8d4beda38b7c69616a070a",
+    "news_output": "Publicis Q1 2026 presentation (published 2026-04-14) showing organic growth of 6.4% and that AI-powered marketing services now constitute ~86% of net revenue. The slides frame AI as a structural tailwind and describe strategic initiatives (Marcel AI platform, expanded Microsoft partnership) and how the company is rebalancing services toward agentic/AI-enabled offerings — a material business-model/strategy shift with practical lessons about embedding AI to widen competitive separation.",
+    "source_urls": [
+     "https://www.investing.com/news/company-news/publicis-q1-2026-slides-organic-growth-hits-64-ai-drives-gains-93CH-4612030"
+    ],
+    "monitor_type": "business_strategy",
+    "event_group_id": "mevtgrp_ae8435b40e8d4beddd03e478f4a37d427a570d11b4f00652"
+   },
+   "source_webhook_id": 4261
+  },
+  "dedupe_hash": "7a36999dca6cb86f6c4a22f986ac34ee8c0d43d4691c425723da8985a265a432"
+ },
+ {
+  "id": 6,
+  "created_at": "2026-04-14T10:38:49.501763+00:00",
+  "timestamp": "2026-04-14T10:01:25.127011+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_95e6a9ed37ea43ae659b8022fbb2374585b82e5e09b3aab9",
+  "monitor_id": "monitor_95e6a9ed37ea43aeb396b63367864ad1",
+  "monitor_type": "investing_finance",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "RBI announced premature redemption schedule for Sovereign Gold Bond (SGB) 2019-20 Series-V; redemption date set as 15 April 2026 and the redemption price fixed at ₹15,009 per unit (calculated as the simple average of closing gold prices on the three business days preceding the redemption). Practical implications: holders of this SGB tranche may opt for early redemption on 15-Apr-2026, realise substantial capital gains (capital gains on SGB redemption are exempt for individuals), and may need to rebalance portfolios or consider tax/interest implications (interest payments remain taxable).",
+  "news_date": "2026-04-14",
+  "source_urls": [
+   "https://www.livemint.com/market/bonds/rbi-sets-sgb-premature-redemption-for-15-april-check-profit-on-10-units-11776149165688.html"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4260,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_95e6a9ed37ea43ae659b8022fbb2374585b82e5e09b3aab9"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "investing_finance"
+      },
+      "monitor_id": "monitor_95e6a9ed37ea43aeb396b63367864ad1"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T10:01:25.127011+00:00"
+    },
+    "news_date": "2026-04-14",
+    "timestamp": "2026-04-14T10:01:25.127011+00:00",
+    "created_at": "2026-04-14T10:01:25.934579+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_95e6a9ed37ea43aeb396b63367864ad1",
+    "news_output": "RBI announced premature redemption schedule for Sovereign Gold Bond (SGB) 2019-20 Series-V; redemption date set as 15 April 2026 and the redemption price fixed at ₹15,009 per unit (calculated as the simple average of closing gold prices on the three business days preceding the redemption). Practical implications: holders of this SGB tranche may opt for early redemption on 15-Apr-2026, realise substantial capital gains (capital gains on SGB redemption are exempt for individuals), and may need to rebalance portfolios or consider tax/interest implications (interest payments remain taxable).",
+    "source_urls": [
+     "https://www.livemint.com/market/bonds/rbi-sets-sgb-premature-redemption-for-15-april-check-profit-on-10-units-11776149165688.html"
+    ],
+    "monitor_type": "investing_finance",
+    "event_group_id": "mevtgrp_95e6a9ed37ea43ae659b8022fbb2374585b82e5e09b3aab9"
+   },
+   "source_webhook_id": 4260
+  },
+  "dedupe_hash": "1281ab5348367425accc7ef7fcca52348973268f35f246fd32d1b57696cf4830"
+ },
+ {
+  "id": 7,
+  "created_at": "2026-04-14T10:38:49.648755+00:00",
+  "timestamp": "2026-04-14T10:01:11.664045+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_0e411c77a8634644fd651f9b1f12bb74cef3406a64099ce9",
+  "monitor_id": "monitor_0e411c77a86346448ca8c42c60cf8202",
+  "monitor_type": "startup_ideas_opportunities",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "Startup Policy Forum (SPF) launched the New Economy Collective (NEC), a platform to connect global companies with India’s startup ecosystem and to help Indian startups expand overseas. NEC aims to simplify market access and regulatory navigation, formalise partnerships and enable two‑way flows of investment, talent and collaboration — creating opportunities in market-entry services, localization/compliance tooling, cross-border partnerships, outbound expansion support, and related storytelling content suitable for short-form video.",
+  "news_date": "2026-04-14",
+  "source_urls": [
+   "https://www.fortuneindia.com/business-news/startup-policy-forum-launches-new-economy-collective-to-link-indian-startups-with-global-markets/132397"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4259,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_0e411c77a8634644fd651f9b1f12bb74cef3406a64099ce9"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "startup_ideas_opportunities"
+      },
+      "monitor_id": "monitor_0e411c77a86346448ca8c42c60cf8202"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T10:01:11.664045+00:00"
+    },
+    "news_date": "2026-04-14",
+    "timestamp": "2026-04-14T10:01:11.664045+00:00",
+    "created_at": "2026-04-14T10:01:12.922192+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_0e411c77a86346448ca8c42c60cf8202",
+    "news_output": "Startup Policy Forum (SPF) launched the New Economy Collective (NEC), a platform to connect global companies with India’s startup ecosystem and to help Indian startups expand overseas. NEC aims to simplify market access and regulatory navigation, formalise partnerships and enable two‑way flows of investment, talent and collaboration — creating opportunities in market-entry services, localization/compliance tooling, cross-border partnerships, outbound expansion support, and related storytelling content suitable for short-form video.",
+    "source_urls": [
+     "https://www.fortuneindia.com/business-news/startup-policy-forum-launches-new-economy-collective-to-link-indian-startups-with-global-markets/132397"
+    ],
+    "monitor_type": "startup_ideas_opportunities",
+    "event_group_id": "mevtgrp_0e411c77a8634644fd651f9b1f12bb74cef3406a64099ce9"
+   },
+   "source_webhook_id": 4259
+  },
+  "dedupe_hash": "18237886c7613296320cfea6fb60c9f6bc585d2398a3063b7cae461a54a8b278"
+ },
+ {
+  "id": 8,
+  "created_at": "2026-04-14T10:38:49.790884+00:00",
+  "timestamp": "2026-04-14T09:10:54.284726+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_4d2bdb46acd64595d06edde02ad5149eee2b2940f5673f99",
+  "monitor_id": "monitor_4d2bdb46acd6459582eb36c2a7109fc6",
+  "monitor_type": "government_schemes_policy",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "DPIIT / Gazette notification (S.O. 1860(E)) published 2026-04-13: Government has notified the 'Startup India Fund of Funds 2.0' (Startup India FoF 2.0) with a total corpus of Rs. 10,000 crore to mobilize venture capital for the startup ecosystem. Scheme scope emphasises segmented support (deep-tech, micro-VCs, manufacturing/Make in India, sector-agnostic), SIDBI as implementing agency (with additional IAs possible), VCIC/Empowered Committee governance, up to 5% of returns earmarked for ecosystem capacity building, and operational guidelines to be issued by DPIIT. Practical impact: increases available government-backed capital for AIFs investing in startups and signals focused support for deep-tech/manufacturing and early-growth micro-VCs.",
+  "news_date": "2026-04-13",
+  "source_urls": [
+   "https://www.startupindia.gov.in/content/dam/startupindia/Startup-India-Fund-of-Funds-2.0-Scheme.pdf"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4258,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_4d2bdb46acd64595d06edde02ad5149eee2b2940f5673f99"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "government_schemes_policy"
+      },
+      "monitor_id": "monitor_4d2bdb46acd6459582eb36c2a7109fc6"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T09:10:54.284726+00:00"
+    },
+    "news_date": "2026-04-13",
+    "timestamp": "2026-04-14T09:10:54.284726+00:00",
+    "created_at": "2026-04-14T09:10:55.494162+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_4d2bdb46acd6459582eb36c2a7109fc6",
+    "news_output": "DPIIT / Gazette notification (S.O. 1860(E)) published 2026-04-13: Government has notified the 'Startup India Fund of Funds 2.0' (Startup India FoF 2.0) with a total corpus of Rs. 10,000 crore to mobilize venture capital for the startup ecosystem. Scheme scope emphasises segmented support (deep-tech, micro-VCs, manufacturing/Make in India, sector-agnostic), SIDBI as implementing agency (with additional IAs possible), VCIC/Empowered Committee governance, up to 5% of returns earmarked for ecosystem capacity building, and operational guidelines to be issued by DPIIT. Practical impact: increases available government-backed capital for AIFs investing in startups and signals focused support for deep-tech/manufacturing and early-growth micro-VCs.",
+    "source_urls": [
+     "https://www.startupindia.gov.in/content/dam/startupindia/Startup-India-Fund-of-Funds-2.0-Scheme.pdf"
+    ],
+    "monitor_type": "government_schemes_policy",
+    "event_group_id": "mevtgrp_4d2bdb46acd64595d06edde02ad5149eee2b2940f5673f99"
+   },
+   "source_webhook_id": 4258
+  },
+  "dedupe_hash": "31ce886777e1aa51ae7da59b1b185d93018a67914672b540afacf0e2e80c9f49"
+ },
+ {
+  "id": 9,
+  "created_at": "2026-04-14T10:38:49.931155+00:00",
+  "timestamp": "2026-04-14T09:10:54.284726+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_4d2bdb46acd64595d06edde02ad5149eee2b2940f5673f99",
+  "monitor_id": "monitor_4d2bdb46acd6459582eb36c2a7109fc6",
+  "monitor_type": "government_schemes_policy",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "RBI premature redemption announcement reported by major outlets: RBI (reported) has set premature redemption of a Sovereign Gold Bond series for 15 April 2026; media reports give the redemption price (report examples note ~₹15,009 per unit for the cited series). Practical impact: affects liquidity and cash flows for holders of the specified SGB series — relevant to small business/creator investors and treasury decisions.",
+  "news_date": "2026-04-15",
+  "source_urls": [
+   "https://www.livemint.com/market/bonds/rbi-sets-sgb-premature-redemption-for-15-april-check-profit-on-10-units-11776149165688.html"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4257,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_4d2bdb46acd64595d06edde02ad5149eee2b2940f5673f99"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "government_schemes_policy"
+      },
+      "monitor_id": "monitor_4d2bdb46acd6459582eb36c2a7109fc6"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T09:10:54.284726+00:00"
+    },
+    "news_date": "2026-04-15",
+    "timestamp": "2026-04-14T09:10:54.284726+00:00",
+    "created_at": "2026-04-14T09:10:55.181365+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_4d2bdb46acd6459582eb36c2a7109fc6",
+    "news_output": "RBI premature redemption announcement reported by major outlets: RBI (reported) has set premature redemption of a Sovereign Gold Bond series for 15 April 2026; media reports give the redemption price (report examples note ~₹15,009 per unit for the cited series). Practical impact: affects liquidity and cash flows for holders of the specified SGB series — relevant to small business/creator investors and treasury decisions.",
+    "source_urls": [
+     "https://www.livemint.com/market/bonds/rbi-sets-sgb-premature-redemption-for-15-april-check-profit-on-10-units-11776149165688.html"
+    ],
+    "monitor_type": "government_schemes_policy",
+    "event_group_id": "mevtgrp_4d2bdb46acd64595d06edde02ad5149eee2b2940f5673f99"
+   },
+   "source_webhook_id": 4257
+  },
+  "dedupe_hash": "ff0d7ef5b43134807a6d4e278f64cbb8a1dff38ef84d87d8f323077590a56c5a"
+ },
+ {
+  "id": 10,
+  "created_at": "2026-04-14T10:38:50.056658+00:00",
+  "timestamp": "2026-04-14T09:09:58.486069+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_34f1558d96074886bc0fc3fa6c00c40f3f73578363e6bf0e",
+  "monitor_id": "monitor_34f1558d96074886b3c43bfe5a4a8f16",
+  "monitor_type": "ecommerce_growth",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "Blue Dart Express announced the resignation of its Chairman, Mr. Prakash Krishnaji Apte, effective at the close of the board meeting on April 13, 2026 — a governance/leadership change with potential operational and market perception implications for logistics services.",
+  "news_date": "2026-04-13",
+  "source_urls": [
+   "https://www.exchange4media.com/people-movement-news/blue-dart-chairman-prakash-apte-resigns-153817.html"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4256,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_34f1558d96074886bc0fc3fa6c00c40f3f73578363e6bf0e"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "ecommerce_growth"
+      },
+      "monitor_id": "monitor_34f1558d96074886b3c43bfe5a4a8f16"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T09:09:58.486069+00:00"
+    },
+    "news_date": "2026-04-13",
+    "timestamp": "2026-04-14T09:09:58.486069+00:00",
+    "created_at": "2026-04-14T09:09:59.423553+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_34f1558d96074886b3c43bfe5a4a8f16",
+    "news_output": "Blue Dart Express announced the resignation of its Chairman, Mr. Prakash Krishnaji Apte, effective at the close of the board meeting on April 13, 2026 — a governance/leadership change with potential operational and market perception implications for logistics services.",
+    "source_urls": [
+     "https://www.exchange4media.com/people-movement-news/blue-dart-chairman-prakash-apte-resigns-153817.html"
+    ],
+    "monitor_type": "ecommerce_growth",
+    "event_group_id": "mevtgrp_34f1558d96074886bc0fc3fa6c00c40f3f73578363e6bf0e"
+   },
+   "source_webhook_id": 4256
+  },
+  "dedupe_hash": "65d828eebf3ae62c1623f2f658dad6f6ba35bea516f9f894dee4c218eff83789"
+ },
+ {
+  "id": 11,
+  "created_at": "2026-04-14T10:38:50.19414+00:00",
+  "timestamp": "2026-04-14T09:09:35.941857+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_ae8435b40e8d4beddd03e478f4a37d420095d206a44eef87",
+  "monitor_id": "monitor_ae8435b40e8d4beda38b7c69616a070a",
+  "monitor_type": "business_strategy",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "Eastman Chemical Company press release (effective April 13, 2026) announcing price increases on several ester products (Eastman™ PM solvent, Eastman™ PM Acetate excluding Eastapure, Eastman™ IBIB) of USD 0.10/lb (USD 0.22/kg) in North America and Latin America, effective April 13, 2026 or as contracts allow. This is a direct, material pricing change affecting customers and supply-chain cost assumptions.",
+  "news_date": "2026-04-13",
+  "source_urls": [
+   "https://www.eastman.com/en/media-center/news-stories/2026/eastman-increases-esters-prices-on-april-13-2026"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4255,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_ae8435b40e8d4beddd03e478f4a37d420095d206a44eef87"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "business_strategy"
+      },
+      "monitor_id": "monitor_ae8435b40e8d4beda38b7c69616a070a"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T09:09:35.941857+00:00"
+    },
+    "news_date": "2026-04-13",
+    "timestamp": "2026-04-14T09:09:35.941857+00:00",
+    "created_at": "2026-04-14T09:09:36.828525+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_ae8435b40e8d4beda38b7c69616a070a",
+    "news_output": "Eastman Chemical Company press release (effective April 13, 2026) announcing price increases on several ester products (Eastman™ PM solvent, Eastman™ PM Acetate excluding Eastapure, Eastman™ IBIB) of USD 0.10/lb (USD 0.22/kg) in North America and Latin America, effective April 13, 2026 or as contracts allow. This is a direct, material pricing change affecting customers and supply-chain cost assumptions.",
+    "source_urls": [
+     "https://www.eastman.com/en/media-center/news-stories/2026/eastman-increases-esters-prices-on-april-13-2026"
+    ],
+    "monitor_type": "business_strategy",
+    "event_group_id": "mevtgrp_ae8435b40e8d4beddd03e478f4a37d420095d206a44eef87"
+   },
+   "source_webhook_id": 4255
+  },
+  "dedupe_hash": "dcb5605c48eda2f7ffc00e0e6bf08031a59e37aa88f217e89bd3b0ccee7e9869"
+ },
+ {
+  "id": 12,
+  "created_at": "2026-04-14T10:38:50.306856+00:00",
+  "timestamp": "2026-04-14T09:09:35.941857+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_ae8435b40e8d4beddd03e478f4a37d420095d206a44eef87",
+  "monitor_id": "monitor_ae8435b40e8d4beda38b7c69616a070a",
+  "monitor_type": "business_strategy",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "FinancialContent case study (published 2026-04-13) analyzing Fastenal’s ‘digital pivot’ and shift toward embedded Onsite locations, FASTVend/FASTBin-managed inventory and a large digital revenue mix (~66% by early 2026). The article describes Fastenal’s business-model transition from branch retail to embedded onsite services, the operational/technology investments (vending, edge AI, distribution robotics), recent financial performance (Q1 2026 revenue strength), and an announced CEO succession in July 2026 — all of which constitute a material business-model and operational case example with practical lessons about embedding services to lock in customers.",
+  "news_date": "2026-04-13",
+  "source_urls": [
+   "https://www.financialcontent.com/article/finterra-2026-4-13-the-blue-teams-digital-pivot-a-deep-dive-into-fastenals-industrial-dominance"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4254,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_ae8435b40e8d4beddd03e478f4a37d420095d206a44eef87"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "business_strategy"
+      },
+      "monitor_id": "monitor_ae8435b40e8d4beda38b7c69616a070a"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T09:09:35.941857+00:00"
+    },
+    "news_date": "2026-04-13",
+    "timestamp": "2026-04-14T09:09:35.941857+00:00",
+    "created_at": "2026-04-14T09:09:36.533756+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_ae8435b40e8d4beda38b7c69616a070a",
+    "news_output": "FinancialContent case study (published 2026-04-13) analyzing Fastenal’s ‘digital pivot’ and shift toward embedded Onsite locations, FASTVend/FASTBin-managed inventory and a large digital revenue mix (~66% by early 2026). The article describes Fastenal’s business-model transition from branch retail to embedded onsite services, the operational/technology investments (vending, edge AI, distribution robotics), recent financial performance (Q1 2026 revenue strength), and an announced CEO succession in July 2026 — all of which constitute a material business-model and operational case example with practical lessons about embedding services to lock in customers.",
+    "source_urls": [
+     "https://www.financialcontent.com/article/finterra-2026-4-13-the-blue-teams-digital-pivot-a-deep-dive-into-fastenals-industrial-dominance"
+    ],
+    "monitor_type": "business_strategy",
+    "event_group_id": "mevtgrp_ae8435b40e8d4beddd03e478f4a37d420095d206a44eef87"
+   },
+   "source_webhook_id": 4254
+  },
+  "dedupe_hash": "a04ea28c207ce78df9385dc43fa12adda3eedbfeeaf4a3efd1ce079baf375ae6"
+ },
+ {
+  "id": 13,
+  "created_at": "2026-04-14T10:38:50.441796+00:00",
+  "timestamp": "2026-04-14T09:09:16.643362+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_967d03e7f109443514a7c98921a66edf90e5d93d11d89056",
+  "monitor_id": "monitor_967d03e7f10944358e10a7888c46bd7d",
+  "monitor_type": "paid_ads_growth",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "Report (April 13, 2026) that Google Ad Grants Performance Max ads stopped serving on Google Maps (placements showing zero impressions in Channel performance report). No formal Google public announcement was reported; PPC practitioners were advised to check channel performance and investigate if Maps impressions are zero for affected campaigns.",
+  "news_date": "2026-04-13",
+  "source_urls": [
+   "https://ppcnewsfeed.com/ppc-news/2026-04/google-ad-grants-ads-disappeared-maps/"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4253,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_967d03e7f109443514a7c98921a66edf90e5d93d11d89056"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "paid_ads_growth"
+      },
+      "monitor_id": "monitor_967d03e7f10944358e10a7888c46bd7d"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T09:09:16.643362+00:00"
+    },
+    "news_date": "2026-04-13",
+    "timestamp": "2026-04-14T09:09:16.643362+00:00",
+    "created_at": "2026-04-14T09:09:17.829967+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_967d03e7f10944358e10a7888c46bd7d",
+    "news_output": "Report (April 13, 2026) that Google Ad Grants Performance Max ads stopped serving on Google Maps (placements showing zero impressions in Channel performance report). No formal Google public announcement was reported; PPC practitioners were advised to check channel performance and investigate if Maps impressions are zero for affected campaigns.",
+    "source_urls": [
+     "https://ppcnewsfeed.com/ppc-news/2026-04/google-ad-grants-ads-disappeared-maps/"
+    ],
+    "monitor_type": "paid_ads_growth",
+    "event_group_id": "mevtgrp_967d03e7f109443514a7c98921a66edf90e5d93d11d89056"
+   },
+   "source_webhook_id": 4253
+  },
+  "dedupe_hash": "216c535ccec20d443518655b389367744c3008e5b72bbbfded608d6537222c0b"
+ },
+ {
+  "id": 14,
+  "created_at": "2026-04-14T10:38:50.580597+00:00",
+  "timestamp": "2026-04-14T09:09:16.643362+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_967d03e7f109443514a7c98921a66edf90e5d93d11d89056",
+  "monitor_id": "monitor_967d03e7f10944358e10a7888c46bd7d",
+  "monitor_type": "paid_ads_growth",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "Google announced updates to consent controls between Google Analytics and Google Ads: Ads settings will take control over ad-side data usage aligned with user consent. Starting 2026-06-15, tags/SDKs will apply destination-specific controls (Ads Consent Mode governs data used by Google Ads; Google Signals/API governs Analytics). If Google Signals is disabled, Ads may use consented cookies unless ad_storage is explicitly set to denied; a 90-day grace period is available. This changes how tracking/attribution and tag configuration should be managed across linked properties.",
+  "news_date": "2026-04-14",
+  "source_urls": [
+   "https://ppcnewsfeed.com/ppc-news/2026-04/google-consent-controls-analytics-ads/"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4252,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_967d03e7f109443514a7c98921a66edf90e5d93d11d89056"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "paid_ads_growth"
+      },
+      "monitor_id": "monitor_967d03e7f10944358e10a7888c46bd7d"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T09:09:16.643362+00:00"
+    },
+    "news_date": "2026-04-14",
+    "timestamp": "2026-04-14T09:09:16.643362+00:00",
+    "created_at": "2026-04-14T09:09:17.414401+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_967d03e7f10944358e10a7888c46bd7d",
+    "news_output": "Google announced updates to consent controls between Google Analytics and Google Ads: Ads settings will take control over ad-side data usage aligned with user consent. Starting 2026-06-15, tags/SDKs will apply destination-specific controls (Ads Consent Mode governs data used by Google Ads; Google Signals/API governs Analytics). If Google Signals is disabled, Ads may use consented cookies unless ad_storage is explicitly set to denied; a 90-day grace period is available. This changes how tracking/attribution and tag configuration should be managed across linked properties.",
+    "source_urls": [
+     "https://ppcnewsfeed.com/ppc-news/2026-04/google-consent-controls-analytics-ads/"
+    ],
+    "monitor_type": "paid_ads_growth",
+    "event_group_id": "mevtgrp_967d03e7f109443514a7c98921a66edf90e5d93d11d89056"
+   },
+   "source_webhook_id": 4252
+  },
+  "dedupe_hash": "5aaddc6ecbac5679084d5a64d47714056c79cc0f4018131fa70b27b859663937"
+ },
+ {
+  "id": 15,
+  "created_at": "2026-04-14T10:38:50.682639+00:00",
+  "timestamp": "2026-04-14T09:09:07.568343+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_129839c172a64122cdaf2ce9be571e10a63329fcdeabd448",
+  "monitor_id": "monitor_129839c172a6412282111a7ce2e30255",
+  "monitor_type": "sales_negotiation",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "Forbes (Apr 13, 2026) - Practical negotiation guidance emphasizing listen-first questioning to surface priorities, looking beyond price (timing/terms/certainty), seeking shared interests, maintaining professionalism (tone/pauses), and preparing anchors and objectives. Each point is short-video ready: 15–60s hook, one tactic, brief example (B2B/B2C), and a closing prompt or script for handling objections and closing.",
+  "news_date": "2026-04-13",
+  "source_urls": [
+   "https://www.forbes.com/sites/jamesnelson/2026/04/13/why-great-negotiations-create-value-for-both-sides/"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4251,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_129839c172a64122cdaf2ce9be571e10a63329fcdeabd448"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "sales_negotiation"
+      },
+      "monitor_id": "monitor_129839c172a6412282111a7ce2e30255"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T09:09:07.568343+00:00"
+    },
+    "news_date": "2026-04-13",
+    "timestamp": "2026-04-14T09:09:07.568343+00:00",
+    "created_at": "2026-04-14T09:09:08.210107+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_129839c172a6412282111a7ce2e30255",
+    "news_output": "Forbes (Apr 13, 2026) - Practical negotiation guidance emphasizing listen-first questioning to surface priorities, looking beyond price (timing/terms/certainty), seeking shared interests, maintaining professionalism (tone/pauses), and preparing anchors and objectives. Each point is short-video ready: 15–60s hook, one tactic, brief example (B2B/B2C), and a closing prompt or script for handling objections and closing.",
+    "source_urls": [
+     "https://www.forbes.com/sites/jamesnelson/2026/04/13/why-great-negotiations-create-value-for-both-sides/"
+    ],
+    "monitor_type": "sales_negotiation",
+    "event_group_id": "mevtgrp_129839c172a64122cdaf2ce9be571e10a63329fcdeabd448"
+   },
+   "source_webhook_id": 4251
+  },
+  "dedupe_hash": "bd59f5eb42d7ba25ff7f2051f9b98d08b38bf2dfc6b3ad3b671a601f0d936009"
+ },
+ {
+  "id": 16,
+  "created_at": "2026-04-14T10:38:50.810363+00:00",
+  "timestamp": "2026-04-14T09:08:48.897908+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_7cff1a0945e240831b6d1095502fb89ba69420496f41b4aa",
+  "monitor_id": "monitor_7cff1a0945e24083a1b02f5026e6a7d1",
+  "monitor_type": "marketing_trends",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "Shaping Influence published campaign recaps (Welch's, OLLY, Bob Evans Farms, etc.) with performance metrics and tactics (creative, channels, incremental sales). These are specific case-study examples that can be converted into practical campaign-breakdown videos showing strategy, creative, and measured outcomes.",
+  "news_date": "2026-04-13",
+  "source_urls": [
+   "https://www.shapinginfluence.com/news/2026/04/13/10363338.htm"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4244,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_7cff1a0945e240831b6d1095502fb89ba69420496f41b4aa"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "marketing_trends"
+      },
+      "monitor_id": "monitor_7cff1a0945e24083a1b02f5026e6a7d1"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T09:08:48.897908+00:00"
+    },
+    "news_date": "2026-04-13",
+    "timestamp": "2026-04-14T09:08:48.897908+00:00",
+    "created_at": "2026-04-14T09:08:50.712521+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_7cff1a0945e24083a1b02f5026e6a7d1",
+    "news_output": "Shaping Influence published campaign recaps (Welch's, OLLY, Bob Evans Farms, etc.) with performance metrics and tactics (creative, channels, incremental sales). These are specific case-study examples that can be converted into practical campaign-breakdown videos showing strategy, creative, and measured outcomes.",
+    "source_urls": [
+     "https://www.shapinginfluence.com/news/2026/04/13/10363338.htm"
+    ],
+    "monitor_type": "marketing_trends",
+    "event_group_id": "mevtgrp_7cff1a0945e240831b6d1095502fb89ba69420496f41b4aa"
+   },
+   "source_webhook_id": 4244
+  },
+  "dedupe_hash": "c4570bd2c55a469da81564439e32ed4a75b2b3fe38c4e858e71e3c4fd339c146"
+ },
+ {
+  "id": 17,
+  "created_at": "2026-04-14T10:38:50.932954+00:00",
+  "timestamp": "2026-04-14T09:08:48.897908+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_7cff1a0945e240831b6d1095502fb89ba69420496f41b4aa",
+  "monitor_id": "monitor_7cff1a0945e24083a1b02f5026e6a7d1",
+  "monitor_type": "marketing_trends",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "Forbes published an analysis on creator marketing's scale and an identified 'blind spot' in video advertising (value and integration of creator media, YouTube API updates referenced). Material for videos about creator monetization, measurement, and how to integrate creator media into paid/distribution strategies.",
+  "news_date": "2026-04-13",
+  "source_urls": [
+   "https://www.forbes.com/sites/jamiegutfreund/2026/04/13/creator-marketings-500-billion-blind-spot-in-video-advertising/"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4243,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_7cff1a0945e240831b6d1095502fb89ba69420496f41b4aa"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "marketing_trends"
+      },
+      "monitor_id": "monitor_7cff1a0945e24083a1b02f5026e6a7d1"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T09:08:48.897908+00:00"
+    },
+    "news_date": "2026-04-13",
+    "timestamp": "2026-04-14T09:08:48.897908+00:00",
+    "created_at": "2026-04-14T09:08:50.403408+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_7cff1a0945e24083a1b02f5026e6a7d1",
+    "news_output": "Forbes published an analysis on creator marketing's scale and an identified 'blind spot' in video advertising (value and integration of creator media, YouTube API updates referenced). Material for videos about creator monetization, measurement, and how to integrate creator media into paid/distribution strategies.",
+    "source_urls": [
+     "https://www.forbes.com/sites/jamiegutfreund/2026/04/13/creator-marketings-500-billion-blind-spot-in-video-advertising/"
+    ],
+    "monitor_type": "marketing_trends",
+    "event_group_id": "mevtgrp_7cff1a0945e240831b6d1095502fb89ba69420496f41b4aa"
+   },
+   "source_webhook_id": 4243
+  },
+  "dedupe_hash": "4b52f6a238d39f7e7e507a06499568afb42157ffd7e5ebf41e883eb3c99d9a48"
+ },
+ {
+  "id": 18,
+  "created_at": "2026-04-14T10:38:51.034645+00:00",
+  "timestamp": "2026-04-14T09:08:48.897908+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_7cff1a0945e240831b6d1095502fb89ba69420496f41b4aa",
+  "monitor_id": "monitor_7cff1a0945e24083a1b02f5026e6a7d1",
+  "monitor_type": "marketing_trends",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "Springbig launched an AI Audience Builder with natural-language segmentation for regulated retailers — a new AI marketing tool that simplifies audience creation and targeting while addressing compliance constraints. Practical video angle: walkthrough of conversational segmentation and campaign examples for regulated verticals.",
+  "news_date": "2026-04-13",
+  "source_urls": [
+   "https://www.globenewswire.com/news-release/2026/04/13/3272615/0/en/Springbig-Launches-AI-Audience-Builder-Giving-Regulated-Retailers-a-Smarter-Way-to-Target-Engage-and-Grow.html"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4242,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_7cff1a0945e240831b6d1095502fb89ba69420496f41b4aa"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "marketing_trends"
+      },
+      "monitor_id": "monitor_7cff1a0945e24083a1b02f5026e6a7d1"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T09:08:48.897908+00:00"
+    },
+    "news_date": "2026-04-13",
+    "timestamp": "2026-04-14T09:08:48.897908+00:00",
+    "created_at": "2026-04-14T09:08:50.065916+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_7cff1a0945e24083a1b02f5026e6a7d1",
+    "news_output": "Springbig launched an AI Audience Builder with natural-language segmentation for regulated retailers — a new AI marketing tool that simplifies audience creation and targeting while addressing compliance constraints. Practical video angle: walkthrough of conversational segmentation and campaign examples for regulated verticals.",
+    "source_urls": [
+     "https://www.globenewswire.com/news-release/2026/04/13/3272615/0/en/Springbig-Launches-AI-Audience-Builder-Giving-Regulated-Retailers-a-Smarter-Way-to-Target-Engage-and-Grow.html"
+    ],
+    "monitor_type": "marketing_trends",
+    "event_group_id": "mevtgrp_7cff1a0945e240831b6d1095502fb89ba69420496f41b4aa"
+   },
+   "source_webhook_id": 4242
+  },
+  "dedupe_hash": "4a4e7dcb935520f194a34e28d0a0747c81789dc7c27e8f200173a17614e0e5e5"
+ },
+ {
+  "id": 19,
+  "created_at": "2026-04-14T10:38:51.123392+00:00",
+  "timestamp": "2026-04-14T09:08:48.897908+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_7cff1a0945e240831b6d1095502fb89ba69420496f41b4aa",
+  "monitor_id": "monitor_7cff1a0945e24083a1b02f5026e6a7d1",
+  "monitor_type": "marketing_trends",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "Marketing Architects announced the 'Mass Customizer' — an AI-enabled tool to customize TV creative at scale without inflating production budgets. This is a distribution/creative technology that founders and CMOs can test to localize or personalize broadcast/CTV creative; good material for a how-to/demo video on using AI to scale high-production creative.",
+  "news_date": "2026-04-13",
+  "source_urls": [
+   "https://www.businesswire.com/news/home/20260413190627/en/Marketing-Architects-Launches-Mass-Customizer-to-Balance-Reach-and-Relevance-on-TV"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4241,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_7cff1a0945e240831b6d1095502fb89ba69420496f41b4aa"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "marketing_trends"
+      },
+      "monitor_id": "monitor_7cff1a0945e24083a1b02f5026e6a7d1"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T09:08:48.897908+00:00"
+    },
+    "news_date": "2026-04-13",
+    "timestamp": "2026-04-14T09:08:48.897908+00:00",
+    "created_at": "2026-04-14T09:08:49.734585+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_7cff1a0945e24083a1b02f5026e6a7d1",
+    "news_output": "Marketing Architects announced the 'Mass Customizer' — an AI-enabled tool to customize TV creative at scale without inflating production budgets. This is a distribution/creative technology that founders and CMOs can test to localize or personalize broadcast/CTV creative; good material for a how-to/demo video on using AI to scale high-production creative.",
+    "source_urls": [
+     "https://www.businesswire.com/news/home/20260413190627/en/Marketing-Architects-Launches-Mass-Customizer-to-Balance-Reach-and-Relevance-on-TV"
+    ],
+    "monitor_type": "marketing_trends",
+    "event_group_id": "mevtgrp_7cff1a0945e240831b6d1095502fb89ba69420496f41b4aa"
+   },
+   "source_webhook_id": 4241
+  },
+  "dedupe_hash": "cda013b2cc0cc945a4f6c2fddade4bf2f58683462531b2018b31554107b90e49"
+ },
+ {
+  "id": 20,
+  "created_at": "2026-04-14T10:38:51.208636+00:00",
+  "timestamp": "2026-04-14T09:08:48.897908+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_7cff1a0945e240831b6d1095502fb89ba69420496f41b4aa",
+  "monitor_id": "monitor_7cff1a0945e24083a1b02f5026e6a7d1",
+  "monitor_type": "marketing_trends",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "Gartner published a U.S. consumer survey showing 81% of consumers say they try to ignore/tune out ads — a major ad-avoidance trend that impacts distribution tactics and suggests a shift toward non-interruptive or content-led marketing strategies (useful for videos on ad-avoidance, creative hooks, and alternative distribution).",
+  "news_date": "2026-04-13",
+  "source_urls": [
+   "https://www.gartner.com/en/newsroom/press-releases/2026-04-13-gartner-marketing-survey-finds-eighty-one-percent-of-consumers-tune-out-ads"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4240,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_7cff1a0945e240831b6d1095502fb89ba69420496f41b4aa"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "marketing_trends"
+      },
+      "monitor_id": "monitor_7cff1a0945e24083a1b02f5026e6a7d1"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T09:08:48.897908+00:00"
+    },
+    "news_date": "2026-04-13",
+    "timestamp": "2026-04-14T09:08:48.897908+00:00",
+    "created_at": "2026-04-14T09:08:49.433979+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_7cff1a0945e24083a1b02f5026e6a7d1",
+    "news_output": "Gartner published a U.S. consumer survey showing 81% of consumers say they try to ignore/tune out ads — a major ad-avoidance trend that impacts distribution tactics and suggests a shift toward non-interruptive or content-led marketing strategies (useful for videos on ad-avoidance, creative hooks, and alternative distribution).",
+    "source_urls": [
+     "https://www.gartner.com/en/newsroom/press-releases/2026-04-13-gartner-marketing-survey-finds-eighty-one-percent-of-consumers-tune-out-ads"
+    ],
+    "monitor_type": "marketing_trends",
+    "event_group_id": "mevtgrp_7cff1a0945e240831b6d1095502fb89ba69420496f41b4aa"
+   },
+   "source_webhook_id": 4240
+  },
+  "dedupe_hash": "5aaaf1472ce7b5dc7403f2730080258647ca2348c0665bb768d8dac53701fbc2"
+ },
+ {
+  "id": 21,
+  "created_at": "2026-04-14T10:38:51.289384+00:00",
+  "timestamp": "2026-04-14T09:08:38.269576+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_95e6a9ed37ea43ae659b8022fbb23745fb046c193090d939",
+  "monitor_id": "monitor_95e6a9ed37ea43aeb396b63367864ad1",
+  "monitor_type": "investing_finance",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "SEBI mandated that Social Impact Assessors must obtain the NISM Series XXIII – Social Impact Assessors Certification (or complete the corresponding eCPE program for renewal). The circular comes into effect immediately. Practical implication: professionals performing social impact assessments (for Social Stock Exchange and related filings) must secure/renew the NISM certification; issuers and investors relying on social impact reports should expect more standardised assessor credentials and potentially changed assessor availability/costs.",
+  "news_date": "2026-04-13",
+  "source_urls": [
+   "https://www.moneycontrol.com/news/business/markets/sebi-strengthens-social-impact-assessment-framework-with-mandatory-new-nism-certification-13887804.html"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4239,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_95e6a9ed37ea43ae659b8022fbb23745fb046c193090d939"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "investing_finance"
+      },
+      "monitor_id": "monitor_95e6a9ed37ea43aeb396b63367864ad1"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T09:08:38.269576+00:00"
+    },
+    "news_date": "2026-04-13",
+    "timestamp": "2026-04-14T09:08:38.269576+00:00",
+    "created_at": "2026-04-14T09:08:39.019543+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_95e6a9ed37ea43aeb396b63367864ad1",
+    "news_output": "SEBI mandated that Social Impact Assessors must obtain the NISM Series XXIII – Social Impact Assessors Certification (or complete the corresponding eCPE program for renewal). The circular comes into effect immediately. Practical implication: professionals performing social impact assessments (for Social Stock Exchange and related filings) must secure/renew the NISM certification; issuers and investors relying on social impact reports should expect more standardised assessor credentials and potentially changed assessor availability/costs.",
+    "source_urls": [
+     "https://www.moneycontrol.com/news/business/markets/sebi-strengthens-social-impact-assessment-framework-with-mandatory-new-nism-certification-13887804.html"
+    ],
+    "monitor_type": "investing_finance",
+    "event_group_id": "mevtgrp_95e6a9ed37ea43ae659b8022fbb23745fb046c193090d939"
+   },
+   "source_webhook_id": 4239
+  },
+  "dedupe_hash": "201e49eaa22c15837d281f155e174f8494447e4a0c923761b7316f5b0cf3e9f1"
+ },
+ {
+  "id": 22,
+  "created_at": "2026-04-14T10:38:51.371579+00:00",
+  "timestamp": "2026-04-14T09:08:32.747151+00:00",
+  "event_type": "monitor.event.detected",
+  "event_group_id": "mevtgrp_0e411c77a8634644fd651f9b1f12bb74bca5c61309f2383e",
+  "monitor_id": "monitor_0e411c77a86346448ca8c42c60cf8202",
+  "monitor_type": "startup_ideas_opportunities",
+  "source_type": "parallel",
+  "source_name": null,
+  "source_url": null,
+  "news_output": "Government notified Startup India Fund of Funds 2.0 (FoF 2.0) with a ₹10,000 crore corpus to mobilize venture and growth capital for startups; FoF 2.0 explicitly targets deep‑tech and aims to channel support through SEBI-registered funds, increasing available capital for scale and deep‑tech ventures — a material funding and sector-focus shift for Indian startups and related opportunity discovery.",
+  "news_date": "2026-04-13",
+  "source_urls": [
+   "https://www.pib.gov.in/PressReleaseDetail.aspx?PRID=2251638&reg=3&lang=1"
+  ],
+  "full_data": {
+   "source_row": {
+    "id": 4238,
+    "full_data": {
+     "data": {
+      "event": {
+       "event_group_id": "mevtgrp_0e411c77a8634644fd651f9b1f12bb74bca5c61309f2383e"
+      },
+      "metadata": {
+       "owner": "creator_content",
+       "version": "v1",
+       "monitor_type": "startup_ideas_opportunities"
+      },
+      "monitor_id": "monitor_0e411c77a86346448ca8c42c60cf8202"
+     },
+     "type": "monitor.event.detected",
+     "timestamp": "2026-04-14T09:08:32.747151+00:00"
+    },
+    "news_date": "2026-04-13",
+    "timestamp": "2026-04-14T09:08:32.747151+00:00",
+    "created_at": "2026-04-14T09:08:33.557341+00:00",
+    "event_type": "monitor.event.detected",
+    "monitor_id": "monitor_0e411c77a86346448ca8c42c60cf8202",
+    "news_output": "Government notified Startup India Fund of Funds 2.0 (FoF 2.0) with a ₹10,000 crore corpus to mobilize venture and growth capital for startups; FoF 2.0 explicitly targets deep‑tech and aims to channel support through SEBI-registered funds, increasing available capital for scale and deep‑tech ventures — a material funding and sector-focus shift for Indian startups and related opportunity discovery.",
+    "source_urls": [
+     "https://www.pib.gov.in/PressReleaseDetail.aspx?PRID=2251638&reg=3&lang=1"
+    ],
+    "monitor_type": "startup_ideas_opportunities",
+    "event_group_id": "mevtgrp_0e411c77a8634644fd651f9b1f12bb74bca5c61309f2383e"
+   },
+   "source_webhook_id": 4238
+  },
+  "dedupe_hash": "4330fd94df585ddf65e09ed523a4a5f13d0206d8f3d42e9c44df4b5ddd55209e"
+ }
+]
